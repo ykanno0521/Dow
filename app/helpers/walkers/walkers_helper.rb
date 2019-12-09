@@ -1,0 +1,2 @@
+module Walkers::WalkersHelper
+end

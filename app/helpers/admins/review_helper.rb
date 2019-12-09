@@ -1,0 +1,2 @@
+module Admins::ReviewHelper
+end

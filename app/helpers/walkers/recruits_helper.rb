@@ -1,0 +1,2 @@
+module Walkers::RecruitsHelper
+end
