@@ -10,6 +10,102 @@
   </head>
 
   <body>
+    <header id="header" class="navbar navbar-fixed-top navbar-inverse">
+      <nav class="nav navbar-nav navbar-left">
+        <span class="navbar-brand">Dow!</span>
+      </nav>
+      <nav class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav ">
+          <!-- ユーザログイン時 -->
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to "利用手順", about_path%>
+            </li>
+            <li>
+              <%= link_to  "Walker一覧", walkers_index_path%>
+            </li>
+            <li>
+              <%= link_to  "チャット履歴" %>
+            </li>
+            <li>
+              <%= link_to  "お問い合わせ", users_contacts_new_path %>
+            </li>
+            <li>
+              <%= link_to  " #{current_user.nickname}さん", users_maypage_path %>
+            </li>
+            <li>
+              <%= link_to " ログアウト", destroy_user_session_path, method: :delete, class:"glyphicon glyphicon-log-out logout" %>
+            </li>
+          <!-- Walkerログイン時 -->
+          <% elsif walker_signed_in? %>
+            <li>
+              <%= link_to "利用手順", about_path%>
+            </li>
+            <li>
+              <%= link_to  "Walker一覧", walkers_index_path %>
+            </li>
+            <li>
+              <%= link_to  "チャット履歴" %>
+            </li>
+            <li>
+              <%= link_to  "お問い合わせ", walkers_contacts_new_path %>
+            </li>
+            <li>
+              <%= link_to  " #{current_walker.nickname}さん", walkers_walkers_index_path %>
+            </li>
+            <li>
+              <%= link_to " ログアウト", destroy_walker_session_path, method: :delete, class:"glyphicon glyphicon-log-out logout" %>
+            </li>
+          <!-- 管理者ログイン時 -->
+          <% elsif admin_signed_in? %>
+            <li>
+              <%= link_to "募集状況", admins_recruits_index_path%>
+            </li>
+            <li>
+              <%= link_to  "顧客一覧", admins_users_path %>
+            </li>
+            <li>
+              <%= link_to  "Walker一覧", admins_walkers_path %>
+            </li>
+            <li>
+              <%= link_to  "チャット履歴" %>
+            </li>
+            <li>
+              <%= link_to  "お問い合わせ", admins_contacts_index_path %>
+            </li>
+            <li>
+              <%= link_to " ログアウト", destroy_admin_session_path, method: :delete, class:"glyphicon glyphicon-log-out logout" %>
+            </li>
+          <!-- 未ログイン時 -->
+          <% else %>
+            <li>
+              <%= link_to "利用手順", about_path %>
+            </li>
+            <li>
+              <%= link_to  "Walker一覧", walkers_index_path %>
+            </li>
+            <li>
+              <%= link_to  "新規登録", sign_up_path %>
+            </li>
+            <li>
+              <%= link_to  "ログイン", login_path %>
+            </li>
+          <% end %>
+          </ul>
+      </nav>
+    </header>
     <%= yield %>
+      <footer class="footer">
+        <div class="container">
+          <p>Copyright © 2019 Acolle Inc. All rights reserved.</p>
+        </div>
+      </footer>
+  <script>
+    //ヘッダーの高さ分だけコンテンツを下げる
+    $(function() {
+        var height=$("#header").height();
+        $("body").css("margin-top", height + 10);//10pxだけ余裕をもたせる
+    });
+  </script>
   </body>
 </html>

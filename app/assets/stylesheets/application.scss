@@ -15,3 +15,64 @@
  */
  @import "bootstrap-sprockets";  /*ここを追加*/
  @import "bootstrap";            /*ここを追加*/
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+.clearfix::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.navbar-brand {
+  font-size: 40px;
+}
+
+
+#header{
+  position:fixed;
+  top:0;
+  margin:0;
+  padding:4px;
+  width:100%;
+  background-color:rgb(30, 30, 80);
+  z-index:9999;
+  height:70px;
+}
+
+footer{
+	position: relative;
+  padding-bottom: 80px;/*←footerの高さ*/
+  box-sizing: border-box;
+  z-index:9999;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left :0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #721a50;
+}
+
+
+.maru-box {
+  margin: 2em auto;
+  padding: 1em;
+  width: 90%;
+  color: #666666; /*文字色*/
+  border: 2px solid #996633; /*線の太さ・色*/
+  background-color: #fff; /*背景色*/
+  box-shadow: -2px 5px 5px #e8d3c7; /*影*/
+  border-radius: 20px; /*角の丸み*/
+ }

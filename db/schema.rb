@@ -67,6 +67,9 @@ ActiveRecord::Schema.define(version: 2019_12_09_083533) do
     t.string "building"
     t.string "phone_number"
     t.string "nickname"
+    t.string "area1"
+    t.string "area2"
+    t.string "area3"
     t.integer "delete_flag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

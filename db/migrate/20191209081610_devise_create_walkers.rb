@@ -45,6 +45,9 @@ class DeviseCreateWalkers < ActiveRecord::Migration[5.2]
       t.string :building
       t.string :phone_number
       t.string :nickname
+      t.string :area1
+      t.string :area2
+      t.string :area3
       t.integer :delete_flag
       t.timestamps null: false
     end

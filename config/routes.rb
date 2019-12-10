@@ -25,77 +25,66 @@ Rails.application.routes.draw do
   end
 
   #top controller
-  get 'top/index'
-  get 'top/about'
+  root 'top#index'
+  get 'top/about', as: 'about'
+  get 'login/select', to: 'top#login_select', as: 'login'
+  get 'sign_up/select', to: 'top#sign_up_select', as: 'sign_up'
 
   #walkers controller
   get 'walkers/index'
   get 'walkers/show'
 
+  #################### User
   #users/contacts controller
   namespace :users do
     get 'contacts/new'
     get 'contacts/create'
-  end
-
   #users/users controller
-  namespace :users do
-    get '/mypage', to: 'users#show'
+    get '/mypage', to: 'users#show', as: 'maypage'
     patch '/users', to: 'users#change'
-  end
-
   #users/partners controller
   resources :partners, except: [:show]
-
   #users/recruits controller
   resources :recruits, except: [:index]
-
-  #users/reviews controller
+  #users/recruits controller
   resources :reviews, except: [:index]
-
-  #walkers/walkers controller
+  end
+  ####################
+  
+  #################### Walker
   namespace :walkers do
+  #walkers/walkers controller
     get 'walkers/index'
     patch 'walkers/change'
-  end
-
   #walkers/contacts contller
-  namespace :walkers do
     get 'contacts/new'
     get 'contacts/create'
-  end
-
   #walkers/recruits contlloer
-  namespace :walkers do
     get 'recruits/index'
     get 'recruits/show'
     get 'recruits/reaction'
   end
-
-  #admins/users controller
-  resources :recruits, except: [:show]
-
-  #admins/walkers controller
-  resources :recruits, except: [:new, :create]
-
-  #admins/contacts controller
+  ####################
+ 
+  #################### Admin
   namespace :admins do
+  #admins/users controller
+  resources :users, except: [:new, :create]
+  #admins/walkers controller
+  resources :walkers, except: [:new, :create]
+  #admins/contacts controller
     get 'contacts/index'
     get 'contacts/show'
     get 'contacts/new'
-    get 'contacts/create'
-  end
+    post 'contacts/create'
   #admins/review controller
-  namespace :admins do
     get 'review/index'
     get 'review/show'
     get 'review/destory'
-  end
   #admins/recruits controller
-  namespace :admins do
     get 'recruits/index'
     get 'recruits/show'
     get 'recruits/destroy'
   end
-
+  ####################
 end
