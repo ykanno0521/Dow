@@ -26,12 +26,12 @@ ActiveRecord::Schema.define(version: 2019_12_11_094013) do
 
   create_table "partners", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.string "dog_breed", null: false
+    t.string "dog_breed"
     t.string "image_id"
     t.string "name", null: false
-    t.date "birthday", null: false
+    t.date "birthday"
     t.string "gender", null: false
-    t.integer "weight", null: false
+    t.integer "weight"
     t.string "character"
     t.integer "delete_flag", default: 0, null: false
     t.datetime "created_at", null: false
@@ -41,10 +41,11 @@ ActiveRecord::Schema.define(version: 2019_12_11_094013) do
   create_table "recruits", force: :cascade do |t|
     t.integer "user_id"
     t.integer "walker_id"
-    t.datetime "offer_date", null: false
-    t.time "start_time", null: false
-    t.time "finish_time", null: false
-    t.string "text", null: false
+    t.integer "partner_id"
+    t.string "offer_date", null: false
+    t.string "start_time", null: false
+    t.string "finish_time", null: false
+    t.string "text"
     t.integer "status", default: 0, null: false
     t.integer "delete_flag", default: 0, null: false
     t.datetime "created_at", null: false

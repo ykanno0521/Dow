@@ -95,11 +95,61 @@ Admin.create!(
   password:  "admin123",
 )
 
+Partner.create!(
+  [
+    {
+      user_id: "1",
+      dog_breed: "コーギー",
+      image_id: "",
+      name: "ユーザ１の犬",
+      birthday: "",
+      gender: "オス",
+      weight: "8",
+      character: "おとなしい",
+      delete_flag: "0"
+    },
+    {
+      user_id: "1",
+      dog_breed: "コーギー",
+      image_id: "",
+      name: "ユーザ１の犬(2)",
+      birthday: "",
+      gender: "オス",
+      weight: "8",
+      character: "おとなしい",
+      delete_flag: "0"
+    },
+    {
+      user_id: "2",
+      dog_breed: "コーギー",
+      image_id: "",
+      name: "ユーザ2の犬",
+      birthday: "",
+      gender: "オス",
+      weight: "8",
+      character: "おとなしい",
+      delete_flag: "0"
+    },
+    {
+      user_id: "2",
+      dog_breed: "コーギー",
+      image_id: "",
+      name: "ユーザ2の犬(2)",
+      birthday: "",
+      gender: "オス",
+      weight: "8",
+      character: "おとなしい",
+      delete_flag: "0"
+    }
+  ]
+)
+
 Recruit.create!(
   [
     {
       user_id: "1",
       walker_id: "1",
+      partner_id: "1",
       offer_date: "2019/10/10",
       start_time: "10:00",
       finish_time: "11:00",
@@ -110,6 +160,7 @@ Recruit.create!(
     {
       user_id: "2",
       walker_id: "",
+      partner_id: "1",
       offer_date: "2019/10/10",
       start_time: "10:00",
       finish_time: "11:00",
@@ -119,3 +170,4 @@ Recruit.create!(
     }
   ]
 )
+

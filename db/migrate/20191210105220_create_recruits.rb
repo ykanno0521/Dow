@@ -3,10 +3,11 @@ class CreateRecruits < ActiveRecord::Migration[5.2]
     create_table :recruits do |t|
       t.integer :user_id
       t.integer :walker_id
-      t.datetime :offer_date, null: false
-      t.time :start_time, null: false
-      t.time :finish_time, null: false
-      t.string :text, null: false
+      t.integer :partner_id
+      t.string :offer_date, null: false
+      t.string :start_time, null: false
+      t.string :finish_time, null: false
+      t.string :text
       t.integer :status, null: false, default: 0
       t.integer :delete_flag, null: false, default: 0
       t.timestamps
