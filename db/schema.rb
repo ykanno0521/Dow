@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_09_083533) do
+ActiveRecord::Schema.define(version: 2019_12_11_094013) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,33 @@ ActiveRecord::Schema.define(version: 2019_12_09_083533) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "partners", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "dog_breed", null: false
+    t.string "image_id"
+    t.string "name", null: false
+    t.date "birthday", null: false
+    t.string "gender", null: false
+    t.integer "weight", null: false
+    t.string "character"
+    t.integer "delete_flag", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "recruits", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "walker_id"
+    t.datetime "offer_date", null: false
+    t.time "start_time", null: false
+    t.time "finish_time", null: false
+    t.string "text", null: false
+    t.integer "status", default: 0, null: false
+    t.integer "delete_flag", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

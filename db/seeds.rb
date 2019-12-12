@@ -95,4 +95,27 @@ Admin.create!(
   password:  "admin123",
 )
 
-Recruit.create!
+Recruit.create!(
+  [
+    {
+      user_id: "1",
+      walker_id: "1",
+      offer_date: "2019/10/10",
+      start_time: "10:00",
+      finish_time: "11:00",
+      text: "ああああ",
+      status: "0",
+      delete_flag: "0"
+    },
+    {
+      user_id: "2",
+      walker_id: "",
+      offer_date: "2019/10/10",
+      start_time: "10:00",
+      finish_time: "11:00",
+      text: "いいいい",
+      status: "0",
+      delete_flag: "0"
+    }
+  ]
+)

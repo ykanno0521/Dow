@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div>
+      <h1>顧客一覧</h1>
+    </div>
+    <table class="table table-bordered" >
+    <tr>
+      <th>#</th>
+      <th>顧客名</th>
+      <th>フリガナ</th>
+      <th>メールアドレス</th>
+      <th>電話番号</th>
+    </tr>
+      <% @users.each do |u| %>
+    <tr>
+      <td>
+        <a href="/admins/users/<%= u.id %>"><%= u.id %></a>
+      </td>
+      <td><%= u.last_name + "　" + u.first_name %></td>
+      <td><%= u.last_name_kana + "　" + u.first_name_kana %></td>
+      <td><%= u.email %></td>
+      <td><%= u.phone_number %></td>
+    </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

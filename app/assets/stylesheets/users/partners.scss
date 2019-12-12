@@ -1,3 +1,23 @@
 // Place all the styles related to the users/partners controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.table {
+  // margin-bottom: 100px;
+  color: #474747;
+  background: whitesmoke;/*背景色*/
+  border-left: double 7px #4ec4d3;/*左線*/
+  border-right: double 7px #4ec4d3;/*右線*/
+  th {
+    font-size: 26px;
+    margin: 0;
+    padding: 0;
+    width: 400px;
+  }
+}
+
+.item {
+  text-align: center;
+}
+
