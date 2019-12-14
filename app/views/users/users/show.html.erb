@@ -1,2 +1,43 @@
-<h1>Users::Users#show</h1>
-<p>Find me in app/views/users/users/show.html.erb</p>
+<h1>マイページ</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10">
+    <!-- 投稿一覧を表示 -->
+      <table class="table table-bordered" >
+        <tr>
+          <th>No</th>
+          <th>利用日</th>
+          <th>時間指定</th>
+          <th>場所</th>
+          <th>ステータス</th>
+          <th>応募件数</th>
+          <th></th>
+        </tr>
+        <%= @recruits.each_with_index do |r, i| %>
+        <tr>
+          <th><%= "#{i+1}" %></th>
+          <th><%= r.offer_date %></th>
+          <th><%= r.start_time.strftime('%H:%M') %> - <%= r.finish_time.strftime('%H:%M') %></th>
+          <th><%= @user.prefecture %></th>
+          <th>
+            <% if r.status == 0 %>
+              募集中
+            <!-- ステータスが”１”かつ利用日を過ぎていたら”完了”とする -->
+            <% elsif r.status == 2 && r.offer_date < Date.today  %>
+            完了
+            <% elsif r.status == 2 %>
+              マッチング成功
+            <% end %>
+          </th>
+          <th><%= r.apply_num %></th>
+          <th><%= link_to "編集する", edit_users_recruit_path(r.id) %><br>
+          <%= link_to "削除する", users_recruit_path(r.id), method: :delete %></th>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-lg-2">
+    </div>
+  </div>
+</div>

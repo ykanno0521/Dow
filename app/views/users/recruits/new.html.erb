@@ -2,43 +2,54 @@
 
 <!-- <%# status=0(募集中)、status=1(応募中)、status=2(依頼中)、status=3(承認)、status=4(完了) %> -->
 <%= form_for(@recruit, url:users_recruits_path) do |r| %>
-<table>
-  <tr>
-    <th>利用日</th>
-    <th><%= r.date_select :offer_date,{
+
+<div class="section">
+  <div class="content">
+    利用日<br>
+    <%= r.date_select :offer_date,{
       prompt: {year: "year", month: "month", day: "day"},
       use_month_numbers: true,
       start_year: @now.year
     } %>
-   </th>
-  </tr>
-  <tr>
-    <th>時間指定</th>
-    <th><%= r.time_select :start_time, {:minute_step => 30} %>-<%= r.time_select :finish_time, {:minute_step => 30} %></th>
-  </tr>
-  <tr>
-    <th>場所</th>
-    <th><%= @user.prefecture %></th>
-  </tr>
-  <tr>
-    <th>備考</th>
-    <th><%= r.text_area :text %></th>
-  </tr>
-  <tr>
+  </div>
+</div>
+
+<div class="section">
+  <div class="content">
+    時間指定<br>
+    <%= r.time_select :start_time, {:minute_step => 30} %>-<%= r.time_select :finish_time, {:minute_step => 30} %>
+  </div>
+</div>
+
+<div class="section">
+  <div class="content">
+    場所<br>
+    <%= @user.prefecture %>
+  </div>
+</div>
+
+<div class="section">
+  <div class="content">
+    備考<br>
+    <%= r.text_area :text %>
+  </div>
+</div>
+
+<div class="section">
+  <div class="content">
+    パートナー<br>
+    <% @partners.each do |p|%>
+      <%= r.radio_button :partner_id, p.id %>
+      <%= r.label :partner_id, p.name, {value: p.id, style: "display: inline-block;"} %>
+    <% end %>
+  </div>
+</div>
+  <!-- <tr>
     <th>Walker</th>
     <th><%= r.select :walker_id, options_for_select(@walkers.map{|w| [w.last_name + w.first_name, w.id] }) %></th>
     binding.
-  </tr>
-  <tr>
-    <th>パートナー</th>
-    <% @partners.each do |p|%>
-    <th>
-      <%= r.radio_button :partner_id, p.id %>
-      <%= r.label :partner_id, p.name, {value: p.id, style: "display: inline-block;"} %>
-    </th>
-    <% end %>
-  </tr>
-</table>
+  </tr> -->
+
 <%= r.submit '投稿' %>
 <% end %>
 

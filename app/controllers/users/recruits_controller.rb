@@ -19,12 +19,23 @@ class Users::RecruitsController < ApplicationController
   end
 
   def edit
+    @recruit = Recruit.find(params[:id])
+    @user = current_user
+    @now = Time.current
+    @partners = Partner.where(user_id: @user)
+    # @walkers = Walker.all
   end
 
   def update
+    recruit = Recruit.find(params[:id])
+    recruit.update(recruits_params)
+    redirect_to users_maypage_path(recruit)
   end
 
-  def destory
+  def destroy
+    recruit = Recruit.find(params[:id])
+    recruit.destroy
+    redirect_to users_maypage_path
   end
 
   private

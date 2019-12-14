@@ -42,11 +42,12 @@ ActiveRecord::Schema.define(version: 2019_12_11_094013) do
     t.integer "user_id"
     t.integer "walker_id"
     t.integer "partner_id"
-    t.string "offer_date", null: false
-    t.string "start_time", null: false
-    t.string "finish_time", null: false
+    t.date "offer_date", null: false
+    t.time "start_time", null: false
+    t.time "finish_time", null: false
     t.string "text"
     t.integer "status", default: 0, null: false
+    t.integer "apply_num", default: 0
     t.integer "delete_flag", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
