@@ -61,8 +61,8 @@ Rails.application.routes.draw do
     get 'contacts/create'
   #walkers/recruits contlloer
     get 'recruits/index'
-    get 'recruits/show'
-    get 'recruits/reaction'
+    patch 'recruits/status/:id', to: 'recruits#status', as: 'recruits_status'
+    get 'recruits/:id', to: 'recruits#show', as: 'recruits_show'
   end
   ####################
  
