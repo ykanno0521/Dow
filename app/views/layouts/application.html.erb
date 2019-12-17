@@ -22,16 +22,16 @@
               <%= link_to "利用手順", about_path%>
             </li>
             <li>
-              <%= link_to  "Walker一覧", walkers_index_path%>
+              <%= link_to  "Walker一覧", walkers_path %>
             </li>
             <li>
-              <%= link_to  "チャット履歴" %>
+              <%= link_to  "チャット履歴", rooms_path %>
             </li>
             <li>
-              <%= link_to  "お問い合わせ", users_contacts_new_path %>
+              <%= link_to  "お問い合わせ", new_users_contact_path %>
             </li>
             <li>
-              <%= link_to  " #{current_user.nickname}さん", users_maypage_path %>
+              <%= link_to  " #{current_user.nickname}さん", users_user_path(current_user) %>
             </li>
             <li>
               <%= link_to " ログアウト", destroy_user_session_path, method: :delete, class:"glyphicon glyphicon-log-out logout" %>
@@ -42,13 +42,13 @@
               <%= link_to "利用手順", about_path%>
             </li>
             <li>
-              <%= link_to  "Walker一覧", walkers_index_path %>
+              <%= link_to  "Walker一覧", walkers_path %>
             </li>
             <li>
               <%= link_to  "募集一覧", walkers_recruits_index_path %>
             </li>
             <li>
-              <%= link_to  "チャット履歴", walkers_recruits_index_path %>
+              <%= link_to  "チャット履歴", rooms_path %>
             </li>
             <li>
               <%= link_to  "お問い合わせ", walkers_contacts_new_path %>
@@ -68,7 +68,7 @@
               <%= link_to  "顧客一覧", admins_users_path %>
             </li>
             <li>
-              <%= link_to  "Walker一覧", admins_walkers_path %>
+              <%= link_to  "Walker一覧", walkers_path %>
             </li>
             <li>
               <%= link_to  "チャット履歴" %>
@@ -85,7 +85,7 @@
               <%= link_to "利用手順", about_path %>
             </li>
             <li>
-              <%= link_to  "Walker一覧", walkers_index_path %>
+              <%= link_to  "Walker一覧", walkers_path %>
             </li>
             <li>
               <%= link_to  "新規登録", sign_up_path %>
@@ -98,11 +98,14 @@
       </nav>
     </header>
     <%= yield %>
-      <footer class="footer">
-        <div class="container">
-          <p>Copyright © 2019 Acolle Inc. All rights reserved.</p>
-        </div>
-      </footer>
+  <div id="wrapper">
+    <main class="main">
+      <!-- コンテンツをここに配置 -->
+    </main>
+    <footer class="footer">
+      <!-- フッターの中身をここに配置 -->
+    </footer>
+  </div>
   <script>
     //ヘッダーの高さ分だけコンテンツを下げる
     $(function() {

@@ -18,6 +18,20 @@ class Users::RecruitsController < ApplicationController
     end
   end
 
+  def show
+    @user = current_user
+    #応募者を表示させて、選べるようにする
+    @recruit = Recruit.find(params[:id])
+  end
+
+  def confirm
+    walker_recruit = WalkerRecruit.find(params[:id])
+    walker_recruit.update_attributes(flag: 1)
+    recruit = Recruit.find(walker_recruit.recruit_id)
+    recruit.update_attributes(walker_id: walker_recruit.walker_id, status: 1)
+    redirect_to users_user_path(current_user)
+  end
+
   def edit
     @recruit = Recruit.find(params[:id])
     @user = current_user
@@ -35,7 +49,7 @@ class Users::RecruitsController < ApplicationController
   def destroy
     recruit = Recruit.find(params[:id])
     recruit.destroy
-    redirect_to users_maypage_path
+    redirect_to users_user_path
   end
 
   private

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_15_044351) do
+ActiveRecord::Schema.define(version: 2019_12_16_104719) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,10 +24,33 @@ ActiveRecord::Schema.define(version: 2019_12_15_044351) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "messages", force: :cascade do |t|
-    t.text "content"
+  create_table "average_caches", force: :cascade do |t|
+    t.integer "rater_id"
+    t.string "rateable_type"
+    t.integer "rateable_id"
+    t.float "avg", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["rateable_type", "rateable_id"], name: "index_average_caches_on_rateable_type_and_rateable_id"
+    t.index ["rater_id"], name: "index_average_caches_on_rater_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "room_id"
+    t.text "content"
+    t.integer "user_id"
+    t.integer "walker_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "overall_averages", force: :cascade do |t|
+    t.string "rateable_type"
+    t.integer "rateable_id"
+    t.float "overall_avg", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rateable_type", "rateable_id"], name: "index_overall_averages_on_rateable_type_and_rateable_id"
   end
 
   create_table "partners", force: :cascade do |t|
@@ -42,6 +65,17 @@ ActiveRecord::Schema.define(version: 2019_12_15_044351) do
     t.integer "delete_flag", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "rating_caches", force: :cascade do |t|
+    t.string "cacheable_type"
+    t.integer "cacheable_id"
+    t.float "avg", null: false
+    t.integer "qty", null: false
+    t.string "dimension"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cacheable_type", "cacheable_id"], name: "index_rating_caches_on_cacheable_type_and_cacheable_id"
   end
 
   create_table "recruits", force: :cascade do |t|
@@ -59,13 +93,31 @@ ActiveRecord::Schema.define(version: 2019_12_15_044351) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer "recruit_id", null: false
+    t.integer "user_id", null: false
+    t.integer "walker_id", null: false
+    t.string "title", null: false
+    t.text "content", null: false
+    t.float "satisfaction", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.integer "recruit_id"
+    t.integer "walker_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "image"
+    t.string "image_id"
     t.string "last_name"
     t.string "first_name"
     t.string "last_name_kana"
@@ -84,13 +136,23 @@ ActiveRecord::Schema.define(version: 2019_12_15_044351) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "walker_recruits", force: :cascade do |t|
+    t.integer "walker_id"
+    t.integer "recruit_id"
+    t.integer "flag", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recruit_id"], name: "index_walker_recruits_on_recruit_id"
+    t.index ["walker_id"], name: "index_walker_recruits_on_walker_id"
+  end
+
   create_table "walkers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "image"
+    t.string "image_id"
     t.string "last_name"
     t.string "first_name"
     t.string "last_name_kana"

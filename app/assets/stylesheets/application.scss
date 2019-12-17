@@ -17,16 +17,12 @@
  @import "bootstrap";            /*ここを追加*/
  @import 'bootstrap-datetimepicker';
 
-.clearfix::after {
-  content: "";
-  display: block;
-  clear: both;
-}
 * {
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 	box-sizing: border-box;
 }
+
 .clearfix::after {
 	content: "";
 	display: block;
@@ -36,7 +32,6 @@
 .navbar-brand {
   font-size: 40px;
 }
-
 
 #header{
   position:fixed;
@@ -49,22 +44,21 @@
   height:70px;
 }
 
-footer{
-	position: relative;
-  padding-bottom: 80px;/*←footerの高さ*/
-  box-sizing: border-box;
-  z-index:9999;
+html,
+body {
+  margin: 0;
+  height: 100%;
 }
-
+ 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+ 
 .footer {
-  bottom: 0;
-  left :0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  background-color: #721a50;
+  margin-top: auto;
 }
-
 
 .maru-box {
   margin: 2em auto;

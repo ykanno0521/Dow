@@ -1,3 +1,20 @@
+<div class="container">
+  <div class="row">
+  <div class="col-md-12">
+  <h1>Walker一覧</h1>
 
-
-<h1>Walker一覧</h1>
+  <% @walkers.each do |w| %>
+  <div class="walker-content">
+    <div class="partner-image" style="width:150px; float:left;">
+      <%= attachment_image_tag @walker, :image_id, :fill, 150, 150, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg",  size: '150x150' %>
+      <div style="text-align: center;">
+        <%= link_to w.nickname, walker_path(w.id) %>
+        <p>満足度 : <%#= rating_for @car, 'satisfaction' %></p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+    <%= paginate @walkers %>
+   </div>
+  </div>
+</div>

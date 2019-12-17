@@ -1,7 +1,7 @@
 class Users::UsersController < ApplicationController
   def show
-    @recruits = Recruit.where(user_id: current_user.id)
     @user = current_user
+    @recruits = Recruit.where(user_id: @user.id)
   end
 
   def change

@@ -9,7 +9,7 @@
 User.create!(
   [
     {
-      image: "",
+      image_id: "",
       last_name: "山田",
       first_name: "一郎",
       last_name_kana: "ヤマダ",
@@ -26,7 +26,7 @@ User.create!(
       delete_flag: "0"
     },
     {
-      image: "",
+      image_id: "",
       last_name: "田中",
       first_name: "一郎",
       last_name_kana: "タナカ",
@@ -48,7 +48,7 @@ User.create!(
 Walker.create!(
   [
     {
-      image: "",
+      image_id: "",
       last_name: "鈴木",
       first_name: "一郎",
       last_name_kana: "スズキ",
@@ -68,7 +68,7 @@ Walker.create!(
       delete_flag: "0"
     },
     {
-      image: "",
+      image_id: "",
       last_name: "佐藤",
       first_name: "一郎",
       last_name_kana: "サトウ",
@@ -86,7 +86,127 @@ Walker.create!(
       area2: "新潟県",
       area3: "京都府",
       delete_flag: "0"
-    }
+    },
+    {
+      image_id: "",
+      last_name: "田村",
+      first_name: "一郎",
+      last_name_kana: "田村",
+      first_name_kana: "イチロウ",
+      postcode: "1114444",
+      prefecture: "北海道",
+      city: "テスト市",
+      block: "テスト4-4-4",
+      building: "テスト荘",
+      phone_number: "09022222222",
+      email: "tamura123@gmail.com",
+      password:  "tamura123",
+      nickname: "たむらちゃん",
+      area1: "神奈川県",
+      area2: "新潟県",
+      area3: "",
+      delete_flag: "0"
+    },
+    {
+      image_id: "",
+      last_name: "山本",
+      first_name: "一郎",
+      last_name_kana: "山本",
+      first_name_kana: "イチロウ",
+      postcode: "1114444",
+      prefecture: "北海道",
+      city: "テスト市",
+      block: "テスト4-4-4",
+      building: "テスト荘",
+      phone_number: "09022222222",
+      email: "yamamoto123@gmail.com",
+      password:  "yamamoto123",
+      nickname: "やまやま",
+      area1: "神奈川県",
+      area2: "新潟県",
+      area3: "",
+      delete_flag: "0"
+    },
+    {
+      image_id: "",
+      last_name: "山本",
+      first_name: "二郎",
+      last_name_kana: "山本",
+      first_name_kana: "二郎",
+      postcode: "1114444",
+      prefecture: "北海道",
+      city: "テスト市",
+      block: "テスト4-4-4",
+      building: "テスト荘",
+      phone_number: "09022222222",
+      email: "yamamoto222@gmail.com",
+      password:  "yamamoto222",
+      nickname: "やまじろう",
+      area1: "神奈川県",
+      area2: "",
+      area3: "",
+      delete_flag: "0"
+    },
+    {
+      image_id: "",
+      last_name: "山本",
+      first_name: "三郎",
+      last_name_kana: "山本",
+      first_name_kana: "三郎",
+      postcode: "1114444",
+      prefecture: "北海道",
+      city: "テスト市",
+      block: "テスト4-4-4",
+      building: "テスト荘",
+      phone_number: "09022222222",
+      email: "yamamoto333@gmail.com",
+      password:  "yamamoto333",
+      nickname: "やまやまやま",
+      area1: "神奈川県",
+      area2: "新潟県",
+      area3: "",
+      delete_flag: "0"
+    },
+    {
+      image_id: "",
+      last_name: "山本",
+      first_name: "四郎",
+      last_name_kana: "山本",
+      first_name_kana: "四郎",
+      postcode: "1114444",
+      prefecture: "北海道",
+      city: "テスト市",
+      block: "テスト4-4-4",
+      building: "テスト荘",
+      phone_number: "09022222222",
+      email: "yamamoto444@gmail.com",
+      password:  "yamamoto444",
+      nickname: "やましろう",
+      area1: "神奈川県",
+      area2: "新潟県",
+      area3: "",
+      delete_flag: "0"
+    },
+    {
+      image_id: "",
+      last_name: "山本",
+      first_name: "五郎",
+      last_name_kana: "山本",
+      first_name_kana: "五郎",
+      postcode: "1114444",
+      prefecture: "北海道",
+      city: "テスト市",
+      block: "テスト4-4-4",
+      building: "テスト荘",
+      phone_number: "09022222222",
+      email: "yamamoto555@gmail.com",
+      password:  "yamamoto555",
+      nickname: "やまごろう",
+      area1: "神奈川県",
+      area2: "新潟県",
+      area3: "",
+      delete_flag: "0"
+    },
   ]
 )
 
@@ -159,6 +279,42 @@ Recruit.create!(
       delete_flag: "0"
     },
     {
+      user_id: "1",
+      walker_id: "1",
+      partner_id: "1",
+      offer_date: "2019/10/10",
+      start_time: "10:00",
+      finish_time: "11:00",
+      text: "ああああ",
+      status: "0",
+      apply_num: "0",
+      delete_flag: "0"
+    },
+    {
+      user_id: "1",
+      walker_id: "",
+      partner_id: "1",
+      offer_date: "2020/10/10",
+      start_time: "10:00",
+      finish_time: "11:00",
+      text: "テスト対象",
+      status: "0",
+      apply_num: "3",
+      delete_flag: "0"
+    },
+    {
+      user_id: "1",
+      walker_id: "",
+      partner_id: "1",
+      offer_date: "2020/10/10",
+      start_time: "10:00",
+      finish_time: "11:00",
+      text: "テスト対象",
+      status: "0",
+      apply_num: "3",
+      delete_flag: "0"
+    },
+    {
       user_id: "2",
       walker_id: "",
       partner_id: "1",
@@ -174,26 +330,153 @@ Recruit.create!(
       user_id: "1",
       walker_id: "",
       partner_id: "1",
-      offer_date: "2020/12/31",
+      offer_date: "2019/10/11",
       start_time: "10:00",
       finish_time: "11:00",
       text: "うううう",
-      status: "2",
-      apply_num: "2",
+      status: "1",
+      apply_num: "1",
       delete_flag: "0"
     },
     {
       user_id: "1",
-      walker_id: "",
+      walker_id: "1",
       partner_id: "1",
       offer_date: "2019/10/10",
       start_time: "10:00",
       finish_time: "11:00",
       text: "うううう",
-      status: "2",
+      status: "1",
       apply_num: "1",
       delete_flag: "0"
     }
   ]
 )
+Room.create!(
+  [
+    {
+      recruit_id: "1",
+      walker_id: "1"
+    },
+    {
+      recruit_id: "1",
+      walker_id: "2"
+    },
+    {
+      recruit_id: "2",
+      walker_id: "1"
+    },
+    {
+      recruit_id: "2",
+      walker_id: "2"
+    }
+  ]
+)
 
+Message.create!(
+  [
+    {
+      room_id: "1",
+      user_id: "1",
+      walker_id: "",
+      content: "ユーザ1回目"
+    },
+    {
+      room_id: "1",
+      user_id: "1",
+      walker_id: "",
+      content: "ユーザ2回目"
+    },
+    {
+      room_id: "1",
+      user_id: "",
+      walker_id: "1",
+      content: "walker１回目"
+    },
+    {
+      room_id: "1",
+      user_id: "",
+      walker_id: "1",
+      content: "walker１回目"
+    },
+  ]
+)
+
+Review.create!(
+  [
+    {
+      recruit_id: "1",
+      user_id: "1",
+      walker_id: "1",
+      title: "よかった",
+      content: "またお願いします",
+      satisfaction: "5",
+    },
+    {
+      recruit_id: "2",
+      user_id: "1",
+      walker_id: "1",
+      title: "だめ",
+      content: "もう頼まない",
+      satisfaction: "1",
+    },
+    {
+    recruit_id: "3",
+    user_id: "1",
+    walker_id: "1",
+    title: "よかった",
+    content: "またお願いします",
+    satisfaction: "3",
+    },
+    {
+    recruit_id: "4",
+    user_id: "2",
+    walker_id: "1",
+    title: "よかった",
+    content: "またお願いします",
+    satisfaction: "3",
+    },
+    {
+    recruit_id: "5",
+    user_id: "2",
+    walker_id: "1",
+    title: "よかった",
+    content: "またお願いします",
+    satisfaction: "3",
+    }
+  ]
+)
+WalkerRecruit.create!(
+  [
+    {
+      walker_id: "1",
+      recruit_id: "3",
+      flag: "0",
+    },
+    {
+      walker_id: "2",
+      recruit_id: "3",
+      flag: "0",
+    },
+    {
+      walker_id: "3",
+      recruit_id: "3",
+      flag: "0",
+    },
+    {
+      walker_id: "1",
+      recruit_id: "4",
+      flag: "0",
+    },
+    {
+      walker_id: "2",
+      recruit_id: "4",
+      flag: "0",
+    },
+    {
+      walker_id: "3",
+      recruit_id: "4",
+      flag: "0",
+    }
+  ]
+)

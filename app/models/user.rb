@@ -6,4 +6,5 @@ class User < ApplicationRecord
   # attachment :image
   has_many :partners, dependent: :destroy
   has_many :recruits, dependent: :destroy
+  ratyrate_rater
 end
