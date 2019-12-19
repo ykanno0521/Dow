@@ -46,10 +46,12 @@ Rails.application.routes.draw do
   #users/partners controller
     resources :partners, except: [:show]
   #users/recruits controller
-    resources :recruits, except: [:index]
     patch '/recruits/confirm/:id', to: 'recruits#confirm', as: 'confirm'
+    resources :recruits, except: [:index] do
+      resources :reviews
+    end
   #users/reviews  controller
-    resources :reviews, except: [:index]
+    # resources :reviews
   end
   ####################
   
@@ -62,8 +64,10 @@ Rails.application.routes.draw do
     get 'contacts/new'
     post 'contacts/create'
   #walkers/recruits contlloer
-    get 'recruits/index'
-    patch 'recruits/status/:id', to: 'recruits#status', as: 'recruits_status'
+    get '/recruits/index'
+    post '/recruits', to: 'recruits#create'
+    delete '/recruits/:id', to: 'recruits#destroy', as: "recruits_destroy"
+    patch 'recruits/switch/:id', to: 'recruits#switch', as: 'recruits_switch'
     get 'recruits/:id', to: 'recruits#show', as: 'recruits_show'
   end
   ####################

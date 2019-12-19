@@ -6,5 +6,9 @@ class User < ApplicationRecord
   # attachment :image
   has_many :partners, dependent: :destroy
   has_many :recruits, dependent: :destroy
-  ratyrate_rater
+  has_many :rooms, through: :recruits
+
+  def self.message
+    User.joins({:recruit => {:room => :message}})
+  end
 end

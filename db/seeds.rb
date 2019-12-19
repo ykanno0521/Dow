@@ -41,6 +41,23 @@ User.create!(
       password:  "tanaka123",
       nickname: "たなちゃん",
       delete_flag: "0"
+    },
+    {
+      image_id: "",
+      last_name: "DMM",
+      first_name: "テスト",
+      last_name_kana: "タナカ",
+      first_name_kana: "イチロウ",
+      postcode: "1112222",
+      prefecture: "北海道",
+      city: "テスト市",
+      block: "テスト2-2-2",
+      building: "テスト荘",
+      phone_number: "09022222222",
+      email: "test123@gmail.com",
+      password:  "test123",
+      nickname: "DMM",
+      delete_flag: "0"
     }
   ]
 )
@@ -349,6 +366,18 @@ Recruit.create!(
       status: "1",
       apply_num: "1",
       delete_flag: "0"
+    },
+    {
+      user_id: "3",
+      walker_id: "5",
+      partner_id: "1",
+      offer_date: "2019/10/10",
+      start_time: "10:00",
+      finish_time: "11:00",
+      text: "うううう",
+      status: "1",
+      apply_num: "1",
+      delete_flag: "0"
     }
   ]
 )
@@ -369,6 +398,14 @@ Room.create!(
     {
       recruit_id: "2",
       walker_id: "2"
+    },
+    {
+      recruit_id: "8",
+      walker_id: "5"
+    },
+    {
+      recruit_id: "3",
+      walker_id: "1"
     }
   ]
 )
@@ -399,6 +436,18 @@ Message.create!(
       walker_id: "1",
       content: "walker１回目"
     },
+    {
+      room_id: "6",
+      user_id: "",
+      walker_id: "1",
+      content: "walker１回目"
+    },
+    {
+      room_id: "6",
+      user_id: "",
+      walker_id: "1",
+      content: "walker１回目"
+    }
   ]
 )
 
@@ -406,43 +455,38 @@ Review.create!(
   [
     {
       recruit_id: "1",
-      user_id: "1",
-      walker_id: "1",
       title: "よかった",
       content: "またお願いします",
       satisfaction: "5",
+      delete_flag: "0"
     },
     {
       recruit_id: "2",
-      user_id: "1",
-      walker_id: "1",
       title: "だめ",
       content: "もう頼まない",
       satisfaction: "1",
+      delete_flag: "0"
     },
     {
     recruit_id: "3",
-    user_id: "1",
-    walker_id: "1",
     title: "よかった",
     content: "またお願いします",
     satisfaction: "3",
+    delete_flag: "0"
     },
     {
     recruit_id: "4",
-    user_id: "2",
-    walker_id: "1",
     title: "よかった",
     content: "またお願いします",
     satisfaction: "3",
+    delete_flag: "0"
     },
     {
     recruit_id: "5",
-    user_id: "2",
-    walker_id: "1",
     title: "よかった",
     content: "またお願いします",
     satisfaction: "3",
+    delete_flag: "0"
     }
   ]
 )

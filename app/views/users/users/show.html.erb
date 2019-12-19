@@ -25,11 +25,15 @@
               <th><%= link_to r.apply_num, users_recruit_path(r.id) %></th>
               <th><%= link_to "編集する", edit_users_recruit_path(r.id) %><br>
               <%= link_to "削除する", users_recruit_path(r.id), method: :delete %></th>
-            <!-- ステータスが”2”かつ利用日を過ぎていたら”完了”とする -->
+            <!-- ステータスが”1”かつ利用日を過ぎていたら”完了”とする -->
             <% elsif r.status == 1 && r.offer_date < Date.today  %>
               完了
               <th><%= link_to r.apply_num, users_recruit_path(r.id) %></th>
-              <th></th>
+              <% if r.review.present? %>
+              <th><%= link_to "レビュー見る", edit_users_recruit_review_path(r.id) %></th>
+              <% else %>
+              <th><%= link_to "レビューを書く", new_users_recruit_review_path(r.id) %></th>
+              <% end %>
             <% else %>
               マッチング成功
               <th><%= link_to r.apply_num, users_recruit_path(r.id) %></th>

@@ -1,4 +1,4 @@
-<% if @recruit.status_before_type_cast ==  0 && @recruit.walker_recruits.flag == 1 %>
+<% if @recruit.status_before_type_cast ==  0 && @recruit_switch.present? %>
   $('#status1').text('募集中');
   $('#status1').css({"font-size": "40px", "color": "black", "background-color": "white"});
   $('#status1').attr("id", "status2");

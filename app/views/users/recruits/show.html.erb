@@ -12,10 +12,11 @@
     <p>名前<%=walker_recruit.walker.nickname %></p>
     <p>満足度平均<%#=walker_recruit.walker.nickname</p> %>
     <p>紹介文</p>
-    <a href="詳細ページ">詳細へ</a>
+    <%= link_to "詳細ページ", walker_path(walker_recruit.walker.id) %>
     <% if @recruit.status == 0 %>
-      <a href="#" class="btn-border" style="float: right;">チャットする</a>
+      <%= link_to "チャットする", room_path(walker_recruit.get_room_id)%>
     <% else %>
+      
     <% end %>
   </div>
       <% if @recruit.status == 0 %>

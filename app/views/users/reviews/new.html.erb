@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+
+<div class="review-input" style="margin-top: 200px;">
+<!-- 口コミ入力フォーム -->
+<%= form_for(@review, url: users_recruit_reviews_path) do |f| %>
+
+  <!--エラーメッセージ-->
+  <%# <%= render 'layouts/error_messages', model: f.object %>
+
+  <!--商品コードの送信-->
+  <%= f.hidden_field :recruit_id, { value: @recruit.id} %>
+  
+  <!-- タイトル -->
+  <div class="form-group row">
+    <%= f.label :title, 'タイトル ', class:'col-md-3 col-form-label' %>
+    <div class="col-md-4", style="padding: 0px;">
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+  </div>
+
+    <!-- 評価 -->
+  <div class="form-group row" id="star">
+    <%= f.label :satisfaction,'評価 ', class:'col-md-3 col-form-label' %>
+    <%= f.hidden_field :satisfaction, id: :review_star %>
+  </div>
+
+    <!-- 評価javascript -->
+  <script>
+  $('#star').raty({
+    size     : 40,
+    starOff:  '<%=   'star-off.png' %>',
+    starOn : '<%= 'star-on.png' %>',
+    starHalf: '<%=  'star-half.png' %>',
+    scoreName: 'review[satisfaction]',
+    half: true,
+  });
+  </script>
+
+    <!-- 口コミ -->
+  <div class="form-group row">
+    <%= f.label :content, '口コミ内容 ', class:'col-md-3 col-form-label' %>
+    <div class="col-md-9" , style="padding: 0px;">
+      <%= f.text_area :content, class: "form-control", rows: "8",
+        placeholder:'' %>
+    </div>
+  </div>
+
+  <!-- 確認ボタン -->
+  <div class="form-group row justify-content-end", style="float: right;">
+    <div class="col-md-9">
+      <%= f.submit '投稿する', class:"btn btn-success" %>
+    </div>
+  </div>
+
+  <% end %>
+  </div>
+<!-- /口コミ入力フォーム -->
+</div>
+</div>
+</div>

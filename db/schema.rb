@@ -24,17 +24,6 @@ ActiveRecord::Schema.define(version: 2019_12_16_104719) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "average_caches", force: :cascade do |t|
-    t.integer "rater_id"
-    t.string "rateable_type"
-    t.integer "rateable_id"
-    t.float "avg", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["rateable_type", "rateable_id"], name: "index_average_caches_on_rateable_type_and_rateable_id"
-    t.index ["rater_id"], name: "index_average_caches_on_rater_id"
-  end
-
   create_table "messages", force: :cascade do |t|
     t.integer "room_id"
     t.text "content"
@@ -42,15 +31,6 @@ ActiveRecord::Schema.define(version: 2019_12_16_104719) do
     t.integer "walker_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "overall_averages", force: :cascade do |t|
-    t.string "rateable_type"
-    t.integer "rateable_id"
-    t.float "overall_avg", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["rateable_type", "rateable_id"], name: "index_overall_averages_on_rateable_type_and_rateable_id"
   end
 
   create_table "partners", force: :cascade do |t|
@@ -65,17 +45,6 @@ ActiveRecord::Schema.define(version: 2019_12_16_104719) do
     t.integer "delete_flag", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "rating_caches", force: :cascade do |t|
-    t.string "cacheable_type"
-    t.integer "cacheable_id"
-    t.float "avg", null: false
-    t.integer "qty", null: false
-    t.string "dimension"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["cacheable_type", "cacheable_id"], name: "index_rating_caches_on_cacheable_type_and_cacheable_id"
   end
 
   create_table "recruits", force: :cascade do |t|
@@ -95,11 +64,10 @@ ActiveRecord::Schema.define(version: 2019_12_16_104719) do
 
   create_table "reviews", force: :cascade do |t|
     t.integer "recruit_id", null: false
-    t.integer "user_id", null: false
-    t.integer "walker_id", null: false
     t.string "title", null: false
     t.text "content", null: false
-    t.float "satisfaction", null: false
+    t.float "satisfaction"
+    t.integer "delete_flag", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -21,15 +21,17 @@
 <span><%= @recruit.partner.character %></span>
 
 
-<% if @recruit.status_before_type_cast == 0 && @recruit.walker_recruits.find_by(walker_id: current_walker.id).present?%>
-  <%= link_to '募集済み', walkers_recruits_status_path(@recruit.id), method: :patch, remote: true, id:"status1", :style=>"font-size: 40px; color: white; background-color: red;" %>
+<% if @recruit.status_before_type_cast == 0 && @walker_recruit.present? %>
+  <%= link_to '応募済み',walkers_recruits_destroy_path(@walker_recruit), method: :delete, id:"status1", :style=>"font-size: 40px; color: white; background-color: red;" %>
+  <%= form_for(@room, url:'/rooms') do |r| %>
+  <%= r.hidden_field :walker_id, :value=> current_walker.id %>
+  <%= r.hidden_field :recruit_id, :value=> @recruit.id %>
+  <%= r.submit "チャットを始める" %>
+<% end %>
 <% elsif @recruit.status_before_type_cast == 0  %>
-  <%= link_to '募集中', walkers_recruits_status_path(@recruit.id), method: :patch, remote: true, id:"status2", :style=>"font-size: 40px; color: black;" %>
+  <%= link_to '募集中', walkers_recruits_path(recruit_id: @recruit.id, walker_id: current_walker.id), method: :post, id:"status2", :style=>"font-size: 40px; color: black;" %>
 <% end %>
 
 
-    <%= form_for(@room, url:'/rooms') do |r| %>
-      <%= r.hidden_field :walker_id, :value=> current_walker.id %>
-      <%= r.hidden_field :recruit_id, :value=> @recruit.id %>
-      <%= r.submit "チャットを始める" %>
-    <% end %>
+
+    

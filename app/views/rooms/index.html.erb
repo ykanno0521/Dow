@@ -1,5 +1,24 @@
 <h1>メッセージ履歴一覧</h1>
 
-<% @room.each do |r| %>
-  <%= r.id %>
+<% if user_signed_in? %>
+  <% @rooms.each do |r| %>
+  <div class="message-clearfix" style="border: solid;">
+    <% if r.message_last.present?%>
+      <%= link_to r.message_last.content, room_path(r.id)  %>
+    <% else %>
+      <%= link_to "メッセージがまだありません。", room_path(r.id) %>
+    <% end %>
+  </div>
+  <% end %>
+<% elsif walker_signed_in? %>
+  <% @room.each do |r| %>
+  <div class="message-clearfix" style="border: solid;">
+    <% pp r.message_last %>
+    <% if r.message_last.present? %>
+      <%= link_to r.message_last.content, room_path(r.id) %>
+    <% else %>
+      <%= link_to "メッセージがまだありません。", room_path(r.id) %>
+    <% end %>
+  </div>
+  <% end %>
 <% end %>

@@ -67,7 +67,6 @@ gem "jquery-rails"
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'kaminari','~> 1.1.1'
-gem 'ratyrate'
 gem 'ransack'
 gem 'active_hash'
 gem 'rails-i18n', '~> 5.1'

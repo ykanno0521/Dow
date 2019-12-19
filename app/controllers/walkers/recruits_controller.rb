@@ -8,18 +8,35 @@ class Walkers::RecruitsController < ApplicationController
     @recruit = Recruit.find(params[:id])
     # @walker = Walker.find(params[:id])
     @room = Room.new
+    @walker_recruit = @recruit.walker_recruits.find_by(walker_id: current_walker.id)
   end
   
-  def status
+  def switch
     @recruit = Recruit.find(params[:id])
-    
-    if @recruit.Walker_recruits(current_walker).flag == 0
-      @recruit.walker_recruits.update_attributes(flag: 1)
-    elsif @recruit.walker_recruits(current_walker).flag == 1
-      @recruit.walker_recruits.update_attributes(flag: 0)
-    # elsif @recruit.status == 1
-    #   @recruit.update(status: 0)
+    @recruit_swich = @recruit.walker_recruits.find_by(walker_id: current_walker.id)
+    if @recruit_switch.present?
+      @recruit_switch.destory
+    elsif
+      @recruit_switch.create(switch_params)
     end
+  end
+
+  def create
+    @recruit = Recruit.find(params[:recruit_id])
+    walker = Walker.find(params[:walker_id])
+    WalkerRecruit.create(recruit_id: @recruit.id, walker_id: walker.id)
+    @room = Room.new
+    @walker_recruit = @recruit.walker_recruits.find_by(walker_id: current_walker.id)
+    render 'show'
+  end
+
+  def destroy
+    walker_recruit = WalkerRecruit.find(params[:id])
+    @recruit = walker_recruit.recruit
+    walker_recruit.destroy
+    @room = Room.new
+    @walker_recruit = @recruit.walker_recruits.find_by(walker_id: current_walker.id)
+    render 'show'
   end
 
 end
