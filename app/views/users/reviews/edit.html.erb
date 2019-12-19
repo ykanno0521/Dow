@@ -1,16 +1,17 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
+      <h1>投稿編集ページ</h1>
 
-<div class="review-input" style="margin-top: 200px;">
+      <div class="review-input" style="margin-top: 200px;">
 <!-- 口コミ入力フォーム -->
-<%= form_for(@review, url: users_recruit_reviews_path) do |f| %>
+<%= form_for(@review, url: users_recruit_review_path) do |f| %>
 
   <!--エラーメッセージ-->
   <%# <%= render 'layouts/error_messages', model: f.object %>
 
-  <!--商品コードの送信-->
-  <%= f.hidden_field :recruit_id, { value: @recruit.id} %>
+  <!--募集Noの送信-->
+  <%# <%= f.hidden_field :recruit_id, { value: @recruit.id} %>
 
   <!-- タイトル -->
   <div class="form-group row">
@@ -47,6 +48,7 @@
     </div>
   </div>
 
+
   <!-- 確認ボタン -->
   <div class="form-group row justify-content-end", style="float: right;">
     <div class="col-md-9">
@@ -54,9 +56,16 @@
     </div>
   </div>
 
+  <!-- 削除ボタン -->
+  <div class="form-group row justify-content-end", style="float: right;">
+    <div class="col-md-9">
+      <%= link_to '削除する', users_recruit_review_path(@review .id),method: :delete, class:"btn",style:"background-color: red;", data: {confirm: "削除しますか？"}   %>
+    </div>
+  </div>
+
   <% end %>
   </div>
 <!-- /口コミ入力フォーム -->
-</div>
-</div>
+    </div>
+  </div>
 </div>

@@ -13,7 +13,26 @@ class Users::ReviewsController < ApplicationController
      @review.save
     # トップ画面へリダイレクト
     redirect_to users_user_path(current_user)
-end
+  end
+
+  def edit
+    @review = Review.find(params[:recruit_id])
+  end
+
+  def update
+    review = Review.find(params[:recruit_id])
+    if review.update(review_params)
+      redirect_to users_user_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    review = Review.find(params[:recruit_id])
+    review.destroy
+    redirect_to users_user_path
+  end
 private
 
 def review_params
