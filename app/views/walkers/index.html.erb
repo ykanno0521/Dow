@@ -1,20 +1,47 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-  <div class="col-md-12">
-  <h1>Walker一覧</h1>
-
-  <% @walkers.each do |w| %>
-  <div class="walker-content">
-    <div class="partner-image" style="width:150px; float:left;">
-      <%= attachment_image_tag @walker, :image_id, :fill, 150, 150, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg",  size: '150x150' %>
-      <div style="text-align: center;">
-        <%= link_to w.nickname, walker_path(w.id) %>
-        <p>満足度 : <%#= rating_for @car, 'satisfaction' %></p>
+    <div class="col-md-8 col-md-offset-2">
+      <div class="page-title">Walker List</div>
+      <% @walkers.each do |w| %>
+      <div class="walker-content">
+        <div class="partner-image" style="width:150px; float:left;">
+          <%= attachment_image_tag @walker, :image_id, :fill, 150, 150, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg",  size: '150x150' %>
+          <div style="text-align: center;">
+            <%= link_to w.nickname, walker_path(w.id) %><br>
+            <% recruit = Recruit.where(walker_id: w.id) %>
+            <% satisfaction = [] %>
+            <% recruit.each do |r| %>
+            <% review = Review.where(recruit_id: r.id) %>
+            <% satisfaction << r.review.satisfaction if review.present? %>
+            <% end %>
+            <% if satisfaction.present? %>
+            <% satisfaction.sum # 合計 %>
+            <% satisfaction.length # 要素個数 %>
+            <% satisfaction_average = satisfaction.sum / satisfaction.length # 平均 %>
+            <% end %>
+            <% if satisfaction_average.nil? %>
+              <div id="star-average">※レビューはございません</div>
+            <% else %>
+            <div id="star-average"><%= satisfaction_average.round(2) %></div>
+            <script>
+            $('#star-average').raty({
+              size: 200,
+              starOff:  '<%= ('star-off.png') %>',
+              starOn : '<%= ('star-on.png') %>',
+              starHalf: '<%= ('star-half.png') %>',
+              half: true,
+              readOnly: true,
+              score: <%= satisfaction_average %>,
+            });
+            </script>
+            レビュー件数：<%= satisfaction.length %>件
+            <% end %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+        <%= paginate @walkers %>
       </div>
     </div>
-  </div>
-  <% end %>
-    <%= paginate @walkers %>
-   </div>
   </div>
 </div>

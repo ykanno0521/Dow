@@ -345,7 +345,7 @@ Recruit.create!(
     },
     {
       user_id: "1",
-      walker_id: "",
+      walker_id: "1",
       partner_id: "1",
       offer_date: "2019/10/11",
       start_time: "10:00",
@@ -487,6 +487,20 @@ Review.create!(
     content: "またお願いします",
     satisfaction: "3",
     delete_flag: "0"
+    },
+    {
+      recruit_id: "6",
+      title: "よかった",
+      content: "またお願いします",
+      satisfaction: "3",
+      delete_flag: "0"
+    },
+    {
+      recruit_id: "7",
+      title: "よかった",
+      content: "またお願いします",
+      satisfaction: "3",
+      delete_flag: "0"
     }
   ]
 )

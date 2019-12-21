@@ -1,39 +1,40 @@
 <div class="container">
   <div class="row">
-		<div class="col-md-12">
+		<div class="col-md-8 col-md-offset-2">
 			<h1>Walker詳細</h1>
-			<div class="walker-content" style="width: 100%;">
+			<div class="walker-content" style="width: 100%; margin-top: 30px;" >
 				<div class="walker-image clearfix" style="text-align:center; margin: 0 auto; width:150px; background: orange;">
 					<%= attachment_image_tag @walker, :image, :fill, 150, 150, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg",  size: '150x150'%>
 				</div>
 				<div style="text-align: center;">
-					<%= @walker.nickname %>
+				<%= @walker.nickname %>
+				<div class ="review-headline clearfix">
+					<% if @satisfaction_average.nil? %>
+						<div id="star-average">※レビューはございません</div>
+					<% else %>
+						<div>
+							<div id="star-average">
+							  <%= @satisfaction_average.round(2) %>
+							</div>
+							<script>
+								$('#star-average').raty({
+									size: 200,
+									starOff:  '<%= ('star-off.png') %>',
+									starOn : '<%= ('star-on.png') %>',
+									starHalf: '<%= ('star-half.png') %>',
+									half: true,
+									readOnly: true,
+									score: <%= @satisfaction_average %>,
+								});
+							</script>
+							<%= @satisfaction.length %>件
+						</div>
+					<% end %>
 				</div>
 			</div>
-			<div class ="review-headline clearfix">
-				<% if @satisfaction_average.nil? %>
-					<div id="star-average">※レビューはございません</div>
-				<% else %>
-					<div>
-						<div id="star-average"><%= @satisfaction_average.round(2) %></div>
-						<div id="star-rate"></div>
-						<script>
-							$('#star-rate').raty({
-								size: 200,
-								starOff:  '<%= ('star-off.png') %>',
-								starOn : '<%= ('star-on.png') %>',
-								starHalf: '<%= ('star-half.png') %>',
-								half: true,
-								readOnly: true,
-								score: <%= @satisfaction_average %>,
-							});
-				      </script>
-						<h5><%= @satisfaction_count %>件</h5>
-					</div>
 					<% @reviews.each.with_index(1) do |r,i| %>
 					<div class="reviews-container clearfix">
-						<h4><%= "#{i}. " %><%= r.review_title %></h4>
-						<div id="star-number"><%= r.satisfaction %></div>
+						<h4><%= "#{i}. " %><%= r.title %></h4>
 						<div id="star-rate-<%= r.id %>"></div>
 						<script>
 							$('#star-rate-<%= r.id %>').raty({
@@ -46,11 +47,10 @@
 								score: <%= r.satisfaction %>,
 							});
 			      </script>
-						<h6><%= r.review_content %></h6>
-						<h6>投稿者：<%= r.user.nickname %> /投稿日：<%= r.created_at.strftime('%y/%m/%d') %></h6>
+						<h6><%= r.content %></h6>
+						<h6>投稿者：<%= r.recruit.user.nickname %> /投稿日：<%= r.created_at.strftime('%y/%m/%d') %></h6>
 					</div>
 					<% end %>
-				<% end %>
 			</div>
 	  </div>
 	</div>

@@ -5,107 +5,125 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%# <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+    $(function(){
+      $("ul.header-menu a").click(function(){
+        $("ul.header-menu a.selected").removeClass("selected");
+        $(this).addClass("selected");
+      });
+    });
+  </script> %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <header id="header" class="navbar navbar-fixed-top navbar-inverse">
-      <nav class="nav navbar-nav navbar-left">
-        <span class="navbar-brand">Dow!</span>
-      </nav>
-      <nav class="nav navbar-nav navbar-right">
-        <ul class="nav navbar-nav ">
+    <header id="header">
+      <%#= link_to "Dow!", root_path, style:"font-size: 50px; width: 100px;" %>
+      <h1 style="font-size: 50px; width: 90px; float:left;">Dow!</h1>
+      <div class="type1" style="float: right;">
+        <ul class="header-menu" style="padding-top: 20px;">
           <!-- ユーザログイン時 -->
           <% if user_signed_in? %>
-            <li>
-              <%= link_to "利用手順", about_path%>
+            <li class="menu">
+              <%= link_to "Home", root_path, :style=>"color: black;" %>
             </li>
-            <li>
-              <%= link_to  "Walker一覧", walkers_path %>
+            <li class="menu">
+              <%= link_to "About", about_path, :style=>"color: black;" %>
             </li>
-            <li>
-              <%= link_to  "チャット履歴", rooms_path %>
+            <li class="menu">
+              <%= link_to  "Walker list", walkers_path, :style=>"color: black;"  %>
             </li>
-            <li>
-              <%= link_to  "お問い合わせ", new_users_contact_path %>
+            <li class="menu">
+              <%= link_to  "message", rooms_path, :style=>"color: black;"  %>
             </li>
-            <li>
-              <%= link_to  " #{current_user.nickname}さん", users_user_path(current_user) %>
+            <li class="menu">
+              <%= link_to  "Contact", new_users_contact_path, :style=>"color: black;"  %>
             </li>
-            <li>
-              <%= link_to " ログアウト", destroy_user_session_path, method: :delete, class:"glyphicon glyphicon-log-out logout" %>
+            <li class="menu">
+              <%= link_to  " #{current_user.nickname}さん", users_user_path(current_user), :style=>"color: black;"  %>
+            </li>
+            <li class="menu">
+              <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"glyphicon glyphicon-log-out logout", :style=>"color: black;"  %>
             </li>
           <!-- Walkerログイン時 -->
           <% elsif walker_signed_in? %>
-            <li>
-              <%= link_to "利用手順", about_path%>
+            <li class="menu">
+              <%= link_to "Home", root_path, :style=>"color: black;" %>
             </li>
-            <li>
-              <%= link_to  "Walker一覧", walkers_path %>
+            <li class="menu">
+              <%= link_to "About", about_path, :style=>"color: black;" %>
             </li>
-            <li>
-              <%= link_to  "募集一覧", walkers_recruits_index_path %>
+            <li class="menu">
+              <%= link_to  "Walker list", walkers_path, :style=>"color: black;"  %>
             </li>
-            <li>
-              <%= link_to  "チャット履歴", rooms_path %>
+            <li class="menu">
+              <%= link_to  "Recruit list", walkers_recruits_index_path, :style=>"color: black;"  %>
             </li>
-            <li>
-              <%= link_to  "お問い合わせ", walkers_contacts_new_path %>
+            <li class="menu">
+              <%= link_to  "Message", rooms_path, :style=>"color: black;"  %>
             </li>
-            <li>
-              <%= link_to  " #{current_walker.nickname}さん", walkers_walkers_index_path %>
+            <li class="menu">
+              <%= link_to  "Contact", walkers_contacts_new_path, :style=>"color: black;"  %>
             </li>
-            <li>
-              <%= link_to " ログアウト", destroy_walker_session_path, method: :delete, class:"glyphicon glyphicon-log-out logout" %>
+            <li class="menu">
+              <%= link_to  " #{current_walker.nickname}さん", walkers_walkers_index_path, :style=>"color: black;"  %>
+            </li>
+            <li class="menu">
+              <%= link_to "Log out", destroy_walker_session_path, method: :delete, class:"glyphicon glyphicon-log-out logout", :style=>"color: black;"  %>
             </li>
           <!-- 管理者ログイン時 -->
           <% elsif admin_signed_in? %>
-            <li>
-              <%= link_to "募集状況", admins_recruits_index_path%>
+            <li class="menu">
+              <%= link_to "Home", root_path, :style=>"color: black;" %>
             </li>
-            <li>
-              <%= link_to  "顧客一覧", admins_users_path %>
+            <li class="menu">
+              <%= link_to "Recruit list", admins_recruits_index_path, :style=>"color: black;" %>
             </li>
-            <li>
-              <%= link_to  "Walker一覧", walkers_path %>
+            <li class="menu">
+              <%= link_to  "User list", admins_users_path, :style=>"color: black;"  %>
             </li>
-            <li>
-              <%= link_to  "チャット履歴" %>
+            <li class="menu">
+              <%= link_to  "Walker list", walkers_path, :style=>"color: black;"  %>
             </li>
-            <li>
-              <%= link_to  "お問い合わせ", admins_contacts_index_path %>
+            <li class="menu">
+              <%= link_to  "Message", :style=>"color: black;"  %>
             </li>
-            <li>
-              <%= link_to " ログアウト", destroy_admin_session_path, method: :delete, class:"glyphicon glyphicon-log-out logout" %>
+            <li class="menu">
+              <%= link_to  "Contact", admins_contacts_index_path, :style=>"color: black;"  %>
+            </li>
+            <li class="menu">
+              <%= link_to "Logout", destroy_admin_session_path, method: :delete, class:"glyphicon glyphicon-log-out logout", :style=>"color: black;"  %>
             </li>
           <!-- 未ログイン時 -->
           <% else %>
-            <li>
-              <%= link_to "利用手順", about_path %>
+            <li class="menu">
+              <%= link_to "About", about_path, :style=>"color: black;"  %>
             </li>
-            <li>
-              <%= link_to  "Walker一覧", walkers_path %>
+            <li class="menu">
+              <%= link_to  "Walker list", walkers_path, :style=>"color: black;"  %>
             </li>
-            <li>
-              <%= link_to  "新規登録", sign_up_path %>
+            <li class="menu">
+              <%= link_to  "Sign up", sign_up_path, :style=>"color: black;"  %>
             </li>
-            <li>
-              <%= link_to  "ログイン", login_path %>
+            <li class="menu">
+              <%= link_to  "Log in", login_path, :style=>"color: black;"  %>
             </li>
           <% end %>
           </ul>
-      </nav>
+      </div>
     </header>
     <%= yield %>
-  <div id="wrapper">
-    <main class="main">
-      <!-- コンテンツをここに配置 -->
-    </main>
-    <footer class="footer">
-      <!-- フッターの中身をここに配置 -->
-    </footer>
-  </div>
+    <div class="footer">
+      <div id="button"></div>
+      <div id="container">
+        <div id="cont">
+          <div class="footer_center">
+            <h3>問い合わせ</h3>
+          </div>
+        </div>
+      </div>
+    </div>
   <script>
     //ヘッダーの高さ分だけコンテンツを下げる
     $(function() {
@@ -113,5 +131,4 @@
         $("body").css("margin-top", height + 10);//10pxだけ余裕をもたせる
     });
   </script>
-  </body>
 </html>

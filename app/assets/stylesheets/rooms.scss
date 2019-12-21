@@ -1,3 +1,16 @@
 // Place all the styles related to the rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.message-clearfix {
+  height: 100px;
+  line-height: 20px;
+  border: solid;
+  border-bottom-width: 0.5px;
+  font-size: 18px;
+}
+
+div .message :last-child {
+  border-bottom-width: 1px;
+}

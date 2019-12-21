@@ -6,5 +6,6 @@ class Walker < ApplicationRecord
   has_many :rooms, dependent: :destroy
   attachment :image
   has_many :recruits, through: :walker_recruits
+  # has_many :recruits
   has_many :walker_recruits
 end

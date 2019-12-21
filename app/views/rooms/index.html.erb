@@ -1,24 +1,43 @@
-<h1>メッセージ履歴一覧</h1>
-
-<% if user_signed_in? %>
-  <% @rooms.each do |r| %>
-  <div class="message-clearfix" style="border: solid;">
-    <% if r.message_last.present?%>
-      <%= link_to r.message_last.content, room_path(r.id)  %>
-    <% else %>
-      <%= link_to "メッセージがまだありません。", room_path(r.id) %>
-    <% end %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="page-title">Message list</div>
+      <% if user_signed_in? %>
+        <% @rooms.each do |r| %>
+        <div class="message-clearfix">
+          <ul>
+            <% if r.message_last.present?%>
+              <li style="text-align: center; background-color: orange;">利用日：<%=  r.recruit.offer_date %></li>
+              <li><%#= r.recruit.start_time.to_time('%H')</li> %></li>
+              <li><%=  r.walker.nickname %></li>
+              <li class="message"><%= link_to r.message_last.content, room_path(r.id)  %></li>
+              <li style="text-align: right;"><%= r.message_last.created_at.strftime('%Y/%m/%d %H:%M') %></li>
+            <% else %>
+              <li style="text-align: center; background-color: orange;">利用日：<%=  r.recruit.offer_date %></li>
+              <li><%#= r.recruit.start_time.to_time('%H')</li> %></li>
+              <li><%= r.walker.nickname %></li>
+              <li class="message"><%= link_to "メッセージがまだありません。", room_path(r.id) %></li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
+      <% elsif walker_signed_in? %>
+        <% @room.each do |r| %>
+        <div class="message-clearfix" style="border: solid;">
+          <% pp r.message_last %>
+          <% if r.message_last.present? %>
+            <li style="text-align: center; background-color: orange;">利用日：<%=  r.recruit.offer_date %></li>
+            <li><%=  r.user.nickname %></li>
+            <%= link_to r.message_last.content, room_path(r.id) %>
+            <li style="text-align: right;"><%= r.message_last.created_at.strftime('%Y/%m/%d %H:%M') %></li> 
+          <% else %>
+            <li><%=  r.user.nickname %></li>
+            <li style="text-align: center; background-color: orange;">利用日：<%=  r.recruit.offer_date %></li>
+            <%= link_to "メッセージがまだありません。", room_path(r.id) %>
+          <% end %>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
-  <% end %>
-<% elsif walker_signed_in? %>
-  <% @room.each do |r| %>
-  <div class="message-clearfix" style="border: solid;">
-    <% pp r.message_last %>
-    <% if r.message_last.present? %>
-      <%= link_to r.message_last.content, room_path(r.id) %>
-    <% else %>
-      <%= link_to "メッセージがまだありません。", room_path(r.id) %>
-    <% end %>
-  </div>
-  <% end %>
-<% end %>
+</div>

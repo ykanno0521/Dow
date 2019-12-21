@@ -3,6 +3,7 @@ class Users::ReviewsController < ApplicationController
   def new
     @review = Review.new
     @recruit = Recruit.find(params[:recruit_id])
+    @walker = Walker.find(@recruit.walker_id)
   end
 
   def create
@@ -17,6 +18,9 @@ class Users::ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:recruit_id])
+    @recruit = Recruit.find(@review.recruit_id)
+    @walker = Walker.find(@recruit.walker_id)
+
   end
 
   def update
