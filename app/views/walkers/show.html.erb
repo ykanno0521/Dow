@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
 		<div class="col-md-8 col-md-offset-2">
-			<h1>Walker詳細</h1>
+			<div class="page-title">Walker details</div>
 			<div class="walker-content" style="width: 100%; margin-top: 30px;" >
 				<div class="walker-image clearfix" style="text-align:center; margin: 0 auto; width:150px; background: orange;">
 					<%= attachment_image_tag @walker, :image, :fill, 150, 150, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg",  size: '150x150'%>
@@ -30,10 +30,15 @@
 							<%= @satisfaction.length %>件
 						</div>
 					<% end %>
+					<p>紹介文
+					<div class="introduction-content">
+						<%= @walker.introduction %>
+          </div>
 				</div>
 			</div>
+			<div style="border: solid margin-top: 10px;">
 					<% @reviews.each.with_index(1) do |r,i| %>
-					<div class="reviews-container clearfix">
+					<div class="reviews-container clearfix box-maru">
 						<h4><%= "#{i}. " %><%= r.title %></h4>
 						<div id="star-rate-<%= r.id %>"></div>
 						<script>
@@ -51,6 +56,7 @@
 						<h6>投稿者：<%= r.recruit.user.nickname %> /投稿日：<%= r.created_at.strftime('%y/%m/%d') %></h6>
 					</div>
 					<% end %>
+				</div>
 			</div>
 	  </div>
 	</div>

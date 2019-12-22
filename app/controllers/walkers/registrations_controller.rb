@@ -20,14 +20,16 @@ class Walkers::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    @prefecture = Prefectures
+    super
+  end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    @prefecture = Prefectures
+    super
+  end
 
   # DELETE /resource
   # def destroy
@@ -43,16 +45,16 @@ class Walkers::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:image, :last_name, :first_name, :last_name_kana, :first_name_kana, :postcode, :prefecture, :city, :block, :building, :phone_number, :nickname, :area1, :area2, :area3, :delete_flag])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:image, :last_name, :first_name, :last_name_kana, :first_name_kana, :postcode, :prefecture, :city, :block, :building, :phone_number, :nickname, :area1, :area2, :area3, :delete_flag, :introduction])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:image, :last_name, :first_name, :last_name_kana, :first_name_kana, :postcode, :prefecture, :city, :block, :building, :phone_number, :nickname, :area1, :area2, :area3, :delete_flag])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:image, :last_name, :first_name, :last_name_kana, :first_name_kana, :postcode, :prefecture, :city, :block, :building, :phone_number, :nickname, :area1, :area2, :area3, :delete_flag, :introduction])
   end
 
   # The path used after sign up.
@@ -70,5 +72,6 @@ end
 
 def complete
 end
+
 
 end

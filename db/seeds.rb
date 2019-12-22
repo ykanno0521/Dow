@@ -82,7 +82,8 @@ Walker.create!(
       area1: "北海道",
       area2: "東京都",
       area3: "大阪府",
-      delete_flag: "0"
+      delete_flag: "0",
+      introduction: "よろしくお願いします。"
     },
     {
       image_id: "",
@@ -102,7 +103,8 @@ Walker.create!(
       area1: "神奈川県",
       area2: "新潟県",
       area3: "京都府",
-      delete_flag: "0"
+      delete_flag: "0",
+      introduction: "よろしくお願いします。"
     },
     {
       image_id: "",
@@ -122,7 +124,8 @@ Walker.create!(
       area1: "神奈川県",
       area2: "新潟県",
       area3: "",
-      delete_flag: "0"
+      delete_flag: "0",
+      introduction: "よろしくお願いします。"
     },
     {
       image_id: "",
@@ -142,7 +145,8 @@ Walker.create!(
       area1: "神奈川県",
       area2: "新潟県",
       area3: "",
-      delete_flag: "0"
+      delete_flag: "0",
+      introduction: "犬大好きです。。"
     },
     {
       image_id: "",
@@ -162,7 +166,8 @@ Walker.create!(
       area1: "神奈川県",
       area2: "",
       area3: "",
-      delete_flag: "0"
+      delete_flag: "0",
+      introduction: "犬大好きです。。"
     },
     {
       image_id: "",
@@ -182,7 +187,8 @@ Walker.create!(
       area1: "神奈川県",
       area2: "新潟県",
       area3: "",
-      delete_flag: "0"
+      delete_flag: "0",
+      introduction: "犬大好きです。。"
     },
     {
       image_id: "",
@@ -202,7 +208,8 @@ Walker.create!(
       area1: "神奈川県",
       area2: "新潟県",
       area3: "",
-      delete_flag: "0"
+      delete_flag: "0",
+      introduction: "犬大好きです。。"
     },
     {
       image_id: "",
@@ -222,7 +229,8 @@ Walker.create!(
       area1: "神奈川県",
       area2: "新潟県",
       area3: "",
-      delete_flag: "0"
+      delete_flag: "0",
+      introduction: "犬大好きです。。"
     },
   ]
 )
@@ -303,7 +311,7 @@ Recruit.create!(
       start_time: "10:00",
       finish_time: "11:00",
       text: "ああああ",
-      status: "0",
+      status: "1",
       apply_num: "0",
       delete_flag: "0"
     },

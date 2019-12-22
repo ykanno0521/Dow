@@ -1,2 +1,41 @@
-<h1>Walkers::Walkers#index</h1>
-<p>Find me in app/views/walkers/walkers/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+    <div class="page-title">mypage</div>
+
+    <h3 style="text-align:center;"> Recruitment history </h3>
+      <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>利用日時</th>
+          <th>場所</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+        <% @recruits.each_with_index do |r, i| %>
+        <tbody>
+        <tr>
+          <th style="width: 30px;"><%= "#{i+1}" %></th>
+          <th style="width: 250px;"><%= r.offer_date%>  <%= r.start_time.strftime('%H:%M') %> - <%= r.finish_time.strftime('%H:%M') %></th>
+          <th style="width: 100px;"><%= r.user.prefecture %></th>
+          <th  style="width: 100px;">
+              <% if r.status == 0 && r.walker_recruits.find_by(walker_id: @walker.id).present? %>
+                <p style="color: red;">応募済み</p>
+              <% elsif  r.status == 0 %>
+                <p>募集中</p>
+              <% elsif r.status == 1 && r.offer_date < Date.today %>
+                <p style="color: gray;">完了</>
+              <% else %>
+                <p style="color: green;">マッチング成功</p>
+              <% end %>
+          </th>
+          <th style="width: 100px;"><%= link_to "詳細", walkers_recruits_show_path(r.id) %></th>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+      <%= link_to "登録情報編集", edit_walker_registration_path %>
+    </div>
+  </div>
+</div>

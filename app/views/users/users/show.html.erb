@@ -30,7 +30,7 @@
               完了
               <th><%= link_to r.apply_num, users_recruit_path(r.id) %></th>
               <% if r.review.present? %>
-              <th><%= link_to "レビュー見る", edit_users_recruit_review_path(r.id) %></th>
+              <th><%= link_to "レビュー編集する", edit_users_recruit_review_path(r.id) %></th>
               <% else %>
               <th><%= link_to "レビューを書く", new_users_recruit_review_path(r.id) %></th>
               <% end %>
@@ -43,6 +43,8 @@
         </tr>
         <% end %>
       </table>
+      <%= link_to "プロフィール編集", edit_user_registration_path %>
+      <%= link_to "退会手続き", users_unsubscribe_path %>
     </div>
     </div>
   </div>

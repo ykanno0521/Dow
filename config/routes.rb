@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   get 'login/select', to: 'top#login_select', as: 'login'
   get 'sign_up/select', to: 'top#sign_up_select', as: 'sign_up'
   #walkers controller
-  resources :walkers, only:[:index, :show]
+  resources :walkers, only:[:index]
   #rooms controller
   resources :rooms, :only => [:create, :show, :index]
   #messages controler
@@ -43,8 +43,10 @@ Rails.application.routes.draw do
     resources :contacts, only: [:new, :create]
   #users/users controller
     resources :users, only: [:show]
+
   #users/partners controller
     resources :partners, except: [:show]
+    patch '/users', to: 'users#change', as: 'change'
   #users/recruits controller
     patch '/recruits/confirm/:id', to: 'recruits#confirm', as: 'confirm'
     resources :recruits, except: [:index] do

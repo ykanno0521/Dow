@@ -136,6 +136,7 @@ ActiveRecord::Schema.define(version: 2019_12_16_104719) do
     t.string "area2"
     t.string "area3"
     t.integer "delete_flag"
+    t.text "introduction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_walkers_on_email", unique: true

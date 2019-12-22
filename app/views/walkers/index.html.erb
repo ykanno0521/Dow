@@ -1,10 +1,11 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-8 col-md-offset-2" style="text-align: center;">
       <div class="page-title">Walker List</div>
+      
       <% @walkers.each do |w| %>
-      <div class="walker-content">
-        <div class="partner-image" style="width:150px; float:left;">
+      <div class="walker-content" style="border: solid gray; padding: 10px 10px;margin: 20px; display: inline-block; width: 180px; text-align: center; float: left;">
+        <div class="partner-image" style="width:150px; display: inline-block;">
           <%= attachment_image_tag @walker, :image_id, :fill, 150, 150, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg",  size: '150x150' %>
           <div style="text-align: center;">
             <%= link_to w.nickname, walker_path(w.id) %><br>
@@ -37,11 +38,18 @@
             レビュー件数：<%= satisfaction.length %>件
             <% end %>
             </div>
+            <div>
+            <p style="margin-top: 10px;"><担当エリア></p>
+              <div>
+              <% area_array = [w.area1, w.area2, w.area3]%>
+              <%= area = area_array.compact.join(' ') %>
+              </div>
+            </div>
           </div>
         </div>
         <% end %>
-        <%= paginate @walkers %>
       </div>
+      <%= paginate @walkers %>
     </div>
   </div>
 </div>

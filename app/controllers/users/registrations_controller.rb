@@ -20,9 +20,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    @prefecture = Prefectures
+    super
+  end
 
   # PUT /resource
   # def update
@@ -55,6 +56,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:account_update, keys:[:image, :last_name, :first_name, :last_name_kana, :first_name_kana, :postcode, :prefecture, :city, :block, :building, :phone_number, :nickname, :delete_flag])
   end
 
+  def unsubscribe
+    @user = current_user
+  end
+
+  def complete
+  end
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
   #   super(resource)

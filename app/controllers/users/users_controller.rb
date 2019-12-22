@@ -5,5 +5,9 @@ class Users::UsersController < ApplicationController
   end
 
   def change
+    user = current_user
+    user.update(delete_flag: 1)
+    Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
+    redirect_to users_unsubscribe_complete_path
   end
 end
