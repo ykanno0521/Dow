@@ -1,37 +1,75 @@
-<h1>募集詳細ページ</h1>
+<div class="container">
+<div class="row">
+<div class="col-md-8 col-md-offset-2">
+<div class="page-title">Recruitmnet details</div>
 
-<h4>利用日</h4>
-<span><%= @recruit.offer_date %></span>
-<p>所要時間</p>
-<span><%= @recruit.start_time.strftime('%H:%M') %> - <%= @recruit.finish_time.strftime('%H:%M') %></span>
-<p>場所</p>
-<span><%= @recruit.offer_date %></span>
-<p>備考</p>
-<span><%= @recruit.text %></span>
+<table id="show-table">
+  <tr>
+  <th>利用日</th>
+  <th><%= @recruit.offer_date %></th>
+  </tr>
+  <tr>
+  <th>所要時間</th>
+  <th><%= @recruit.start_time.strftime('%H:%M') %> - <%= @recruit.finish_time.strftime('%H:%M') %></th>
+  </tr>
+  <tr>
+  <th>場所</th>
+  <th><%= @recruit.offer_date %></th>
+  </tr>
+  <tr>
+  <th>備考</th>
+  <th><%= @recruit.text %></th>
+  </tr>
+</table>
 
-<h4>パートナー名</h4>
-<span><%= @recruit.partner.name %></span>
-<h4>種類</h4>
-<span><%= @recruit.partner.dog_breed %></span>
-<h4>性別</h4>
-<span><%= @recruit.partner.gender %></span>
-<h4>体重</h4>
-<span><%= @recruit.partner.weight %></span>
-<h4>性格</h4>
-<span><%= @recruit.partner.character %></span>
 
+  <div>
+    <div class="partner-image clearfix" style="width: 150px; margin: 30px auto;" >
+      <%= attachment_image_tag @recruit.partner, :image, :fill, 150, 150, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+    </div>
+  </div>
 
+  <table id="show-table">
+  <tr>
+  <th>パートナー名</th>
+  <th><%= @recruit.partner.name %></th>
+  </tr>
+  <tr>
+  <th>種類</th>
+  <th><%= @recruit.partner.dog_breed %></th>
+  </tr>
+  <tr>
+  <th>性別</th>
+  <th><%= @recruit.partner.gender %></th>
+  </tr>
+  <tr>
+  <th>体重</th>
+  <th><%= @recruit.partner.weight %>kg</th>
+  </tr>
+  <tr>
+  <th>性格</th>
+  <th><%= @recruit.partner.character %></th>
+  </tr>
+</table>
+
+  <div style="width: 100%; text-align: center;">
 <% if @recruit.status_before_type_cast == 0 && @walker_recruit.present? %>
-  <%= link_to '応募済み',walkers_recruits_destroy_path(@walker_recruit), method: :delete, id:"status1", :style=>"font-size: 40px; color: white; background-color: red;" %>
+  <%= link_to '応募済み',walkers_recruits_destroy_path(@walker_recruit), method: :delete, id:"status1", :style=>"font-size: 40px; color: white; background-color: red; text-align: center;" %>
   <%= form_for(@room, url:'/rooms') do |r| %>
   <%= r.hidden_field :walker_id, :value=> current_walker.id %>
   <%= r.hidden_field :recruit_id, :value=> @recruit.id %>
-  <%= r.submit "チャットを始める" %>
+  <%= r.submit "チャットを始める", :style => "background: lightgreen" %>
 <% end %>
 <% elsif @recruit.status_before_type_cast == 0  %>
   <%= link_to '募集中', walkers_recruits_path(recruit_id: @recruit.id, walker_id: current_walker.id), method: :post, id:"status2", :style=>"font-size: 40px; color: black;" %>
 <% end %>
+</div>
+<div style="width: 100%; text-align: center;"><%= link_to '戻る',walkers_recruits_index_path %></div>
 
 
+
+</div>
+</div>
+</div>
 
     

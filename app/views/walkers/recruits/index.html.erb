@@ -1,29 +1,38 @@
-  <table class="table bordered">
+<div class="container">
+<div class="row">
+<div class="col-md-8 col-md-offset-2">
+<div class="page-title">Recruitment list</div>
+  <table class="table table-hover">
+  <thead>
     <tr>
       <th>#</th>
-      <th>利用日</th>
-      <th>時間指定</th>
+      <th>利用日時</th>
       <th>場所</th>
       <th>ステータス</th>
     </tr>
+  </thead>
     <% @recruits.each_with_index do |r, i| %>
+    <tbody>
     <tr>
-      <th><%= "#{i+1}" %></th>
-      <th><%= r.offer_date%></th>
-      <th><%= r.start_time.strftime('%H:%M') %> - <%= r.finish_time.strftime('%H:%M') %></th>
-      <th><%= r.user.prefecture %></th>
-      <th>
+      <th style="width: 30px;"><%= "#{i+1}" %></th>
+      <th style="width: 250px;"><%= r.offer_date%>  <%= r.start_time.strftime('%H:%M') %> - <%= r.finish_time.strftime('%H:%M') %></th>
+      <th style="width: 100px;"><%= r.user.prefecture %></th>
+      <th  style="width: 100px;">
           <% if r.status == 0 && r.walker_recruits.find_by(walker_id: @walker.id).present? %>
-            応募済み
+            <p style="color: red;">応募済み</p>
           <% elsif  r.status == 0 %>
-            募集中
+            <p>募集中</p>
           <% elsif r.status == 1 && r.offer_date < Date.today %>
-            完了
+            <p style="color: gray;">完了</>
           <% else %>
-            マッチング成功
+            <p style="color: green;">マッチング成功</p>
           <% end %>
       </th>
-      <th><%= link_to "詳細", walkers_recruits_show_path(r.id) %></th>
-    </tr>
+      <th style="width: 100px;"><%= link_to "詳細", walkers_recruits_show_path(r.id) %></th>
+      </tr>
+    </tbody>
     <% end %>
   </table>
+</p>
+</div>
+</div>
