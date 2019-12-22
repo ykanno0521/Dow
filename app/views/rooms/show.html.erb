@@ -1,35 +1,68 @@
-<h1>ルーム詳細</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="page-title">Message</div>
+      <div class="message-content clearfix" style="text-align: center;">
+        <%= form_for @message do |m| %>
+          <%= m.text_area :content, :placeholder => "メッセージを入力して下さい" , :size => 70 , :style => "width: 300px;"%>
+          <%= m.hidden_field :room_id, :value => @room.id %>
+          <br>
+          <% if user_signed_in? %>
+            <%= m.hidden_field :user_id, :value => @user.id %>
+            <%= m.hidden_field :walker_id, :value => '' %>
+          <% elsif walker_signed_in? %>
+            <%= m.hidden_field :user_id, :value => '' %>
+            <%= m.hidden_field :walker_id, :value => @walker.id %>
+          <% end %>
+          <%= m.submit "投稿する", :style => "background-color: orange; margin: 10px"%>
+        <% end %>
+      </div>
 
-<%= form_for @message do |m| %>
-  <%= m.text_field :content, :placeholder => "メッセージを入力して下さい" , :size => 70 %>
-  <%= m.hidden_field :room_id, :value => @room.id %>
-  <br>
-  <% if user_signed_in? %>
-    <%= m.hidden_field :user_id, :value => @user.id %>
-    <%= m.hidden_field :walker_id, :value => '' %>
-  <% elsif walker_signed_in? %>
-    <%= m.hidden_field :user_id, :value => '' %>
-    <%= m.hidden_field :walker_id, :value => @walker.id %>
-  <% end %>
-  <%= m.submit "投稿する" %>
-<% end %>
-
-  <hr>
-<% if @messages.present? %>
-  <% @messages.each do |m| %>
-    <strong><%= m.content %></strong><br>
-    <% if m.user_id.present?%>
-      <small>by <strong><%= m.user.nickname %></strong><br>
-      <small> <strong><%= m.created_at.strftime("%Y年%-m月%-d日 %-H時%-M分%-S秒") %></strong>
-    <% elsif m.walker_id.present? %>
-      <small>by <strong><%= m.walker.nickname %></strong><br>
-      <small> <strong><%= m.created_at.strftime("%Y年%-m月%-d日 %-H時%-M分%-S秒")%></strong>
-    <% end %>
-    <hr>
-  <% end %>
-<% else %>
-  <h3 class="text-center">メッセージはまだありません</h3>
-<% end %>
+      <% if @messages.present? %>
+          <% if user_signed_in? %>
+            <% @messages.order(id: "DESC").each do |m| %>
+              <% if m.user_id.present? %>
+                <div style="text-align: right;">
+                  <%= m.content %><br>
+                  by<%= m.user.nickname %><br>
+                  <%= m.created_at.strftime("%Y年%-m月%-d日 %-H時%-M分%-S秒") %>
+                </div>
+                <hr>
+              <% elsif m.walker_id.present? %>
+                <div style="text-align: left;">
+                  <%= m.content %><br>
+                  by<%= m.walker.nickname %><br>
+                  <%= m.created_at.strftime("%Y年%-m月%-d日 %-H時%-M分%-S秒") %>
+                </div>
+                <hr>
+              <% end %>
+            <% end %>
+          <% elsif  walker_signed_in?  %>
+            <% @messages.order(id: "DESC").each do |m| %>
+              <% if m.user_id.present? %>
+                <div style="text-align: left;">
+                  <%= m.content %><br>
+                  by<%= m.user.nickname %><br>
+                  <%= m.created_at.strftime("%Y年%-m月%-d日 %-H時%-M分%-S秒") %>
+                </div>
+                <hr>
+              <% elsif m.walker_id.present? %>
+                <div style="text-align: right;">
+                  <%= m.content %><br>
+                  by<%= m.walker.nickname %><br>
+                  <%= m.created_at.strftime("%Y年%-m月%-d日 %-H時%-M分%-S秒") %>
+                </div>
+                <hr>
+              <% end %>
+            <% end %>
+          <% end %>
+        <hr>
+      <% else %>
+        <h3 class="text-center">メッセージはまだありません</h3>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 
 
