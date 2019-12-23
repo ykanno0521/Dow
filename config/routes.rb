@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'contacts/new'
+  get 'contacts/create'
   post '/rate' => 'rater#create', :as => 'rate'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   #####################デバイス関連
@@ -35,15 +37,16 @@ Rails.application.routes.draw do
   resources :rooms, :only => [:create, :show, :index]
   #messages controler
   resources :messages, :only => [:create]
+  #contacts controler
+  resources :contacts, :only => [:new , :create]
   ####################
+
+
 
   #################### User
   namespace :users do
-  #users/contacts controller
-    resources :contacts, only: [:new, :create]
   #users/users controller
     resources :users, only: [:show]
-
   #users/partners controller
     resources :partners, except: [:show]
     patch '/users', to: 'users#change', as: 'change'
@@ -62,9 +65,6 @@ Rails.application.routes.draw do
   #walkers/walkers controller
     get 'walkers/index'
     patch 'walkers/change'
-  #walkers/contacts contller
-    get 'contacts/new'
-    post 'contacts/create'
   #walkers/recruits contlloer
     get '/recruits/index'
     post '/recruits', to: 'recruits#create'
@@ -81,7 +81,7 @@ Rails.application.routes.draw do
   #admins/walkers controller
     resources :walkers, except: [:new, :create]
   #admins/contacts controller
-    resources :contacts, onry: [:index, :show, :new, :create]
+    resources :contacts, onry: [:index, :show, :edit, :update]
   #admins/review controller
     resources :reviews, onry: [:index, :show, :destory]
   #admins/recruits controller

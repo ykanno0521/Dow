@@ -8,4 +8,5 @@ class Walker < ApplicationRecord
   has_many :recruits, through: :walker_recruits
   # has_many :recruits
   has_many :walker_recruits
+  has_many :contacts, dependent: :destroy
 end

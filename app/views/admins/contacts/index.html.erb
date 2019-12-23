@@ -1,2 +1,42 @@
-<h1>Admins::Contacts#index</h1>
-<p>Find me in app/views/admins/contacts/index.html.erb</p>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="page-title">Contact</div>
+      
+      <table class="contact-table" border="1">
+          <thead >
+            <tr>
+              <th style="width: 20px;">No</th>
+              <th>氏名</th>
+              <th>タイトル</th>
+              <th>問い合わせ日時</th>
+              <th>ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @contacts.each.with_index(1) do |c, i| %>
+            <tr>
+              <td><%= link_to i, edit_admins_contact_path(c.id) %></td>
+              <% if c.user_id.present? %>
+                <td><%= c.user.last_name + " " + c.user.first_name %></td>
+              <% else %>
+                <td><%= c.walker.last_name + " " + c.walker.first_name %></td>
+              <% end %>
+              <td><%= c.title %></td>
+              <td><%= c.created_at.strftime("%Y/%m/%d %H:%M")%></td>
+              <td>
+                <% if c.reply.present? %>
+                  <div style="">返信済み</div>
+                <% else %>
+                  <div style="color: red;">未返信</div>
+                <% end %>
+              </td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

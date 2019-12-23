@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+    <div class="page-title">お問い合わせ</div>
+    <div class="contact-form" style="text-align: center;">
+      <%= form_for(@contact) do |f| %>
+
+      <div style="margin-bottom: 30px;">
+      <h4>タイトル</h4>
+      <%= f.text_field :title, :size => "30x1"%>
+      </div>
+
+      <div style="margin-bottom: 30px;">
+      <h4>本文</h4>
+      <%= f.text_area :content, :size => "60x5" %><br>
+      </div>
+      
+      <div>
+      <% if user_signed_in? %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+      <% elsif walker_signed_in? %>
+        <%= f.hidden_field :walker_id, value:current_walker.id %>
+      <% end %>
+      <%= f.submit '送信' %>
+      </div>
+      <% end %>
+    </div>
+    </div>
+  </div>
+</div>

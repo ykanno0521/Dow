@@ -38,7 +38,7 @@
               <%= link_to  "Message", rooms_path, :style=>"color: black;"  %>
             </li>
             <li class="menu">
-              <%= link_to  "Contact", new_users_contact_path, :style=>"color: black;"  %>
+              <%= link_to  "Contact", new_contact_path, :style=>"color: black;"  %>
             </li>
             <li class="menu">
               <%= link_to  " #{current_user.nickname}さん", users_user_path(current_user), :style=>"color: black;"  %>
@@ -64,7 +64,7 @@
               <%= link_to  "Message", rooms_path, :style=>"color: black;"  %>
             </li>
             <li class="menu">
-              <%= link_to  "Contact", walkers_contacts_new_path, :style=>"color: black;"  %>
+              <%= link_to  "Contact", new_contact_path, :style=>"color: black;"  %>
             </li>
             <li class="menu">
               <%= link_to  " #{current_walker.nickname}さん", walkers_walkers_index_path, :style=>"color: black;"  %>
@@ -78,7 +78,7 @@
               <%= link_to "Home", root_path, :style=>"color: black;" %>
             </li>
             <li class="menu">
-              <%= link_to "Recruit list", admins_recruits_index_path, :style=>"color: black;" %>
+              <%#= link_to "Recruit list", admins_recruits_index_path, :style=>"color: black;" %>
             </li>
             <li class="menu">
               <%= link_to  "User list", admins_users_path, :style=>"color: black;"  %>
@@ -86,11 +86,11 @@
             <li class="menu">
               <%= link_to  "Walker list", walkers_path, :style=>"color: black;"  %>
             </li>
+            <%# <li class="menu"> %>
+              <%#= link_to  "Message", :style=>"color: black;"  %>
+            <%# </li> %>
             <li class="menu">
-              <%= link_to  "Message", :style=>"color: black;"  %>
-            </li>
-            <li class="menu">
-              <%= link_to  "Contact", admins_contacts_index_path, :style=>"color: black;"  %>
+              <%= link_to  "Contact", admins_contacts_path, :style=>"color: black;"  %>
             </li>
             <li class="menu">
               <%= link_to "Logout", destroy_admin_session_path, method: :delete, class:"glyphicon glyphicon-log-out logout", :style=>"color: black;"  %>
