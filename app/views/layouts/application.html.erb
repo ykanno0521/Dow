@@ -98,16 +98,37 @@
           <!-- 未ログイン時 -->
           <% else %>
             <li class="menu">
+              <%= link_to "Home", root_path, :style=>"color: black;" %>
+            </li>
+            <li class="menu">
               <%= link_to "About", about_path, :style=>"color: black;"  %>
             </li>
             <li class="menu">
               <%= link_to  "Walker list", walkers_path, :style=>"color: black;"  %>
             </li>
             <li class="menu">
-              <%= link_to  "Sign up", sign_up_path, :style=>"color: black;"  %>
+              <%= link_to  "Sign up", '' , class: "js-modal-open", style: "color: black;" %>
+              <div class="modal js-modal">
+                <div class="modal__bg js-modal-close"></div>
+                <div class="modal__content">
+                  <p>どちらで登録するか選択してください。</p>
+                  <%= link_to "散歩をお願いしたい方", new_user_registration_path ,class: "js-modal-user-signup" %><br>
+                  <%= link_to "Walkerになりたい方" , new_walker_registration_path , class: "js-modal-walker-signup" %><br>
+                  <div style="text-align: right"><a class="js-modal-close" heref="" >閉じる</a></div>
+                </div>
+              </div>
             </li>
             <li class="menu">
-              <%= link_to  "Log in", login_path, :style=>"color: black;"  %>
+              <%= link_to  "Log in", '', class: "js-modal-open2", style: "color: black;"  %>
+                <div class="modal js-modal2">
+                <div class="modal__bg js-modal2-close"></div>
+                <div class="modal__content">
+                  <p>どちらでログインするか選択してください。</p>
+                  <%= link_to "散歩を依頼したい方", new_user_session_path ,class: "js-modal-user-login", style: " "%><br>
+                  <%= link_to "Walkerの方" , new_walker_session_path , class: "js-modal-walker-login" %><br>
+                  <div style="text-align: right"><a class="js-modal2-close" heref="">閉じる</a></div>
+                </div>
+              </div>
             </li>
           <% end %>
           </ul>
@@ -131,4 +152,51 @@
         $("body").css("margin-top", height + 10);//10pxだけ余裕をもたせる
     });
   </script>
+
+  <script>
+    $(function () {
+      $('.js-modal-open').on('click',function(){  //モーダルを表示
+        $('.js-modal').fadeIn();
+        return false;
+      });
+      $('.js-modal-user-signup').on('click',function(){  //ユーザ登録画面へ遷移
+        window.location.href = '/users/sign_up';
+        //$('.js-modal').fadeOut();
+        //return false;
+      });
+      $('.js-modal-walker-signpup').on('click',function(){  //Walker登録画面へ遷移
+        window.location.href = '/walkers/sign_up';
+        // $('.js-modal').fadeOut();
+        // return false;
+      });
+      $('.js-modal-close').on('click',function(){  //閉じる
+        $('.js-modal').fadeOut();
+        return false;
+      });
+    });
+  </script>
+
+    <script>
+    $(function () {
+      $('.js-modal-open2').on('click',function(){  //モーダルを表示
+        $('.js-modal2').fadeIn();
+        return false;
+      });
+      $('.js-modal-user-login').on('click',function(){  //ユーザログイン画面へ遷移
+        window.location.href = '/users/sign_in';
+        //$('.js-modal').fadeOut();
+        //return false;
+      });
+      $('.js-modal-walker-login').on('click',function(){  //Walkerログイン画面へ遷移
+        window.location.href = '/walkers/sign_in';
+        // $('.js-modal').fadeOut();
+        // return false;
+      });
+      $('.js-modal-close').on('click',function(){  //閉じる
+        $('.js-modal2').fadeOut();
+        return false;
+      });
+    });
+  </script>
+
 </html>

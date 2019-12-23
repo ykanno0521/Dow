@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   get 'login/select', to: 'top#login_select', as: 'login'
   get 'sign_up/select', to: 'top#sign_up_select', as: 'sign_up'
   #walkers controller
-  resources :walkers, only:[:index]
+  resources :walkers, only:[:index,:show]
   #rooms controller
   resources :rooms, :only => [:create, :show, :index]
   #messages controler

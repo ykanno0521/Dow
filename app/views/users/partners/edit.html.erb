@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
-  <h1>編集画面</h1>
+  <div class="page-title">Partner edit</div>
   <%= form_for(@partner, url:"/users/partners/#{@partner.id}") do |p| %>
     <div class="col-md-4">
       <div class="field">
           <div class="user-edit-image">
-              <%= attachment_image_tag @partner, :image_id, :fill, 250, 250, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg",  size: '250x250' %>
+              <%= attachment_image_tag @partner, :image, :fill, 250, 250, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg",  size: '250x250' %>
               <%= p.attachment_field :image, placeholder: "プロフィール画像" %>
           </div>
       </div>
