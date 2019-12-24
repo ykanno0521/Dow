@@ -22,7 +22,7 @@ class WalkersController < ApplicationController
   def show
     @walker = Walker.find(params[:id])
     @recruits = Recruit.where(walker_id: @walker.id)
-    @reviews = []   
+    @reviews = []
     @recruits.each do |r|
       @reviews << r.review
     end

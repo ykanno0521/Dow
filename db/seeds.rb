@@ -546,3 +546,43 @@ WalkerRecruit.create!(
     }
   ]
 )
+
+Contact.create!(
+  [
+    {
+      user_id: "1",
+      walker_id: "",
+      title: "サービスについて",
+      content: "どのように依頼すればいいですか？",
+      reply: ""
+    },
+    {
+      user_id: "",
+      walker_id: "1",
+      title: "サイトについて",
+      content: "退会方法を教えてください。",
+      reply: ""
+    },
+    {
+      user_id: "1",
+      walker_id: "",
+      title: "walkerについて",
+      content: "walkerの方が時間を守りません。",
+      reply: ""
+    },
+    {
+      user_id: "",
+      walker_id: "2",
+      title: "walkerについて",
+      content: "登録情報はどこで編集できますか？",
+      reply: ""
+    },
+    {
+      user_id: "2",
+      walker_id: "",
+      title: "依頼について",
+      content: "２匹同時に依頼したいのですが、可能でしょうか。",
+      reply: ""
+    }
+  ]
+)

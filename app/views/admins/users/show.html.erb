@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="page-title">User detail</div>
+      <table class="table table-bordered" >
+      <tr>
+        <th>顧客ID</th>
+        <th class="text"><%= @user.id %></th>
+      </tr>
+      <tr>
+        <th>顧客名</th>
+        <th class="text"><%= @user.last_name + " " + @user.first_name %></th>
+      </tr>
+      <tr>
+        <th>フリガナ</th>
+        <th class="text"><%= @user.last_name_kana + " " + @user.first_name_kana %></th>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <th class="text"><%= @user.email %></th>
+      </tr>
+      <tr>
+        <th>郵便番号</th>
+        <th class="text"><%= @user.postcode %></th>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <th class="text"><%= @user.prefecture + @user.city + @user.block + @user.building %></th>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <th class="text"><%= @user.phone_number %></th>
+      </tr>
+      <tr>
+        <th>ニックネーム</th>
+        <th class="text"><%= @user.nickname %></th>
+      </tr>
+      </table>
+      <% if @user.delete_flag == 0 %>
+        <%= link_to "アカウント情報編集", edit_admins_user_path(@user.id), style: " float: right;"%>
+      <% else %>
+        <p style="color: red; float: right;" >削除されたアカウントです</p>
+      <% end %>
+      <%= link_to "Back", admins_users_path %>
+    </div>
+  </div>
+</div>
