@@ -1,46 +1,45 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-    <div class="page-title">Partner info</div>
-      <span>
-          <%=link_to "パートナーを登録する", new_users_partner_path %>
-      </span>
+      <div class="page-title">Partner info</div>
+      <%=link_to "パートナーを登録する", new_users_partner_path %>
+      
       <% @partners.each do |p| %>
-      <div class="form-group has-icon" style="height: 150px">
-          <div class="profile-image" style="width: 150px; height: 150px; margin: 0 auto;">
-            <%= attachment_image_tag p, :image, :fill, 150, 150, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg",size: '150x150' %>
+        <div class="maru-box">
+          <div class="form-group has-icon" style="height: 150px">
+              <div class="profile-image" style="width: 150px; height: 150px; margin: 0 auto;">
+                <%= attachment_image_tag p, :image, :fill, 150, 150, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg",size: '150x150' %>
+              </div>
           </div>
-      </div>
-        <div >
-        <table class="table-double">
-          <tr>
-            <th class="item">名前</th>
-            <th><%= p.name %></th>
-          </tr>
-          <tr>
-            <th class="item">犬種</th>
-            <th><%= p.dog_breed %></th>
-          </tr>
-          <tr>
-            <th class="item">生年月日</th>
-            <th><%= p.birthday %></th>
-          </tr>
-          <tr>
-            <th class="item">性別</th>
-            <th><%= p.gender %></th>
-          </tr>
-          <tr>
-            <th class="item">体重</th>
-            <th><%= p.weight %>Kg</th>
-          </tr>
-          <tr>
-            <th class="item">性格</th>
-            <th><%= p.character %></th>
-          </tr>
-        </table>
-        </div>
-        <div style="text-align: center;">
-          <%= link_to "編集", edit_users_partner_path(p.id), class:"btn btn-primary", :style=>"background-color: green; color: ; width: 300px; font-size: 26px; margin-top: 30px;"%>
+          <table class="table-double">
+            <tr>
+              <th class="item">名前</th>
+              <th><%= p.name %></th>
+            </tr>
+            <tr>
+              <th class="item">犬種</th>
+              <th><%= p.dog_breed %></th>
+            </tr>
+            <tr>
+              <th class="item">生年月日</th>
+              <th><%= p.birthday %></th>
+            </tr>
+            <tr>
+              <th class="item">性別</th>
+              <th><%= p.gender %></th>
+            </tr>
+            <tr>
+              <th class="item">体重</th>
+              <th><%= p.weight %>Kg</th>
+            </tr>
+            <tr>
+              <th class="item">性格</th>
+              <th><%= p.character %></th>
+            </tr>
+          </table>
+          <div style="text-align: center;">
+            <%= link_to "編集", edit_users_partner_path(p.id), class:"btn btn-primary", :style=>"background-color: green; color: ; width: 100px; font-size: 20px; margin-top: 30px;"%>
+          </div>
         </div>
       <% end %>
     </div>

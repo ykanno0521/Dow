@@ -66,7 +66,7 @@
               <%= link_to  "Message", rooms_path, :style=>"color: black;"  %>
             </li>
             <li class="menu">
-              <%= link_to  "Mypage", walkers_walkers_index_path, :style=>"color: black;"  %>
+              <%= link_to  "Mypage", walkers_walker_path(current_walker), :style=>"color: black;"  %>
             </li>
             <li class="menu">
               <%= link_to "Log out", destroy_walker_session_path, method: :delete, class:"glyphicon glyphicon-log-out logout", :style=>"color: black;"  %>

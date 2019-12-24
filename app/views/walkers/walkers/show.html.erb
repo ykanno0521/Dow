@@ -7,8 +7,8 @@
       <table class="table table-hover">
       <thead>
         <tr>
-          <th>#</th>
-          <th>利用日時</th>
+          <th style="width: 30px;">#</th>
+          <th style="width: 400px;">利用日時</th>
           <th>場所</th>
           <th>ステータス</th>
         </tr>
@@ -17,7 +17,7 @@
         <tbody>
         <tr>
           <th style="width: 30px;"><%= "#{i+1}" %></th>
-          <th style="width: 250px;"><%= r.offer_date%>  <%= r.start_time.strftime('%H:%M') %> - <%= r.finish_time.strftime('%H:%M') %></th>
+          <th style="width: 400px;"><%= r.offer_date%>  <%= r.start_time.strftime('%H:%M') %> - <%= r.finish_time.strftime('%H:%M') %></th>
           <th style="width: 100px;"><%= r.user.prefecture %></th>
           <th  style="width: 100px;">
               <% if r.status == 0 && r.walker_recruits.find_by(walker_id: @walker.id).present? %>
@@ -35,7 +35,10 @@
         </tbody>
         <% end %>
       </table>
-      <%= link_to "登録情報編集", edit_walker_registration_path %>
+      <div style="text-align: right;">
+        <%= link_to "プロフィール編集", edit_walker_registration_path ,style: "display: inline-block;"%>
+        <%= link_to "退会手続き", walkers_unsubscribe_path,style: "display: inline-block; margin-left: 20px;" %>
+      </div>
     </div>
   </div>
 </div>

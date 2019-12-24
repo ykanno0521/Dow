@@ -29,8 +29,6 @@ Rails.application.routes.draw do
   #top controller
   root 'top#index'
   get 'top/about', as: 'about'
-  get 'login/select', to: 'top#login_select', as: 'login'
-  get 'sign_up/select', to: 'top#sign_up_select', as: 'sign_up'
   #walkers controller
   resources :walkers, only:[:index,:show]
   #rooms controller
@@ -63,8 +61,8 @@ Rails.application.routes.draw do
   #################### Walker
   namespace :walkers do
   #walkers/walkers controller
-    get 'walkers/index'
-    patch 'walkers/change'
+    resources :walkers, only: [:show]
+    patch 'walkers/change', to: 'walkers#change', as: 'change'
   #walkers/recruits contlloer
     get '/recruits/index'
     post '/recruits', to: 'recruits#create'

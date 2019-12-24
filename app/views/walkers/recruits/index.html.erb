@@ -1,12 +1,12 @@
 <div class="container">
 <div class="row">
 <div class="col-md-8 col-md-offset-2">
-<div class="page-title">Recruitment list</div>
+<div class="page-title">Recruit list</div>
   <table class="table table-hover">
   <thead>
     <tr>
-      <th>#</th>
-      <th>利用日時</th>
+      <th style="width: 30px;">#</th>
+      <th style="width: 500px;">利用日時</th>
       <th>場所</th>
       <th>ステータス</th>
     </tr>
@@ -15,7 +15,7 @@
     <tbody>
     <tr>
       <th style="width: 30px;"><%= "#{i+1}" %></th>
-      <th style="width: 250px;"><%= r.offer_date%>  <%= r.start_time.strftime('%H:%M') %> - <%= r.finish_time.strftime('%H:%M') %></th>
+      <th style="width: 300px;"><%= r.offer_date%>  <%= r.start_time.strftime('%H:%M') %> - <%= r.finish_time.strftime('%H:%M') %></th>
       <th style="width: 100px;"><%= r.user.prefecture %></th>
       <th  style="width: 100px;">
           <% if r.status == 0 && r.walker_recruits.find_by(walker_id: @walker.id).present? %>

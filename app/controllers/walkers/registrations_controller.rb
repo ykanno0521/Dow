@@ -45,7 +45,7 @@ class Walkers::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  protected
+  #protected
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
@@ -67,11 +67,12 @@ class Walkers::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-def unsubscribe
-end
+  def unsubscribe
+    @walker = current_walker
+  end
 
-def complete
-end
+  def complete
+  end
 
 
 end

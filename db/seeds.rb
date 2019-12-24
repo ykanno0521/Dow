@@ -293,13 +293,13 @@ Recruit.create!(
   [
     {
       user_id: "1",
-      walker_id: "",
+      walker_id: "1",
       partner_id: "1",
-      offer_date: "2019/10/10",
+      offer_date: "2020/10/10",
       start_time: "10:00",
       finish_time: "11:00",
       text: "ああああ",
-      status: "0",
+      status: "1",
       apply_num: "0",
       delete_flag: "0"
     },
@@ -563,7 +563,12 @@ WalkerRecruit.create!(
       walker_id: "5",
       recruit_id: "7",
       flag: "0",
-    }
+    },
+    {
+      walker_id: "2",
+      recruit_id: "1",
+      flag: "0",
+    },
   ]
 )
 
