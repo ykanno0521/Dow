@@ -1,32 +1,25 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-12">
-<h2>応募一覧</h2>
-
-<% @recruit.walker_recruits.each do |walker_recruit| %>
-<div class="section clearfix" style="width: 100%; height: 250px; border: solid;">
-  <div style="width: 200px; text-align: center; float: left;">
-    <div><%= attachment_image_tag walker_recruit.walker, :image, :fill, 150, 150, fallback: "no_image.jpg", size:'150x150' %></div>
-  </div>
-  <div style="width: 600px; float: left; height: 150px;">
-    <p>名前<%=walker_recruit.walker.nickname %></p>
-    <p>満足度平均<%#=walker_recruit.walker.nickname</p> %>
-    <p>紹介文</p>
-    <%= link_to "詳細ページ", walker_path(walker_recruit.walker.id) %>
-    <% if @recruit.status == 0 %>
-      <%= link_to "チャットする", room_path(walker_recruit.get_room_id)%>
-    <% else %>
-      
-    <% end %>
-  </div>
-      <% if @recruit.status == 0 %>
-      <%= button_to("確定", users_confirm_path(walker_recruit.id),method: :patch) %>
-    <% else %>
-    <% end %>
-</div>
-<% end %>
-
-
+    <div class="col-md-8 col-md-offset-2">
+      <div class="page-title">Applicant</div>
+      <% @recruit.walker_recruits.each do |walker_recruit| %>
+        <div class="section clearfix" style="width: 100%; height: 180px; border: solid; position: relative;">
+          <div style="width: 200px; text-align: center; float: left;">
+            <div><%= attachment_image_tag walker_recruit.walker, :image, :fill, 150, 150, fallback: "no_image.jpg", size:'150x150' %></div>
+          </div>
+          <div style="float: left; height: 150px;">
+            <p style="margin-bottom: 0;">名前</p>
+            <p><%=walker_recruit.walker.nickname %></p>
+            <p style="margin-bottom: 0;">紹介文</p>
+            <%= walker_recruit.walker.introduction %>
+            <div style="margin-top: 30px;">
+              <%= link_to "詳細ページ", walker_path(walker_recruit.walker.id), style: "display: inline-block" %>
+              <%= link_to "チャットする", room_path(walker_recruit.get_room_id), style: "display: inline-block"%>
+            </div>
+          </div>
+            <%= button_to "確定", users_confirm_path(walker_recruit.id),method: :patch, class:"btn-flat-border" if @recruit.status == 0 %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

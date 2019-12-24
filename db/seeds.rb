@@ -343,7 +343,7 @@ Recruit.create!(
       user_id: "2",
       walker_id: "",
       partner_id: "1",
-      offer_date: "2019/10/10",
+      offer_date: "2020/10/10",
       start_time: "10:00",
       finish_time: "11:00",
       text: "いいいい",
@@ -355,11 +355,11 @@ Recruit.create!(
       user_id: "1",
       walker_id: "1",
       partner_id: "1",
-      offer_date: "2019/10/11",
+      offer_date: "2020/10/11",
       start_time: "10:00",
       finish_time: "11:00",
       text: "うううう",
-      status: "1",
+      status: "0",
       apply_num: "1",
       delete_flag: "0"
     },
@@ -377,7 +377,7 @@ Recruit.create!(
     },
     {
       user_id: "3",
-      walker_id: "5",
+      walker_id: "1",
       partner_id: "1",
       offer_date: "2019/10/10",
       start_time: "10:00",
@@ -542,6 +542,26 @@ WalkerRecruit.create!(
     {
       walker_id: "3",
       recruit_id: "4",
+      flag: "0",
+    },
+    {
+      walker_id: "3",
+      recruit_id: "6",
+      flag: "0",
+    },
+    {
+      walker_id: "4",
+      recruit_id: "6",
+      flag: "0",
+    },
+    {
+      walker_id: "4",
+      recruit_id: "7",
+      flag: "0",
+    },
+    {
+      walker_id: "5",
+      recruit_id: "7",
       flag: "0",
     }
   ]

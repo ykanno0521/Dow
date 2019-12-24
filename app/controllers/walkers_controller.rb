@@ -24,11 +24,11 @@ class WalkersController < ApplicationController
     @recruits = Recruit.where(walker_id: @walker.id)
     @reviews = []
     @recruits.each do |r|
-      @reviews << r.review
+      @reviews << r.review if r.review.present?
     end
     @satisfaction = []
     @recruits.each do |r|
-      @satisfaction << r.review.satisfaction
+      @satisfaction << r.review.satisfaction if r.review.present?
     end
     if @satisfaction.present?
       @satisfaction.sum # 合計

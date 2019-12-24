@@ -1,7 +1,7 @@
 class Users::UsersController < ApplicationController
   def show
     @user = current_user
-    @recruits = Recruit.where(user_id: @user.id)
+    @recruits = Recruit.where(user_id: @user.id).order(offer_date: :desc)
   end
 
   def change

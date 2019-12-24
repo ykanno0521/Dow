@@ -14,7 +14,8 @@
             <%= m.hidden_field :user_id, :value => '' %>
             <%= m.hidden_field :walker_id, :value => @walker.id %>
           <% end %>
-          <%= m.submit "投稿する", :style => "background-color: orange; margin: 10px"%>
+          <%= m.submit "投稿する", :style => "background-color: orange; margin: 10px"%><br>
+          <%= link_to "message listへ戻る", rooms_path, style: ""%>
         <% end %>
       </div>
 

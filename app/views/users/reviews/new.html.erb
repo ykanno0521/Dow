@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <h1>レビュー投稿ページ</h1>
+      <div class="page-title">Review create</div>
       <div class="walker-info" style="text-align: center;" >
         <div class="image clearfix" style="width: 150px; margin: 0 auto;">
           <%= attachment_image_tag @walker, :image, :fill, 150, 150, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg", size:'150x150' %>
         </div>
         <h5><%= @walker.nickname %></h5>
       </div>
-      <div class="review-input" style="margin-top: 200px;">
+      <div class="review-input" style="margin-top: 50px;">
         <!-- 口コミ入力フォーム -->
         <%= form_for(@review, url: users_recruit_reviews_path) do |f| %>
           <!--エラーメッセージ-->

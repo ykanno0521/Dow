@@ -1,3 +1,16 @@
 // Place all the styles related to the users/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.table-mypage {
+  width: 100%;
+}
+.table-mypage th {
+  text-align: center;
+  white-space: nowrap;
+  width: auto;
+}
+
+.recruit-section{
+  margin-top: 10px;
+}

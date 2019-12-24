@@ -3,6 +3,9 @@
     <div class="col-md-8 col-md-offset-2">
     <div class="page-title">お問い合わせ</div>
     <div class="contact-form" style="text-align: center;">
+    <% if flash[:alert] %>
+      <p><%= flash[:alert] %></p>
+    <% end %>
       <%= form_for(@contact) do |f| %>
 
       <div style="margin-bottom: 30px;">

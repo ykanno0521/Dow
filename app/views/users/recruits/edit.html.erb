@@ -1,53 +1,53 @@
-    <h5 style="border: 3px solid #ff9933;">投稿編集ページ</h5>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+    <div class="page-title">Recruit edit</div>
+    <div class="maru-box" style="margin: 0 auto; width: 500px;" >
+      <div class="recruit-section">
+        <div class="content">
+        <%= form_for(@recruit, url: users_recruit_path) do |r| %>
+          利用日<br>
+          <%= r.date_select :offer_date,{
+            prompt: {year: "year", month: "month", day: "day"},
+            use_month_numbers: true,
+            start_year: @now.year
+          } %>
+        </div>
+      </div>
 
-<div class="section">
-  <div class="content">
-  <%= form_for(@recruit, url: users_recruit_path) do |r| %>
-    利用日<br>
-    <%= r.date_select :offer_date,{
-      prompt: {year: "year", month: "month", day: "day"},
-      use_month_numbers: true,
-      start_year: @now.year
-    } %>
-  </div>
+      <div class="recruit-section">
+        <div class="content">
+          時間指定<br>
+          <%= r.time_select :start_time, {:minute_step => 30} %>-<%= r.time_select :finish_time, {:minute_step => 30} %>
+        </div>
+      </div>
+
+      <div class="recruit-section">
+        <div class="content">
+          場所<br>
+          <%= @user.prefecture %>
+        </div>
+      </div>
+
+      <div class="recruit-section">
+        <div class="content">
+          備考<br>
+          <%= r.text_area :text , :size => "60x5"%>
+        </div>
+      </div>
+
+      <div class="recruit-section">
+        <div class="content">
+          パートナー<br>
+          <% @partners.each do |p|%>
+            <%= r.radio_button :partner_id, p.id %>
+            <%= r.label :partner_id, p.name, {value: p.id, style: "display: inline-block;"} %>
+          <% end %>
+        </div>
+      </div>
+      <%= r.submit '更新' %>
+      <% end %>
+    </div>
 </div>
-
-<div class="section">
-  <div class="content">
-    時間指定<br>
-    <%= r.time_select :start_time, {:minute_step => 30} %>-<%= r.time_select :finish_time, {:minute_step => 30} %>
-  </div>
 </div>
-
-<div class="section">
-  <div class="content">
-    場所<br>
-    <%= @user.prefecture %>
-  </div>
 </div>
-
-<div class="section">
-  <div class="content">
-    備考<br>
-    <%= r.text_area :text %>
-  </div>
-</div>
-
-<div class="section">
-  <div class="content">
-    パートナー<br>
-    <% @partners.each do |p|%>
-      <%= r.radio_button :partner_id, p.id %>
-      <%= r.label :partner_id, p.name, {value: p.id, style: "display: inline-block;"} %>
-    <% end %>
-  </div>
-</div>
-   <!-- <tr>
-    <th>Walker</th>
-    <th><%#= r.select :walker_id, options_for_select(@walkers.map{|w| [w.last_name + w.first_name, w.id] }) %></%#=>
-    binding.
-    </tr>
-   -->
-
-<%= r.submit '更新' %>
-<% end %>

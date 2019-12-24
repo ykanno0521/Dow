@@ -21,3 +21,21 @@
   border-color: #cbe585;
   color: #FFF;
 }
+
+.btn-flat-border {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: green;
+  border: solid 2px green;
+  border-radius: 3px;
+  transition: .4s;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.btn-flat-border:hover {
+  background: green;
+  color: white;
+}

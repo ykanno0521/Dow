@@ -12,7 +12,8 @@ class Users::RecruitsController < ApplicationController
     @recruit = Recruit.new(recruits_params)
     @recruit.user_id = current_user.id
     if @recruit.save!
-      redirect_to root_path
+      flash[:success] = '募集を投稿できました!!'
+      redirect_to users_user_path(current_user.id)
     else
       render 'new'
     end
@@ -43,7 +44,8 @@ class Users::RecruitsController < ApplicationController
   def update
     recruit = Recruit.find(params[:id])
     recruit.update(recruits_params)
-    redirect_to users_maypage_path(recruit)
+    binding.pry
+    redirect_to users_user_path(recruit)
   end
 
   def destroy
