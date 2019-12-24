@@ -18,7 +18,7 @@
           <tbody>
             <% @contacts.each.with_index(1) do |c, i| %>
             <tr>
-              <td><%= link_to i, edit_admins_contact_path(c.id) %></td>
+              <td><%= i %></td>
               <% if c.user_id.present? %>
                 <td><%= c.user.last_name + " " + c.user.first_name %></td>
               <% else %>
@@ -28,9 +28,9 @@
               <td><%= c.created_at.strftime("%Y/%m/%d %H:%M")%></td>
               <td>
                 <% if c.reply.present? %>
-                  <div style="">返信済み</div>
+                  <p>返信済み</p>
                 <% else %>
-                  <div style="color: red;">未返信</div>
+                  <%= link_to "未返信" , edit_admins_contact_path(c.id),  style: "color: red;" %>
                 <% end %>
               </td>
             </tr>

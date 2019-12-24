@@ -2,21 +2,22 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="page-title">contact reply</div>
-    
-    <%= form_for(@contact, url:"/admins/contacts/#{@contact.id}") do |f| %>
-    <h4>タイトル</h4>
-    <div style="border: solid 0.5px; width: 200px; margin-bottom: 30px;">
-    <%= @contact.title %>
-    </div>
-    <h4>本文</h4>
-    <div style="border: solid 0.5px; width: 600px; height: 100px; margin-bottom: 30px;">
-    <%= @contact.content%>
-    </div>
-    <h4>返信本文</h4>
-    <%= f.text_area :reply , style:"width: 600px; height: 100px; margin-bottom: 30px;"%><br>
-    <div style="text-align: center;">
-    <%= f.submit '送信', style:""  %>
-<% end %>
+      <div class="maru-box">
+      <%= form_for(@contact, url:"/admins/contacts/#{@contact.id}") do |f| %>
+        <h4>タイトル</h4>
+        <div style="border: solid 0.5px; width: 200px; margin-bottom: 30px;">
+        <%= @contact.title %>
+        </div>
+        <h4>本文</h4>
+        <div style="border: solid 0.5px; width: 600px; height: 100px; margin-bottom: 30px;">
+        <%= @contact.content%>
+        </div>
+        <h4>返信本文</h4>
+        <%= f.text_area :reply , style:"width: 600px; height: 100px; margin-bottom: 30px;"%><br>
+        <div style="text-align: center;">
+        <%= f.submit '送信', style:""  %>
+      <% end %>
+      </div>
     </div>
   </div>
 </div>
