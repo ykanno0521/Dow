@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2019_12_23_053326) do
     t.integer "delete_flag", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "weak"
   end
 
   create_table "recruits", force: :cascade do |t|
