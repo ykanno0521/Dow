@@ -14,6 +14,7 @@
       });
     });
   </script> %>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -46,7 +47,7 @@
               <%= link_to  "Mypage", users_user_path(current_user), :style=>"color: black;"  %>
             </li>
             <li class="menu">
-              <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"glyphicon glyphicon-log-out logout", :style=>"color: black;"  %>
+              <%= link_to "Logout", destroy_user_session_path, method: :delete, :style=>"color: black;"  %>
             </li>
           <!-- Walkerログイン時 -->
           <% elsif walker_signed_in? %>
@@ -69,7 +70,7 @@
               <%= link_to  "Mypage", walkers_walker_path(current_walker), :style=>"color: black;"  %>
             </li>
             <li class="menu">
-              <%= link_to "Log out", destroy_walker_session_path, method: :delete, class:"glyphicon glyphicon-log-out logout", :style=>"color: black;"  %>
+              <%= link_to "Logout", destroy_walker_session_path, method: :delete, :style=>"color: black;"  %>
             </li>
           <!-- 管理者ログイン時 -->
           <% elsif admin_signed_in? %>
@@ -85,14 +86,11 @@
             <li class="menu">
               <%= link_to  "Walker list", walkers_path, :style=>"color: black;"  %>
             </li>
-            <%# <li class="menu"> %>
-              <%#= link_to  "Message", :style=>"color: black;"  %>
-            <%# </li> %>
             <li class="menu">
               <%= link_to  "Contact", admins_contacts_path, :style=>"color: black;"  %>
             </li>
             <li class="menu">
-              <%= link_to "Logout", destroy_admin_session_path, method: :delete, class:"glyphicon glyphicon-log-out logout", :style=>"color: black;"  %>
+              <%= link_to "Logout", destroy_admin_session_path, method: :delete, :style=>"color: black;"  %>
             </li>
           <!-- 未ログイン時 -->
           <% else %>
@@ -193,7 +191,7 @@
         // $('.js-modal').fadeOut();
         // return false;
       });
-      $('.js-modal-close').on('click',function(){  //閉じる
+      $('.js-modal2-close').on('click',function(){  //閉じる
         $('.js-modal2').fadeOut();
         return false;
       });

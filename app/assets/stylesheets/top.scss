@@ -5,6 +5,60 @@
 .main-visual {
   width: 100%;
   height: 1000px;
-  background-image: url("/images/man-3245032_1920.jpg");
+  background-image: url("/images/david-oakill-6eqWzrGropk-unsplash.jpg");
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: right bottom
 }
+
+.about1{
+  width: 600px;
+  height: 500px;
+  background-image: url("/images/background-4596692_1920.jpg");
+  background-size: cover;
+  // background-position: 0% 0%;
+  background-repeat: no-repeat;
+  // background-attachment: fixed;
+  // background-position: right bottom;
+  // position: relative;/*相対配置*/
+  background-size: 500px 400px;
+  margin-top: 50px;
+  margin-left: 150px;
+  float: left;
+}
+
+.about2{
+  width: 600px;
+  height: 500px;
+  background-image: url("/images/clem-onojeghuo-TApgGxOVbJE-unsplash.jpg");
+  background-size: cover;
+  // background-position: center;
+  position: relative;/*相対配置*/
+  background-repeat: no-repeat;
+  background-size: 500px 400px;
+  // margin-top: 300px;
+  float: right;
+
+}
+
+.about3{
+  width: 600px;
+  height: 500px;
+  background-image: url("/images/little-dogs-3430120_1920.jpg");
+  background-size: cover;
+  // background-position: 0% 0%;
+  background-repeat: no-repeat;
+  // background-attachment: fixed;
+  // background-position: right bottom;
+  position: relative;/*相対配置*/
+  background-size: 500px 400px;
+  // margin-top: 300px;
+  float: left;
+  margin-left: 150px;
+}
+
+
+
+
