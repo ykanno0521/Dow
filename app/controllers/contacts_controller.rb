@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-  before_action :authenticate_user_walker
+  #before_action :authenticate_user_walker
 
   def new
     @contact = Contact.new
