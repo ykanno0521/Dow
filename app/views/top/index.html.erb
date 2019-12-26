@@ -3,6 +3,9 @@
   <!-- トップページ画像 -->
   <div class="main-visual">
     <div class="main-visual-content">
+      <% if flash[:success] %>
+        <p style="color: green;"><%= flash[:success] %></p>
+      <% end %>
     </div>
   </div>
 
