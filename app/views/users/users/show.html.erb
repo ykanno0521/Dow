@@ -19,7 +19,6 @@
           <th><%= r.offer_date %></th>
           <th><%= r.start_time.strftime('%H:%M') %> - <%= r.finish_time.strftime('%H:%M') %></th>
           <th><%= @user.prefecture %></th>
-                    <% binding.pry %>
           <th>
             <% if r.status == 0 %>
               <p>募集中</p>
