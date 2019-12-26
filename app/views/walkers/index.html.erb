@@ -4,7 +4,7 @@
       <div class="page-title">Walker List</div>
       
         <% @walkers.each do |w| %>
-          <div class="walker-content" style="border: solid gray; padding: 10px 10px;margin: 20px; display: inline-block; width: 180px; text-align: center; float: left;">
+          <div class="walker-content fly" style="border: solid gray; padding: 10px 10px;margin: 20px; display: inline-block; width: 180px; text-align: center; float: left;">
             <div class="partner-image" style="width:150px; display: inline-block;">
               <%= attachment_image_tag @walker, :image_id, :fill, 150, 150, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg",  size: '150x150' %>
               <div style="text-align: center;">

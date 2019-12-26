@@ -7,12 +7,12 @@
         <div class="message-clearfix">
           <ul>
             <% if r.message_last.present?%>
-             <li style="text-align: center; background-color: orange;">利用日：<%=  r.recruit.offer_date %>  <%= r.recruit.start_time.strftime("%H:%M") %>
+             <li style="text-align: center; background-color: lightgray;">利用日：<%=  r.recruit.offer_date %>  <%= r.recruit.start_time.strftime("%H:%M") %>
               <li><%=  r.walker.nickname %></li>
               <li class="message"><%= link_to r.message_last.content.truncate(30), room_path(r.id)  %></li>
               <li style="text-align: right;"><%= r.message_last.created_at.strftime('%Y/%m/%d %H:%M') %></li>
             <% else %>
-             <li style="text-align: center; background-color: orange;">利用日：<%=  r.recruit.offer_date %>  <%= r.recruit.start_time.strftime("%H:%M") %></li>
+             <li style="text-align: center; background-color: lightgray;">利用日：<%=  r.recruit.offer_date %>  <%= r.recruit.start_time.strftime("%H:%M") %></li>
               <li><%= r.walker.nickname %></li>
               <li class="message"><%= link_to "メッセージがまだありません。", room_path(r.id) %></li>
             <% end %>
@@ -25,12 +25,12 @@
         <ul>
           <% pp r.message_last %>
           <% if r.message_last.present? %>
-            <li style="text-align: center; background-color: orange;">利用日：<%=  r.recruit.offer_date %>  <%= r.recruit.start_time.strftime("%H:%M") %></li>
+            <li style="text-align: center; background-color: lightgray;">利用日：<%=  r.recruit.offer_date %>  <%= r.recruit.start_time.strftime("%H:%M") %></li>
             <li><%=  r.recruit.user.nickname %></li>
             <li><%= link_to r.message_last.content.truncate(30), room_path(r.id) %></li>
             <li style="text-align: right;"><%= r.message_last.created_at.strftime('%Y/%m/%d %H:%M') %></li>
           <% else %>
-            <li style="text-align: center; background-color: orange;">利用日：<%=  r.recruit.offer_date %>  <%= r.recruit.start_time.strftime("%H:%M") %></li>
+            <li style="text-align: center; background-color: lightgray;">利用日：<%=  r.recruit.offer_date %>  <%= r.recruit.start_time.strftime("%H:%M") %></li>
             <li><%=  r.recruit.user.nickname %></li>
             <%= link_to "メッセージがまだありません。", room_path(r.id) %>
           <% end %>

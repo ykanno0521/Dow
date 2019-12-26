@@ -65,12 +65,10 @@
         <%= form_for(@room, url:'/rooms') do |r| %>
           <%= r.hidden_field :walker_id, :value=> current_walker.id %>
           <%= r.hidden_field :recruit_id, :value=> @recruit.id %>
-          <%= r.submit "チャットを始める", :style => "background: lightgreen" %>
+          <%= r.submit "チャットを始める", :style => "font-size: 20px;" %>
         <% end %>
       <% end %>
     </div>
     </div>
   </div>
 </div>
-
-    

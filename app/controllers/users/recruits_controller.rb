@@ -44,7 +44,6 @@ class Users::RecruitsController < ApplicationController
   def update
     recruit = Recruit.find(params[:id])
     recruit.update(recruits_params)
-    binding.pry
     redirect_to users_user_path(recruit)
   end
 
