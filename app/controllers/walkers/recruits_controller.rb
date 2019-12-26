@@ -19,7 +19,7 @@ class Walkers::RecruitsController < ApplicationController
     @recruit = Recruit.find(params[:id])
     @recruit_swich = @recruit.walker_recruits.find_by(walker_id: current_walker.id)
     if @recruit_switch.present?
-      @recruit_switch.destory
+      @recruit_switcAh.destory
     elsif
       @recruit_switch.create(switch_params)
     end
