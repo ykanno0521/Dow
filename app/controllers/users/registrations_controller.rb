@@ -22,6 +22,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/edit
   def edit
     @prefecture = Prefectures
+    @user = current_user
     super
   end
 
