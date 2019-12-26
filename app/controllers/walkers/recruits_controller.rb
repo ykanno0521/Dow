@@ -29,6 +29,7 @@ class Walkers::RecruitsController < ApplicationController
     @recruit = Recruit.find(params[:recruit_id])
     walker = Walker.find(params[:walker_id])
     WalkerRecruit.create(recruit_id: @recruit.id, walker_id: walker.id)
+    @recruit.update(apply_num:  @recruit.apply_num + 1 )
     @room = Room.new
     @walker_recruit = @recruit.walker_recruits.find_by(walker_id: current_walker.id)
     render 'show'
@@ -37,6 +38,7 @@ class Walkers::RecruitsController < ApplicationController
   def destroy
     walker_recruit = WalkerRecruit.find(params[:id])
     @recruit = walker_recruit.recruit
+    @recruit.update(apply_num:  @recruit.apply_num - 1 )
     walker_recruit.destroy
     @room = Room.new
     @walker_recruit = @recruit.walker_recruits.find_by(walker_id: current_walker.id)
