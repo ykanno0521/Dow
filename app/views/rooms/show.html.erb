@@ -14,7 +14,7 @@
             <%= m.hidden_field :user_id, :value => '' %>
             <%= m.hidden_field :walker_id, :value => @walker.id %>
           <% end %>
-          <%= m.submit "投稿する", :style => "background-color: orange; margin: 10px"%><br>
+          <%= m.submit "投稿する", :style => "background-color: lightgray; margin: 10px"%><br>
           <%= link_to "message listへ戻る", rooms_path, style: ""%>
         <% end %>
       </div>
@@ -59,7 +59,7 @@
           <% end %>
         <hr>
       <% else %>
-        <h3 class="text-center">メッセージはまだありません</h3>
+        <h3 class="text-center">メッセージがまだありません</h3>
       <% end %>
     </div>
   </div>
