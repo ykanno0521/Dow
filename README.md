@@ -1,25 +1,39 @@
-# README
+# サイト名（Dow）
+ 
+# アプリケーション概要
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ "Dow"ではわんちゃんのお散歩をお願いしたい人(user)と代わりにお散歩にいってくれる人(walker)をつなげる
+ 犬専用のお散歩大高マッチングサイト です。
+ 
+# アプリケーションの機能一覧
+ 
+  認証機能
+  依頼機能
+  募集機能
+  応募機能
+  登録情報編集機能
+  登録情報削除機能
+  レビュー機能
+  
+# 技術一覧
+ 
+  ◆サーバサイド
+  ・言語：Ruby
+  ・フレームワーク：Ruby On Rails
+  ・Gem：devise,ransack,ratyrate,active_hash,refile,miniMagick,pry,rails4-autocomplete
 
-Things you may want to cover:
+  ◆フロントエンド
+  ・CSSフレームワーク：BootStrap
+  ・JavaScriptライブラリ：JQuery
 
-* Ruby version
+  ◆本番サーバ環境
+  ・AWS
 
-* System dependencies
+  ◆データベース
+  ・sqlite3
 
-* Configuration
+  ◆WEBサーバ
+   Nginx
 
-* Database creation
 
-* Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# Dow
