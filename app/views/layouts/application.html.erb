@@ -5,22 +5,11 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%# <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script>
-    $(function(){
-      $("ul.header-menu a").click(function(){
-        $("ul.header-menu a.selected").removeClass("selected");
-        $(this).addClass("selected");
-      });
-    });
-  </script> %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-    <header id="header">
-      <%#= link_to "Dow!", root_path, style:"font-size: 50px; width: 100px;" %>
-      <h1 style="font-size: 50px; width: 90px; float:left;">Dow!</h1>
+    <header id="header" style="background-color: black;">
+      <h1 style="font-size: 50px; width: 90px; float:left; color: white;" >Dow!</h1>
         <% if flash[:success] %>
           <p style="color: green;"><%= flash[:success] %></p>
         <% end %>
@@ -29,82 +18,82 @@
           <!-- ユーザログイン時 -->
           <% if user_signed_in? %>
             <li class="menu">
-              <%= link_to "Home", root_path, :style=>"color: black;" %>
+              <%= link_to "Home", root_path, :style=>"color: white;" %>
             </li>
             <li class="menu">
-              <%= link_to "About", about_path, :style=>"color: black;" %>
+              <%= link_to "About", about_path, :style=>"color: white;" %>
             </li>
             <li class="menu">
-              <%= link_to  "Walker", walkers_path, :style=>"color: black;"  %>
+              <%= link_to  "Walker", walkers_path, :style=>"color: white;"  %>
             </li>
             <li class="menu">
-              <%= link_to  "Recruit", new_users_recruit_path, :style=>"color: black;"  %>
+              <%= link_to  "Recruit", new_users_recruit_path, :style=>"color: white;"  %>
             </li>
             <li class="menu">
-              <%= link_to  "Message", rooms_path, :style=>"color: black;"  %>
+              <%= link_to  "Message", rooms_path, :style=>"color: white;"  %>
             </li>
             <li class="menu">
-              <%= link_to  "Mypage", users_user_path(current_user), :style=>"color: black;"  %>
+              <%= link_to  "Mypage", users_user_path(current_user), :style=>"color: white;"  %>
             </li>
             <li class="menu">
-              <%= link_to "Logout", destroy_user_session_path, method: :delete, :style=>"color: black;"  %>
+              <%= link_to "Logout", destroy_user_session_path, method: :delete, :style=>"color: white;"  %>
             </li>
           <!-- Walkerログイン時 -->
           <% elsif walker_signed_in? %>
             <li class="menu">
-              <%= link_to "Home", root_path, :style=>"color: black;" %>
+              <%= link_to "Home", root_path, :style=>"color: white;" %>
             </li>
             <li class="menu">
-              <%= link_to "About", about_path, :style=>"color: black;" %>
+              <%= link_to "About", about_path, :style=>"color: white;" %>
             </li>
             <li class="menu">
-              <%= link_to  "Walker", walkers_path, :style=>"color: black;"  %>
+              <%= link_to  "Walker", walkers_path, :style=>"color: white;"  %>
             </li>
             <li class="menu">
-              <%= link_to  "Recruit", walkers_recruits_index_path, :style=>"color: black;"  %>
+              <%= link_to  "Recruit", walkers_recruits_index_path, :style=>"color: white;"  %>
             </li>
             <li class="menu">
-              <%= link_to  "Message", rooms_path, :style=>"color: black;"  %>
+              <%= link_to  "Message", rooms_path, :style=>"color: white;"  %>
             </li>
             <li class="menu">
-              <%= link_to  "Mypage", walkers_walker_path(current_walker), :style=>"color: black;"  %>
+              <%= link_to  "Mypage", walkers_walker_path(current_walker), :style=>"color: white;"  %>
             </li>
             <li class="menu">
-              <%= link_to "Logout", destroy_walker_session_path, method: :delete, :style=>"color: black;"  %>
+              <%= link_to "Logout", destroy_walker_session_path, method: :delete, :style=>"color: white;"  %>
             </li>
           <!-- 管理者ログイン時 -->
           <% elsif admin_signed_in? %>
             <li class="menu">
-              <%= link_to "Home", root_path, :style=>"color: black;" %>
+              <%= link_to "Home", root_path, :style=>"color: white;" %>
             </li>
             <li class="menu">
-              <%= link_to "Recruit list", admins_recruits_path, :style=>"color: black;" %>
+              <%= link_to "Recruit list", admins_recruits_path, :style=>"color: white;" %>
             </li>
             <li class="menu">
-              <%= link_to  "User list", admins_users_path, :style=>"color: black;"  %>
+              <%= link_to  "User list", admins_users_path, :style=>"color: white;"  %>
             </li>
             <li class="menu">
-              <%= link_to  "Walker list", walkers_path, :style=>"color: black;"  %>
+              <%= link_to  "Walker list", walkers_path, :style=>"color: white;"  %>
             </li>
             <li class="menu">
-              <%= link_to  "Contact", admins_contacts_path, :style=>"color: black;"  %>
+              <%= link_to  "Contact", admins_contacts_path, :style=>"color: white;"  %>
             </li>
             <li class="menu">
-              <%= link_to "Logout", destroy_admin_session_path, method: :delete, :style=>"color: black;"  %>
+              <%= link_to "Logout", destroy_admin_session_path, method: :delete, :style=>"color: white;"  %>
             </li>
           <!-- 未ログイン時 -->
           <% else %>
             <li class="menu">
-              <%= link_to "Home", root_path, :style=>"color: black;" %>
+              <%= link_to "Home", root_path, :style=>"color: white;" %>
             </li>
             <li class="menu">
-              <a href="#about" style="color: black">About</a>
+              <a href="#about" style="color: white">About</a>
             </li>
             <li class="menu">
-              <%= link_to  "Walker list", walkers_path, :style=>"color: black;"  %>
+              <%= link_to  "Walker list", walkers_path, :style=>"color: white;"  %>
             </li>
             <li class="menu">
-              <%= link_to  "Sign up", '' , class: "js-modal-open", style: "color: black;" %>
+              <%= link_to  "Sign up", '' , class: "js-modal-open", style: "color: white;" %>
               <!-- user or walker を選択させるモーダルを表示 -->
               <div class="modal js-modal">
                 <div class="modal__bg js-modal-close"></div>
@@ -132,14 +121,15 @@
           </ul>
       </div>
     </header>
+
     <%= yield %>
     <div class="footer">
       <div id="button"></div>
       <div id="container">
         <div id="cont">
-          <div class="footer_center">
-            <h3><%= link_to "Contact", new_contact_path ,style: "color: white; "%></h3>
-            <%%>
+          <div class="footer_center" style="text-align: center;">
+            <h3><%= link_to "Contact", new_contact_path ,style: "color: white; " if user_signed_in? || walker_signed_in? %></h3>
+            <div style="color: white;">Copyright © 2020      All Rights Reserved.</div>
           </div>
         </div>
       </div>
