@@ -73,6 +73,7 @@ gem 'rails-i18n', '~> 5.1'
 gem 'pry-byebug'
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
+gem 'rspec-rails', '~> 3.7'
 
 group :production do
   gem 'mysql2'
