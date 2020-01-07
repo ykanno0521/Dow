@@ -23,5 +23,11 @@ class ApplicationController < ActionController::Base
   
   
   Gender = ["オス", "メス"]
+
+  private
+  def login_required
+    redirect_to root_path, notice:'ログインしてください' unless current_user 
+  end
+  
 end
 

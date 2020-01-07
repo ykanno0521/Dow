@@ -1,5 +1,7 @@
 class Users::RecruitsController < ApplicationController
 
+  before_action :authenticate_user!
+  
   def new
     @recruit = Recruit.new
     @user = current_user

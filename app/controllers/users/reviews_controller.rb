@@ -1,5 +1,7 @@
 class Users::ReviewsController < ApplicationController
 
+  before_action :authenticate_user!
+  
   def new
     @review = Review.new
     @recruit = Recruit.find(params[:recruit_id])
