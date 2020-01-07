@@ -1,6 +1,9 @@
 class WalkersController < ApplicationController
+
   def index
-    @walkers = Walker.all.page(params[:page]).per(8)
+    @q = Walker.all.ransack(params[:q])
+    @walkers = @q.result(distinct: true).page(params[:page]).per(8)
+    # @walkers = Walker.all.page(params[:page]).per(8)
     # @recruits = []
     # @walkers.each do |w|
     #   # @recruits = Recruit.where(walker_id: w.id)
