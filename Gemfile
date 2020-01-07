@@ -74,6 +74,7 @@ gem 'pry-byebug'
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
 gem 'rspec-rails', '~> 3.7'
+gem 'factory_bot_rails', '~>4.11'
 
 group :production do
   gem 'mysql2'
