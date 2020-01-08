@@ -44,6 +44,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   # gem 'factory_bot_rails', '~>4.11'
   # gem 'chromedriver-helper'
+
 end
 
 group :development do
@@ -78,7 +79,11 @@ gem 'rails-i18n', '~> 5.1'
 gem 'pry-byebug'
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
-
+gem 'pry-rails'
+gem 'hirb'
+gem 'hirb-unicode'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 
 
 group :production do
