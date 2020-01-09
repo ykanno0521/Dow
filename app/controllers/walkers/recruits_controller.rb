@@ -5,7 +5,7 @@ class Walkers::RecruitsController < ApplicationController
   before_action :authenticate_walker!
 
   def index
-    @recruits = Recruit.all
+    @recruits = Recruit.all.order(offer_date: "DESC")
     @walker = current_walker
   end
 

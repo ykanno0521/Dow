@@ -53,16 +53,17 @@
 
     <div style="width: 100%; text-align: center;">
       <% if @recruit.status_before_type_cast == 0 && @walker_recruit.present? %>
-        <%= link_to '応募済み',walkers_recruits_destroy_path(@walker_recruit), method: :delete, id:"status1", :style=>"font-size: 40px; color: white; background-color: red; text-align: center;" %>
+        <%= link_to '応募済み',walkers_recruits_destroy_path(@walker_recruit), method: :delete, id:"status1", :style=>"font-size: 40px; color: white; background-color: gray; text-align: center;" %>
         <%= form_for(@room, url:'/rooms') do |r| %>
           <%= r.hidden_field :walker_id, :value=> current_walker.id %>
           <%= r.hidden_field :recruit_id, :value=> @recruit.id %>
           <%= r.submit "チャットを始める", :style => "background: lightgreen" %>
         <% end %>
       <% elsif @recruit.status_before_type_cast == 0  %>
-        <%= link_to '募集中', walkers_recruits_path(recruit_id: @recruit.id, walker_id: current_walker.id), method: :post, id:"status2", :style=>"font-size: 40px; color: black;" %>
+        <%= link_to '応募する', walkers_recruits_path(recruit_id: @recruit.id, walker_id: current_walker.id), method: :post, id:"status2", :style=>"font-size: 40px; color: white; background-color: green;" %>
+      <% elsif @recruit.status_before_type_cast == 1 && @recruit.offer_date < Date.today %>
       <% else %>
-        <%= form_for(@room, url:'/rooms') do |r| %>
+          <%= form_for(@room, url:'/rooms') do |r| %>
           <%= r.hidden_field :walker_id, :value=> current_walker.id %>
           <%= r.hidden_field :recruit_id, :value=> @recruit.id %>
           <%= r.submit "チャットを始める", :style => "font-size: 20px;" %>
