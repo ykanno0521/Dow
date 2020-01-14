@@ -5,93 +5,99 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <script src="https://kit.fontawesome.com/c461501c96.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-    <header id="header" style="background-color: black;">
-      <h1 style="font-size: 50px; width: 90px; float:left; color: white;" >Dow!</h1>
-
-      <div class="type1" style="float: right;">
+    <header id="header">
+      <div class="site-name">Dow!</div>
+        <div class="type1">
         <ul class="header-menu" style="padding-top: 20px;">
           <!-- ユーザログイン時 -->
           <% if user_signed_in? %>
             <li class="menu">
-              <%= link_to "Home", root_path, :style=>"color: white;" %>
+              <%= link_to "トップページ", root_path %>
             </li>
             <li class="menu">
-              <%= link_to "About", about_path, :style=>"color: white;" %>
+              <%= link_to "Dow!について", about_path %>
             </li>
             <li class="menu">
-              <%= link_to  "Walker", walkers_path, :style=>"color: white;"  %>
+              <%= link_to  "Walker一覧", walkers_path %>
             </li>
             <li class="menu">
-              <%= link_to  "Recruit", new_users_recruit_path, :style=>"color: white;"  %>
+              <%= link_to  "募集する", new_users_recruit_path %>
             </li>
             <li class="menu">
-              <%= link_to  "Message", rooms_path, :style=>"color: white;"  %>
+              <%= link_to  "メッセージ一覧", rooms_path %>
             </li>
             <li class="menu">
-              <%= link_to  "Mypage", users_user_path(current_user), :style=>"color: white;"  %>
+              <%= link_to "問い合わせ", new_contact_path if user_signed_in? || walker_signed_in? %>
             </li>
-            <li class="menu">
-              <%= link_to "Logout", destroy_user_session_path, method: :delete, :style=>"color: white;"  %>
+            <li class="menu icon"><i class="fas fa-user"></i>
+              <ul class="dropdwn_menu" style="display: none;">
+                <li><%= link_to 'マイページ', users_user_path(current_user) %></li>
+                <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+              </ul>
             </li>
           <!-- Walkerログイン時 -->
           <% elsif walker_signed_in? %>
             <li class="menu">
-              <%= link_to "Home", root_path, :style=>"color: white;" %>
+              <%= link_to "トップページ", root_path %>
             </li>
             <li class="menu">
-              <%= link_to "About", about_path, :style=>"color: white;" %>
+              <%= link_to "Dow!について", about_path %>
             </li>
             <li class="menu">
-              <%= link_to  "Walker", walkers_path, :style=>"color: white;"  %>
+              <%= link_to  "Walker一覧", walkers_path  %>
             </li>
             <li class="menu">
-              <%= link_to  "Recruit", walkers_recruits_index_path, :style=>"color: white;"  %>
+              <%= link_to  "募集一覧", walkers_recruits_index_path  %>
             </li>
             <li class="menu">
-              <%= link_to  "Message", rooms_path, :style=>"color: white;"  %>
+              <%= link_to  "メッセージ一覧", rooms_path  %>
             </li>
             <li class="menu">
-              <%= link_to  "Mypage", walkers_walker_path(current_walker), :style=>"color: white;"  %>
+              <%= link_to "問い合わせ", new_contact_path if user_signed_in? || walker_signed_in? %>
             </li>
-            <li class="menu">
-              <%= link_to "Logout", destroy_walker_session_path, method: :delete, :style=>"color: white;"  %>
+            <li class="menu icon"><i class="fas fa-user"></i>
+              <ul class="dropdwn_menu" style="display: none;">
+                <li><%= link_to 'マイページ', walkers_walker_path(current_walker) %></li>
+                <li><%= link_to "ログアウト", destroy_walker_session_path, method: :delete %></li>
+              </ul>
             </li>
           <!-- 管理者ログイン時 -->
           <% elsif admin_signed_in? %>
             <li class="menu">
-              <%= link_to "Home", root_path, :style=>"color: white;" %>
+              <%= link_to "Home", root_path %>
             </li>
             <li class="menu">
-              <%= link_to "Recruit list", admins_recruits_path, :style=>"color: white;" %>
+              <%= link_to "Recruit list", admins_recruits_path %>
             </li>
             <li class="menu">
-              <%= link_to  "User list", admins_users_path, :style=>"color: white;"  %>
+              <%= link_to  "User list", admins_users_path  %>
             </li>
             <li class="menu">
-              <%= link_to  "Walker list", walkers_path, :style=>"color: white;"  %>
+              <%= link_to  "Walker list", walkers_path  %>
             </li>
             <li class="menu">
-              <%= link_to  "Contact", admins_contacts_path, :style=>"color: white;"  %>
+              <%= link_to  "Contact", admins_contacts_path %>
             </li>
             <li class="menu">
-              <%= link_to "Logout", destroy_admin_session_path, method: :delete, :style=>"color: white;"  %>
+              <%= link_to "Logout", destroy_admin_session_path, method: :delete  %>
             </li>
           <!-- 未ログイン時 -->
           <% else %>
             <li class="menu">
-              <%= link_to "Home", root_path, :style=>"color: white;" %>
+              <%= link_to "トップページ", root_path %>
             </li>
             <li class="menu">
-              <a href="#about" style="color: white">About</a>
+              <a href="#about">Dow!とは</a>
             </li>
             <li class="menu">
-              <%= link_to  "Walker list", walkers_path, :style=>"color: white;"  %>
+              <%= link_to  "Walker一覧", walkers_path  %>
             </li>
             <li class="menu">
-              <%= link_to  "Sign up", '' , class: "js-modal-open", style: "color: white;" %>
+              <%= link_to  "登録", '' , class: "js-modal-open" %>
               <!-- user or walker を選択させるモーダルを表示 -->
               <div class="modal js-modal">
                 <div class="modal__bg js-modal-close"></div>
@@ -104,12 +110,12 @@
               </div>
             </li>
             <li class="menu">
-              <%= link_to  "Log in", '', class: "js-modal-open2", style: "color: white;"  %>
+              <%= link_to  "ログイン", '', class: "js-modal-open2" %>
                 <div class="modal js-modal2">
                 <div class="modal__bg js-modal2-close"></div>
                 <div class="modal__content">
                   <p>どちらでログインするか選択してください。</p>
-                  <%= link_to "散歩を依頼したい方", new_user_session_path ,class: "js-modal-user-login", style: " "%><br>
+                  <%= link_to "散歩を依頼したい方", new_user_session_path ,class: "js-modal-user-login"%><br>
                   <%= link_to "Walkerの方" , new_walker_session_path , class: "js-modal-walker-login" %><br>
                   <div style="text-align: right"><a class="js-modal2-close" heref="">閉じる</a></div>
                 </div>
@@ -130,8 +136,7 @@
       <div id="container">
         <div id="cont">
           <div class="footer_center" style="text-align: center;">
-            <h3><%= link_to "Contact", new_contact_path ,style: "color: white; " if user_signed_in? || walker_signed_in? %></h3>
-            <div style="color: white;">Copyright © 2020      All Rights Reserved.</div>
+            <p>Copyright © 2020 All Rights Reserved.</p>
           </div>
         </div>
       </div>
@@ -190,4 +195,14 @@
     });
   </script>
 
+<script>
+//アカウントのダウンメニューを表示
+$(function(){
+    $('.header-menu li').hover(function(){
+        $("ul:not(:animated)", this).slideDown();
+    }, function(){
+        $("ul.dropdwn_menu",this).slideUp();
+    });
+});
+</script>
 </html>
