@@ -11,12 +11,20 @@ class Users::RecruitsController < ApplicationController
   end
 
   def create
+    @now = Time.current
     @recruit = Recruit.new(recruits_params)
     @recruit.user_id = current_user.id
-    if @recruit.save!
-      flash[:success] = '募集を投稿できました!!'
+    # @recruit.partner_id.valid?
+    # if @recruit.offer_date >=  Time.current && @recruit.start_time < @recruit.finish_time
+    if @recruit.save
+      flash[:notice] = '募集を投稿できました!!'
       redirect_to users_user_path(current_user.id)
     else
+      @user = current_user
+      prefecture = Prefectures
+      @recruit = Recruit.new(recruits_params)
+      @partners = Partner.where(user_id: @user)
+      # flash.now[:notice] = '日付または、時間に誤りがあります。'
       render 'new'
     end
   end
