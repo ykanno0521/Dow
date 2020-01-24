@@ -1,8 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <div class="page-title">Recruit</div>
+      <div class="page-title">募集投稿</div>
         <div class="maru-box" style="margin: 0 auto; width: 500px;">
+        <% if @recruit.errors.present? %>
+          <ul id="error_explanation">
+            <% @recruit.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
           <%= form_for(@recruit, url:users_recruits_path) do |r| %>
 
           <div class= "section">
@@ -12,7 +19,7 @@
                 prompt: {year: "year", month: "month", day: "day"},
                 use_month_numbers: true,
                 start_year: @now.year
-              } %>
+               } %>
             </div>
           </div>
 
@@ -33,7 +40,7 @@
           <div class="section">
             <div class="content" style="margin-bottom: 10px;">
               備考<br>
-              <p><%= r.text_area :text , :size => "60x5", value: "待ち合わせの詳細や注意事項などをご記入ください。" %></p>
+              <p><%= r.text_area :text, :size => "60x5", :placeholder => "待ち合わせの詳細や注意事項などをご記入ください。" %></p>
             </div>
           </div>
 

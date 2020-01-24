@@ -39,6 +39,12 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 3.7'
+  gem 'capybara', '~> 2.15'
+  gem 'selenium-webdriver'
+  # gem 'factory_bot_rails', '~>4.11'
+  # gem 'chromedriver-helper'
+
 end
 
 group :development do
@@ -52,7 +58,7 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
+  # gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
@@ -73,6 +79,12 @@ gem 'rails-i18n', '~> 5.1'
 gem 'pry-byebug'
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
+gem 'pry-rails'
+gem 'hirb'
+gem 'hirb-unicode'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+
 
 group :production do
   gem 'mysql2'

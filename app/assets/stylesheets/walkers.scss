@@ -14,7 +14,7 @@
   font-weight: bold;
   color: black;/*文字色*/
   background: #FFF;
-  border: solid 3px orange;/*線*/
+  border: solid 2px lightseagreen;/*線*/
   border-radius: 10px;/*角の丸み*/
 }
 .box-maru div {
@@ -45,7 +45,7 @@
   margin: 10px 0 0 0;
 }
 .fly:hover {
-  background-color: #222222;
+  background-color:  lightseagreen;
   color: white;
   -webkit-transform: translateY(-5px);
   -ms-transform: translateY(-5px);

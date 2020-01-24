@@ -29,15 +29,33 @@
 	clear: both;
 }
 
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background-color:#EEEEEE;
+}
+
+//ヘッダーの設定**********
+
 #header{
   position:fixed;
   top:0;
   margin:0;
   padding:4px;
   width:100%;
-  background-color:rgb(250, 250, 250);
+  background-color: #EEEEEE	;
+  opacity: 0.8px;
   z-index:9999;
   height:90px;
+  border-bottom: 0.8px solid lightgray;
+}
+
+//サイト名・トップページへ遷移
+.site-name{
+  font-size: 50px;
+  width: 90px;
+  float:left;
 }
 
 ul {
@@ -49,21 +67,29 @@ ul {
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
+  float: right;
 }
-.type1 ul li {
-  margin-right: 1rem;
-}
+
 .type1 ul li  {
   display: block;
   padding: 10px;
-  color: #000000;
   text-decoration: none;
   font-size: 20px;
+  
+  a{
+    color: black;
+  }
+  a:hover{
+    color: lightseagreen;
+  }
 }
+
+
 
 .type1 .header-menu .menu {
   position: relative;
 }
+
 .type1 .header-menu .menu::after {
   position: absolute;
   left: 0;
@@ -71,24 +97,55 @@ ul {
   display: block;
   content: "";
   width: 0%;
-  height: 2px;
-  background: orange;
+  height: 5px;
+  background: lightseagreen;
+  color: black;
   transition: all 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 .type1 .header-menu .menu:hover::after {
   width: 100%;
 }
 
-// a.selected {
-//   color: orange;
-// }
-
-html,
-body {
-  margin: 0;
-  height: 100%;
+// ドロップダウンメニューを表示
+.header-menu{
+  max-width: 1200px;
+  display: flex;
 }
 
+
+.header-menu>li{
+  // width: 1200px;
+  margin: 1px;
+  display: inline;
+}
+
+.dropdwn_menu{
+  width: 150px;
+  position: absolute;
+  margin-left: -100px;
+  margin-top: 5px;
+  padding: 0;
+  background:  white;
+  opacity:0.8;
+}
+
+.dropdwn_menu li{
+  width: 100%;
+
+}
+
+.dropdwn_menu li a{
+  padding: 5px 0;
+  margin: -5px 5px -5px -5px;
+  display: block;
+
+}
+
+
+
+//**********
+
+//フッターの設定**********
 .footer #button{
   width:35px;
   height:35px;
@@ -158,21 +215,22 @@ right:190px;
   float:left;
 text-align:center;
 }
-.footer h3{
+.footer p{
   font-family: 'Helvetica';
-  font-size: 30px;
   font-weight: 100;
   margin-top:70px;
   margin-left:40px;
   color: lightgray;
 }
 
+//**********
+
 .maru-box {
   margin: 2em auto;
   padding: 1em;
   width: 90%;
   color: #666666; /*文字色*/
-  border: 2px solid  #666666; /*線の太さ・色*/
+  border: 2px solid lightseagreen; /*線の太さ・色*/
   background-color: #fff; /*背景色*/
   box-shadow: -2px 5px 5px #e8d3c7; /*影*/
   border-radius: 20px; /*角の丸み*/
@@ -181,7 +239,7 @@ text-align:center;
 .page-title {
   border-bottom-style: ridge;
   text-align: center;
-  width: 200px;
+  width: 250px;
   margin: 0 auto;
   font-size: 30px;
   border-width: 2px;
@@ -211,4 +269,10 @@ text-align:center;
   transform: translate(-50%,-50%);
   width: 60%;
 }
+
+.alert {
+  text-align: center;
+  margin-bottom: 0px;
+}
+
 

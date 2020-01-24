@@ -1,4 +1,16 @@
 class User < ApplicationRecord
+
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :last_name_kana, presence: true
+  validates :first_name_kana, presence: true
+  validates :postcode, presence: true
+  validates :prefecture, presence: true
+  validates :city, presence: true
+  validates :block, presence: true
+  validates :phone_number, presence: true
+  validates :nickname, presence: true
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
