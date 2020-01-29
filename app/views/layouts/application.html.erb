@@ -130,17 +130,17 @@
         <%= flash.notice %>
       </div>
     <% end %>
-    <%= yield %>
+
+    <div class="content">
+      <%= yield %>
+    </div>
+
     <div class="footer">
-      <div id="button"></div>
-      <div id="container">
-        <div id="cont">
-          <div class="footer_center" style="text-align: center;">
-            <p>Copyright © 2020 All Rights Reserved.</p>
-          </div>
-        </div>
+      <div class="container">
+        <p>Copyright © 2020 All Rights Reserved.</p>
       </div>
     </div>
+
   <script>
     //ヘッダーの高さ分だけコンテンツを下げる
     $(function() {

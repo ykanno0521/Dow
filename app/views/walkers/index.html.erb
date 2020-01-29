@@ -1,8 +1,7 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
-    <div class="col-md-8 col-md-offset-2" style="text-align: center;">
+    <div class="col-md-10 col-md-offset-1" style="text-align: center;">
       <div class="page-title">Walker一覧</div>
-      
       <%= search_form_for @q, class: 'md-5',style: ' margin: 0 auto;' do |f| %>
         <div class="form-group row", style="display: inline-block;" >
           <%# <%= f.label :nickname_cont,:placeholder => "", class: 'col-sm-5 col-form-label'%>
@@ -15,12 +14,12 @@
         </div>
       <% end %>
 
-        <div class="walker-list" style="margin-left: 30px;">
+      <div class="walker-list clear">
         <% @walkers.each do |w| %>
-          <div class="walker-content fly" style="border: solid gray; padding: 10px 10px;margin: 20px; display: inline-block; width: 180px;">
-            <div class="circle-avatar" style="width:150px; display: inline-block;">
+          <div class="walker-content fly">
+            <div class="circle-avatar" style="width:150px; display: inline-block;text-align: center;">
               <% if w.avatar.present? %>
-                <%= image_tag w.avatar.to_s, class: 'avatar img-circle' %>
+                <%= image_tag w.avatar.to_s, class: 'avatar img-circle'%>
               <% else %>
                 <%= image_tag 'no_avatar.png', class: 'avatar img-circle' %>
               <% end %>
@@ -66,7 +65,7 @@
           </div>
         <% end %>
       </div>
-      <%= paginate @walkers %>
+       <%= paginate @walkers %>
     </div>
   </div>
 </div>
