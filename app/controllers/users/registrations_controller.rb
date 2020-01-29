@@ -54,7 +54,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys:[:image, :last_name, :first_name, :last_name_kana, :first_name_kana, :postcode, :prefecture, :city, :block, :building, :phone_number, :nickname, :delete_flag])
+    devise_parameter_sanitizer.permit(:account_update, keys:[:avatar, :avatar_cache, :remove_avatar, :last_name, :first_name, :last_name_kana, :first_name_kana, :postcode, :prefecture, :city, :block, :building, :phone_number, :nickname, :delete_flag])
   end
 
   def unsubscribe
