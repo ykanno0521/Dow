@@ -1,4 +1,6 @@
 class Walkers::WalkersController < ApplicationController
+
+
   def show
     @walker = current_walker
     @recruits = Recruit.where(walker_id: @walker.id)

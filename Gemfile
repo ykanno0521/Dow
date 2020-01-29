@@ -84,6 +84,9 @@ gem 'hirb'
 gem 'hirb-unicode'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'rmagick' #画像処理に必要
 
 
 group :production do

@@ -18,8 +18,12 @@
         <div class="walker-list" style="margin-left: 30px;">
         <% @walkers.each do |w| %>
           <div class="walker-content fly" style="border: solid gray; padding: 10px 10px;margin: 20px; display: inline-block; width: 180px;">
-            <div class="partner-image" style="width:150px; display: inline-block;">
-              <%= attachment_image_tag @walker, :image_id, :fill, 150, 150, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg",  size: '150x150' %>
+            <div class="circle-avatar" style="width:150px; display: inline-block;">
+              <% if w.avatar.present? %>
+                <%= image_tag w.avatar.to_s, class: 'avatar img-circle' %>
+              <% else %>
+                <%= image_tag 'no_avatar.png', class: 'avatar img-circle' %>
+              <% end %>
               <div style="text-align: center;">
                 <%= link_to w.nickname, walker_path(w.id) %><br>
                 <% recruit = Recruit.where(walker_id: w.id) %>
