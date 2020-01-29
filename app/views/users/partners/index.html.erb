@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <div class="page-title">Partner info</div>
+      <div class="page-title">パートナー詳細</div>
       <%=link_to "パートナーを登録する", new_users_partner_path %>
       
       <% @partners.each do |p| %>
         <div class="maru-box">
           <div class="form-group has-icon" style="height: 150px">
               <div class="profile-image" style="width: 150px; height: 150px; margin: 0 auto;">
-                <%= attachment_image_tag p, :image, :fill, 150, 150, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg",size: '150x150' %>
+                <%= attachment_image_tag p, :image, :fill, 150, 150, class: "img-circle pull-left profile-thumb", fallback: "no_avatar.png",size: '150x150' %>
               </div>
           </div>
           <table class="table-double">
