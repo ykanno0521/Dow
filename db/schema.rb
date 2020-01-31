@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_29_070421) do
+ActiveRecord::Schema.define(version: 2020_01_31_004025) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(version: 2020_01_29_070421) do
   create_table "partners", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "dog_breed"
-    t.string "image_id"
     t.string "name", null: false
     t.date "birthday"
     t.string "gender", null: false
@@ -55,6 +54,7 @@ ActiveRecord::Schema.define(version: 2020_01_29_070421) do
     t.integer "delete_flag", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar"
   end
 
   create_table "recruits", force: :cascade do |t|

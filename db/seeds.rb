@@ -9,7 +9,7 @@
 User.create!(
   [
     {
-      image_id: "",
+      avatar: "",
       last_name: "山田",
       first_name: "一郎",
       last_name_kana: "ヤマダ",
@@ -26,7 +26,7 @@ User.create!(
       delete_flag: "0"
     },
     {
-      image_id: "",
+      avatar: "",
       last_name: "田中",
       first_name: "一郎",
       last_name_kana: "タナカ",
@@ -43,7 +43,7 @@ User.create!(
       delete_flag: "0"
     },
     {
-      image_id: "",
+      avatar: "",
       last_name: "DMM",
       first_name: "テスト",
       last_name_kana: "タナカ",
@@ -65,7 +65,7 @@ User.create!(
 Walker.create!(
   [
     {
-      image_id: "",
+      avatar: "",
       last_name: "鈴木",
       first_name: "一郎",
       last_name_kana: "スズキ",
@@ -86,7 +86,7 @@ Walker.create!(
       introduction: "よろしくお願いします。"
     },
     {
-      image_id: "",
+      avatar: "",
       last_name: "佐藤",
       first_name: "一郎",
       last_name_kana: "サトウ",
@@ -107,7 +107,7 @@ Walker.create!(
       introduction: "よろしくお願いします。"
     },
     {
-      image_id: "",
+      avatar: "",
       last_name: "田村",
       first_name: "一郎",
       last_name_kana: "田村",
@@ -128,7 +128,7 @@ Walker.create!(
       introduction: "よろしくお願いします。"
     },
     {
-      image_id: "",
+      avatar: "",
       last_name: "山本",
       first_name: "一郎",
       last_name_kana: "山本",
@@ -149,7 +149,7 @@ Walker.create!(
       introduction: "犬大好きです。。"
     },
     {
-      image_id: "",
+      avatar: "",
       last_name: "山本",
       first_name: "二郎",
       last_name_kana: "山本",
@@ -170,7 +170,7 @@ Walker.create!(
       introduction: "犬大好きです。。"
     },
     {
-      image_id: "",
+      avatar: "",
       last_name: "山本",
       first_name: "三郎",
       last_name_kana: "山本",
@@ -191,7 +191,7 @@ Walker.create!(
       introduction: "犬大好きです。。"
     },
     {
-      image_id: "",
+      avatar: "",
       last_name: "山本",
       first_name: "四郎",
       last_name_kana: "山本",
@@ -212,7 +212,7 @@ Walker.create!(
       introduction: "犬大好きです。。"
     },
     {
-      image_id: "",
+      avatar: "",
       last_name: "山本",
       first_name: "五郎",
       last_name_kana: "山本",
@@ -245,7 +245,7 @@ Partner.create!(
     {
       user_id: "1",
       dog_breed: "コーギー",
-      image_id: "",
+      avatar: "",
       name: "むぎ",
       birthday: "",
       gender: "オス",
@@ -256,7 +256,7 @@ Partner.create!(
     {
       user_id: "1",
       dog_breed: "コーギー",
-      image_id: "",
+      avatar: "",
       name: "むぎむぎ",
       birthday: "",
       gender: "オス",
@@ -267,7 +267,7 @@ Partner.create!(
     {
       user_id: "2",
       dog_breed: "コーギー",
-      image_id: "",
+      avatar: "",
       name: "こむぎ",
       birthday: "",
       gender: "オス",
@@ -278,7 +278,7 @@ Partner.create!(
     {
       user_id: "2",
       dog_breed: "柴犬",
-      image_id: "",
+      avatar: "",
       name: "しーばー",
       birthday: "",
       gender: "オス",
@@ -463,15 +463,15 @@ Review.create!(
   [
     {
       recruit_id: "1",
-      title: "よかった",
-      content: "またお願いします",
+      title: "よかった！！！",
+      content: "対応もしっかりしてしていただいたので、またお願いしたいです。",
       satisfaction: "5",
       delete_flag: "0"
     },
     {
       recruit_id: "1",
-      title: "だめ",
-      content: "もう頼まない",
+      title: "あまりよくない",
+      content: "待ち合わせ時間には遅れてくるし、わんちゃんとの接し方も慣れていない様子でした。",
       satisfaction: "1",
       delete_flag: "0"
     },
@@ -491,8 +491,8 @@ Review.create!(
     },
     {
     recruit_id: "5",
-    title: "よかった",
-    content: "またお願いします",
+    title: "よかったです！！！",
+    content: "対応もしっかりしてしていただいたので、またお願いしたいです。",
     satisfaction: "3",
     delete_flag: "0"
     },
