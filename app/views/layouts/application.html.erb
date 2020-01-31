@@ -1,9 +1,12 @@
-
+<!DOCTYPE html>
+<html lang="ja">
 <head>
   <title>Dow</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-
+  <%= csrf_meta_tags %> <%# セキュリティトークンを追加 %>
+  <%= csp_meta_tag %> <%# セッションごとにインライン<script>タグを許可するnonce値を含むcsp-nonceメタタグを生成 %>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://kit.fontawesome.com/c461501c96.js" crossorigin="anonymous"></script>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -11,7 +14,7 @@
 
 <header id="header">
   <div class="site-name">Dow!</div>
-    <div class="type1">
+  <div class="type1">
     <ul class="header-menu" style="padding-top: 20px;">
       <!-- ユーザログイン時 -->
       <% if user_signed_in? %>
@@ -125,7 +128,7 @@
           </div>
         </li>
       <% end %>
-      </ul>
+    </ul>
   </div>
 </header>
 
@@ -209,3 +212,5 @@
     });
   });
 </script>
+
+</html>

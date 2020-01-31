@@ -12,7 +12,6 @@ class Recruit < ApplicationRecord
   has_one :review, dependent: :destroy
 
   private
-  seedファイル実行のためコメントアウト
   def offer_date_check
     errors.add(:offer_date, 'その日付は登録できません。') if offer_date.nil? || offer_date < Time.current
   end
