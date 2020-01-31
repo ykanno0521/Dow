@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <div class="page-title">Partner edit</div>
+      <div class="page-title">パートナー編集</div>
       <%= form_for(@partner, url:"/users/partners/#{@partner.id}") do |p| %>
-      <div class="maru-box" style="height: 400px;">
+      <div class="maru-box" style="height: auto; padding: 20px;">
         <div class="col-md-4">
           <div class="field">
-              <div class="user-edit-image">
-                  <%= attachment_image_tag @partner, :image, :fill, 250, 250, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg",  size: '250x250' %>
-                  <%= p.attachment_field :image, placeholder: "プロフィール画像" %>
-              </div>
+            <div class="partner-image">
+              <%= attachment_image_tag @partner, :image, :fill, 250, 250, class: "partner-image img-circle", fallback: "no_avatar.png",  size: '250x250' %>
+              <%= p.attachment_field :image, placeholder: "プロフィール画像" %>
+            </div>
           </div>
         </div>
         <div class="col-md-6 col-md-offset-1">
@@ -36,14 +36,16 @@
             <%= p.label :"体重　　　　" %><br>
             <%= p.number_field :weight, min: "1", step: "0.5" %>Kg
           </div>
-          <div class="field" style="margin-bottom: 10px;">
+          <div class="field clearfix" style="margin-bottom: 10px;">
             <%= p.label :"性格　　　　" %><br>
               <%= p.radio_button :character, "活発" %>
               <%= p.label :character, "活発", {value: :活発, style: "display: inline-block;"} %>
               <%= p.radio_button :character, "おとなしい" %>
               <%= p.label :character, "おとなしい", {value: :おとなしい, style: "display: inline-block;"} %>
           </div>
-          <%= p.submit '編集', class:"btn btn-primary", :style=>"background-color: green; color: ; width: 80px; height: 30px; float: right;"%>
+        </div>
+        <div style="text-align: center;">
+          <%= p.submit '編集', class:"btn btn-primary", style:"display: inline-block; background-color: green; margin: 0 auto; width: 80px; height: 30px;"%>
         </div>
       </div>
       <% end %>

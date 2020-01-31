@@ -2,11 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.walker-content {
-  float:left;
-  margin: 0 15px;
-}
-
 
 .box-maru {
   padding: 0.5em 1em;
@@ -18,7 +13,7 @@
   border-radius: 10px;/*角の丸み*/
 }
 .box-maru div {
-  margin: 0; 
+  margin: 0;
   padding: 0;
 }
 
@@ -42,12 +37,29 @@
   box-sizing: border-box;
   -webkit-transition: all .3s;
   transition: all .3s;
-  margin: 10px 0 0 0;
+  margin: 20px;
+  border: solid gray;
+  padding: 10px 10px;
+  display: inline-block;
+  width: 180px;
+  text-align: center;
 }
+
 .fly:hover {
   background-color:  lightseagreen;
   color: white;
   -webkit-transform: translateY(-5px);
   -ms-transform: translateY(-5px);
   transform: translateY(-5px);
+}
+
+.circle-avatar{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 20px;
 }

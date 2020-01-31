@@ -2,99 +2,111 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="maru-box">
+        <h2>Edit <%= resource_name.to_s.humanize %></h2>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
 
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-<div class="name field">
-          <div class="field">
-            <%= f.label :"氏名　　　　　　　　姓" %>
-            <%= f.text_field :last_name, autofocus: true  %>
-            <%= f.label :"　　名" %>
-            <%= f.text_field :first_name, autofocus: true  %>
+          <div class="circle-avatar">
+            <img id="avatar_img_prev" src="#" class='hidden img-circle'>
+            <% if current_user.persisted? && current_user.avatar? %>
+              <%= image_tag current_user.avatar.to_s, class:'avatar_present_img img-circle' %><br>
+              <label><%= f.check_box :remove_avatar %> 画像を削除</label><br>
+            <% else %>
+              <%= image_tag 'no_avatar.png', class:'avatar_present_img' %><br>
+              <%= f.hidden_field :avatar_cache %>
+            <% end %>
+              <%= f.file_field :avatar, id:'post_img', style: 'display: inline-block;'%>
           </div>
-        </div>
 
-        <div class="name_kana line">
-          <div class="field">
-            <%= f.label :"氏名（フリガナ）　セイ" %>
-            <%= f.text_field :last_name_kana, autofocus: true  %>
-            <%= f.label :"　メイ" %>
-            <%= f.text_field :first_name_kana, autofocus: true  %>
+          <div class="name field">
+            <div class="field">
+              <%= f.label :"氏名　　　　　　　　姓" %>
+              <%= f.text_field :last_name, autofocus: true  %>
+              <%= f.label :"　　名" %>
+              <%= f.text_field :first_name, autofocus: true  %>
+            </div>
           </div>
-        </div>
 
-        <div class="email line">
-          <div class="field">
-            <%= f.label :"メールアドレス　　　　" %>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <div class="name_kana line">
+            <div class="field">
+              <%= f.label :"氏名（フリガナ）　セイ" %>
+              <%= f.text_field :last_name_kana, autofocus: true  %>
+              <%= f.label :"　メイ" %>
+              <%= f.text_field :first_name_kana, autofocus: true  %>
+            </div>
           </div>
-        </div>
 
-        <div class="postcode line">
-          <div class="field">
-            <%= f.label :"郵便番号　　　　　　　" %>
-            <%= f.text_field :postcode, autofocus: true  %>
-            <strong>(ハイフン不要)</strong>
+          <div class="email line">
+            <div class="field">
+              <%= f.label :"メールアドレス　　　　" %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </div>
           </div>
-        </div>
 
-        <div class="prefecture line">
-          <div class="field">
-            <%= f.label :"都道府県　　　　　　　" %>
-            <%= f.select :prefecture, @prefecture, :prompt => "選択してください"   %>
+          <div class="postcode line">
+            <div class="field">
+              <%= f.label :"郵便番号　　　　　　　" %>
+              <%= f.text_field :postcode, autofocus: true  %>
+              <strong>(ハイフン不要)</strong>
+            </div>
           </div>
-        </div>
 
-        <div class="city line">
-          <div class="field">
-            <%= f.label :"住所１（市区町村）　　" %>
-            <%= f.text_field :city, autofocus: true  %>
+          <div class="prefecture line">
+            <div class="field">
+              <%= f.label :"都道府県　　　　　　　" %>
+              <%= f.select :prefecture, @prefecture, :prompt => "選択してください"   %>
+            </div>
           </div>
-        </div>
 
-        <div class="block line">
-          <div class="field">
-            <%= f.label :"住所２（番地）　　　　" %>
-            <%= f.text_field :block, autofocus: true  %>
+          <div class="city line">
+            <div class="field">
+              <%= f.label :"住所１（市区町村）　　" %>
+              <%= f.text_field :city, autofocus: true  %>
+            </div>
           </div>
-        </div>
 
-        <div class="building line">
-          <div class="field">
-            <%= f.label :"住所３（建物名）　　　" %>
-            <%= f.text_field :building, autofocus: true  %>
+          <div class="block line">
+            <div class="field">
+              <%= f.label :"住所２（番地）　　　　" %>
+              <%= f.text_field :block, autofocus: true  %>
+            </div>
           </div>
-        </div>
 
-        <div class="phone_number line">
-          <div class="field">
-            <%= f.label :"お電話番号　　　　　　" %>
-            <%= f.text_field :phone_number, autofocus: true  %>
-            <strong>(ハイフン不要)</strong>
-            <%= f.hidden_field :delete_flag, :value => 0 %>
+          <div class="building line">
+            <div class="field">
+              <%= f.label :"住所３（建物名）　　　" %>
+              <%= f.text_field :building, autofocus: true  %>
+            </div>
           </div>
-        </div>
 
-        <div class="nickname line">
-          <div class="field">
-            <%= f.label :"表示名　　　　　　　　" %>
-            <%= f.text_field :nickname, autofocus: true  %>
+          <div class="phone_number line">
+            <div class="field">
+              <%= f.label :"お電話番号　　　　　　" %>
+              <%= f.text_field :phone_number, autofocus: true  %>
+              <strong>(ハイフン不要)</strong>
+              <%= f.hidden_field :delete_flag, :value => 0 %>
+            </div>
           </div>
-        </div>
 
-        <div class="field">
-          <span class="field bg-danger">
-            <%= f.label :"変更するには、現在のパスワードを入力してください。" %></br>
-            <%= f.password_field :current_password, autocomplete: "off" %>
-          </span>
-        </div>
-        
-  <div class="actions">
-    <%= f.submit "Update" %>
+          <div class="nickname line">
+            <div class="field">
+              <%= f.label :"表示名　　　　　　　　" %>
+              <%= f.text_field :nickname, autofocus: true  %>
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field bg-danger">
+              <%= f.label :"変更するには、現在のパスワードを入力してください。" %><br>
+              <%= f.password_field :current_password, autocomplete: "off" %>
+            </span>
+          </div>
+          <div class="actions">
+            <%= f.submit "Update" %>
+          </div>
+        <% end %>
+        <%= link_to "Back", :back %>
+      </div>
+    </div>
   </div>
-<% end %>
-
-<%= link_to "Back", :back %>
+</div>

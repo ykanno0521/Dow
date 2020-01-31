@@ -1,8 +1,7 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
-    <div class="col-md-8 col-md-offset-2" style="text-align: center;">
+    <div class="col-md-10 col-md-offset-1" style="text-align: center;">
       <div class="page-title">Walker一覧</div>
-      
       <%= search_form_for @q, class: 'md-5',style: ' margin: 0 auto;' do |f| %>
         <div class="form-group row", style="display: inline-block;" >
           <%# <%= f.label :nickname_cont,:placeholder => "", class: 'col-sm-5 col-form-label'%>
@@ -15,11 +14,15 @@
         </div>
       <% end %>
 
-        <div class="walker-list" style="margin-left: 30px;">
+      <div class="walker-list clear">
         <% @walkers.each do |w| %>
-          <div class="walker-content fly" style="border: solid gray; padding: 10px 10px;margin: 20px; display: inline-block; width: 180px;">
-            <div class="partner-image" style="width:150px; display: inline-block;">
-              <%= attachment_image_tag @walker, :image_id, :fill, 150, 150, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg",  size: '150x150' %>
+          <div class="walker-content fly">
+            <div class="circle-avatar" style="width:150px; display: inline-block;text-align: center;">
+              <% if w.avatar.present? %>
+                <%= image_tag w.avatar.to_s, class: 'avatar img-circle'%>
+              <% else %>
+                <%= image_tag 'no_avatar.png', class: 'avatar img-circle' %>
+              <% end %>
               <div style="text-align: center;">
                 <%= link_to w.nickname, walker_path(w.id) %><br>
                 <% recruit = Recruit.where(walker_id: w.id) %>
@@ -38,22 +41,22 @@
                 <% else %>
                   <div id="star-average-<%= w.id %>"><%= satisfaction_average.round(2) %></div>
                   <script>
-                  $('#star-average-<%= w.id %>').raty({
-                    size: 200,
-                    starOff:  '<%= ('star-off.png') %>',
-                    starOn : '<%= ('star-on.png') %>',
-                    starHalf: '<%= ('star-half.png') %>',
-                    half: true,
-                    readOnly: true,
-                    score: '<%= satisfaction_average %>',
-                  });
+                      $('#star-average-<%= w.id %>').raty({
+                        size: 200,
+                        starOff:  '<%= ('star-off.png') %>',
+                        starOn : '<%= ('star-on.png') %>',
+                        starHalf: '<%= ('star-half.png') %>',
+                        half: true,
+                        readOnly: true,
+                        score: '<%= satisfaction_average %>',
+                      });
                   </script>
                   レビュー件数：<%= satisfaction.length %>件
                 <% end %>
               </div>
               <div>
               <h5 style="margin-top: 20px;"><担当エリア></h5>
-                <div>
+                <div class="area-info" style="font-size: 12px;">
                   <% area_array = [w.area1, w.area2, w.area3]%>
                   <%= area = area_array.compact.join(' ') %>
                 </div>
@@ -62,7 +65,7 @@
           </div>
         <% end %>
       </div>
-      <%= paginate @walkers %>
+       <%= paginate @walkers %>
     </div>
   </div>
 </div>

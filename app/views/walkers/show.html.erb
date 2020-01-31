@@ -3,16 +3,22 @@
 		<div class="col-md-8 col-md-offset-2">
 			<div class="page-title">Walkerレビュー</div>
 			<div class="walker-content" style="width: 100%; margin-top: 30px;" >
-			<div style="text-align: center;">
-				<% if @walker.delete_flag == 0 %>
-					<%= link_to "アカウント情報編集", edit_admins_walker_path if admin_signed_in? %>
-				<% else %>
-					<p style="color: red;">アカウントが存在しません。</p>
-				<% end %>
-			</div>
-				<div class="walker-image clearfix" style="text-align:center; margin: 0 auto; width:150px; background: orange;">
-					<%= attachment_image_tag @walker, :image, :fill, 150, 150, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg",  size: '150x150'%>
+				<div style="text-align: center;">
+					<% if @walker.delete_flag == 0 %>
+						<%= link_to "アカウント情報編集", edit_admins_walker_path if admin_signed_in? %>
+					<% else %>
+						<p style="color: red;">アカウントが存在しません。</p>
+					<% end %>
 				</div>
+
+				<div class="circle-avatar">
+				  <% if @walker.avatar.present? %>
+					  <%= image_tag @walker.avatar.to_s, class:"avatar img-circle" %>
+					<% else %>
+					  <%= image_tag 'no_avatar.png', class:"avatar img-circle" %>
+					<% end %>
+				</div>
+
 				<div style="text-align: center;">
 				<%= @walker.nickname %>
 				<div class ="review-headline clearfix">
