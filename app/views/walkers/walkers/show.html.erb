@@ -1,10 +1,25 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-    <div class="page-title">mypage</div>
+    <div class="page-title">マイページ</div>
 
+    <%# アバターを表示 %>
+    <div class="circle-avatar">
+      <% if current_walker.persisted? && current_walker.avatar? %>
+        <%= image_tag current_walker.avatar.to_s, class:'avatar_present_img img-circle' %><br>
+      <% else %>
+        <%= image_tag 'no_avatar.png', class:'avatar_present_img' %><br>
+        <%= f.hidden_field :avatar_cache %>
+      <% end %>
+      <%= current_walker.nickname %>
+    </div>
+    <div style="text-align: right;">
+      <%= link_to "プロフィール編集", edit_walker_registration_path ,style: "display: inline-block;"%>
+      <%= link_to "退会手続き", walkers_unsubscribe_path,style: "display: inline-block; margin-left: 20px;" %>
+    </div>
 
-    <h3 style="text-align:center;"> Recruitment history </h3>
+    <%# 応募履歴一覧を表示 %>
+    <p style="float: right; margin-top: 30px;"> 応募履歴 </p>
       <table class="table table-hover">
       <thead>
         <tr>
@@ -36,10 +51,6 @@
         </tbody>
         <% end %>
       </table>
-      <div style="text-align: right;">
-        <%= link_to "プロフィール編集", edit_walker_registration_path ,style: "display: inline-block;"%>
-        <%= link_to "退会手続き", walkers_unsubscribe_path,style: "display: inline-block; margin-left: 20px;" %>
-      </div>
     </div>
   </div>
 </div>

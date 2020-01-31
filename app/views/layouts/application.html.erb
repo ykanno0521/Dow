@@ -1,208 +1,211 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Dow</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <script src="https://kit.fontawesome.com/c461501c96.js" crossorigin="anonymous"></script>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-    <header id="header">
-      <div class="site-name">Dow!</div>
-        <div class="type1">
-        <ul class="header-menu" style="padding-top: 20px;">
-          <!-- ユーザログイン時 -->
-          <% if user_signed_in? %>
-            <li class="menu">
-              <%= link_to "トップページ", root_path %>
-            </li>
-            <li class="menu">
-              <%= link_to "Dow!について", about_path %>
-            </li>
-            <li class="menu">
-              <%= link_to  "Walker一覧", walkers_path %>
-            </li>
-            <li class="menu">
-              <%= link_to  "募集する", new_users_recruit_path %>
-            </li>
-            <li class="menu">
-              <%= link_to  "メッセージ一覧", rooms_path %>
-            </li>
-            <li class="menu">
-              <%= link_to "問い合わせ", new_contact_path if user_signed_in? || walker_signed_in? %>
-            </li>
-            <li class="menu icon"><i class="fas fa-user"></i>
-              <ul class="dropdwn_menu" style="display: none;">
-                <li><%= link_to 'マイページ', users_user_path(current_user) %></li>
-                <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-              </ul>
-            </li>
-          <!-- Walkerログイン時 -->
-          <% elsif walker_signed_in? %>
-            <li class="menu">
-              <%= link_to "トップページ", root_path %>
-            </li>
-            <li class="menu">
-              <%= link_to "Dow!について", about_path %>
-            </li>
-            <li class="menu">
-              <%= link_to  "Walker一覧", walkers_path  %>
-            </li>
-            <li class="menu">
-              <%= link_to  "募集一覧", walkers_recruits_index_path  %>
-            </li>
-            <li class="menu">
-              <%= link_to  "メッセージ一覧", rooms_path  %>
-            </li>
-            <li class="menu">
-              <%= link_to "問い合わせ", new_contact_path if user_signed_in? || walker_signed_in? %>
-            </li>
-            <li class="menu icon"><i class="fas fa-user"></i>
-              <ul class="dropdwn_menu" style="display: none;">
-                <li><%= link_to 'マイページ', walkers_walker_path(current_walker) %></li>
-                <li><%= link_to "ログアウト", destroy_walker_session_path, method: :delete %></li>
-              </ul>
-            </li>
-          <!-- 管理者ログイン時 -->
-          <% elsif admin_signed_in? %>
-            <li class="menu">
-              <%= link_to "Home", root_path %>
-            </li>
-            <li class="menu">
-              <%= link_to "Recruit list", admins_recruits_path %>
-            </li>
-            <li class="menu">
-              <%= link_to  "User list", admins_users_path  %>
-            </li>
-            <li class="menu">
-              <%= link_to  "Walker list", walkers_path  %>
-            </li>
-            <li class="menu">
-              <%= link_to  "Contact", admins_contacts_path %>
-            </li>
-            <li class="menu">
-              <%= link_to "Logout", destroy_admin_session_path, method: :delete  %>
-            </li>
-          <!-- 未ログイン時 -->
-          <% else %>
-            <li class="menu">
-              <%= link_to "トップページ", root_path %>
-            </li>
-            <li class="menu">
-              <a href="#about">Dow!とは</a>
-            </li>
-            <li class="menu">
-              <%= link_to  "Walker一覧", walkers_path  %>
-            </li>
-            <li class="menu">
-              <%= link_to  "登録", '' , class: "js-modal-open" %>
-              <!-- user or walker を選択させるモーダルを表示 -->
-              <div class="modal js-modal">
-                <div class="modal__bg js-modal-close"></div>
-                <div class="modal__content">
-                  <p>どちらで登録するか選択してください。</p>
-                  <%= link_to "散歩をお願いしたい方", new_user_registration_path ,class: "js-modal-user-signup" %><br>
-                  <%= link_to "Walkerになりたい方" , new_walker_registration_path , class: "js-modal-walker-signup" %><br>
-                  <div style="text-align: right"><a class="js-modal-close" heref="" >閉じる</a></div>
-                </div>
-              </div>
-            </li>
-            <li class="menu">
-              <%= link_to  "ログイン", '', class: "js-modal-open2" %>
-                <div class="modal js-modal2">
-                <div class="modal__bg js-modal2-close"></div>
-                <div class="modal__content">
-                  <p>どちらでログインするか選択してください。</p>
-                  <%= link_to "散歩を依頼したい方", new_user_session_path ,class: "js-modal-user-login"%><br>
-                  <%= link_to "Walkerの方" , new_walker_session_path , class: "js-modal-walker-login" %><br>
-                  <div style="text-align: right"><a class="js-modal2-close" heref="">閉じる</a></div>
-                </div>
-              </div>
-            </li>
-          <% end %>
+<head>
+  <title>Dow</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <script src="https://kit.fontawesome.com/c461501c96.js" crossorigin="anonymous"></script>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<header id="header">
+  <div class="site-name">Dow!</div>
+    <div class="type1">
+    <ul class="header-menu" style="padding-top: 20px;">
+      <!-- ユーザログイン時 -->
+      <% if user_signed_in? %>
+        <li class="menu">
+          <%= link_to "トップページ", root_path %>
+        </li>
+        <%# トップページにaboutを記載するため不要？ %>
+        <%# <li class="menu"> %>
+          <%# <%= link_to "Dow!について", about_path %>
+        <%# </li> %>
+        <li class="menu">
+          <%= link_to  "Walker一覧", walkers_path %>
+        </li>
+        <li class="menu">
+          <%= link_to  "募集する", new_users_recruit_path %>
+        </li>
+        <li class="menu">
+          <%= link_to  "メッセージ一覧", rooms_path %>
+        </li>
+        <li class="menu">
+          <%= link_to "問い合わせ", new_contact_path if user_signed_in? || walker_signed_in? %>
+        </li>
+        <li class="menu icon"><i class="fas fa-user"></i>
+          <ul class="dropdwn_menu" style="display: none;">
+            <li><%= link_to 'マイページ', users_user_path(current_user) %></li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
           </ul>
-      </div>
-    </header>
-    <% if flash.notice.present? %>
-      <div class="alert alert-success alert-danger">
-        <%= flash.notice %>
-      </div>
-    <% end %>
+        </li>
+      <!-- Walkerログイン時 -->
+      <% elsif walker_signed_in? %>
+        <li class="menu">
+          <%= link_to "トップページ", root_path %>
+        </li>
+        <%# トップページにaboutを記載するため不要？ %>
+        <%# <li class="menu"> %>
+          <%# <%= link_to "Dow!について", about_path %>
+        <%# </%#> %>
+        <li class="menu">
+          <%= link_to  "Walker一覧", walkers_path  %>
+        </li>
+        <li class="menu">
+          <%= link_to  "募集一覧", walkers_recruits_index_path  %>
+        </li>
+        <li class="menu">
+          <%= link_to  "メッセージ一覧", rooms_path  %>
+        </li>
+        <li class="menu">
+          <%= link_to "問い合わせ", new_contact_path if user_signed_in? || walker_signed_in? %>
+        </li>
+        <li class="menu icon"><i class="fas fa-user"></i>
+          <ul class="dropdwn_menu" style="display: none;">
+            <li><%= link_to 'マイページ', walkers_walker_path(current_walker) %></li>
+            <li><%= link_to "ログアウト", destroy_walker_session_path, method: :delete %></li>
+          </ul>
+        </li>
+      <!-- 管理者ログイン時 -->
+      <% elsif admin_signed_in? %>
+        <li class="menu">
+          <%= link_to "Home", root_path %>
+        </li>
+        <li class="menu">
+          <%= link_to "Recruit list", admins_recruits_path %>
+        </li>
+        <li class="menu">
+          <%= link_to  "User list", admins_users_path  %>
+        </li>
+        <li class="menu">
+          <%= link_to  "Walker list", walkers_path  %>
+        </li>
+        <li class="menu">
+          <%= link_to  "Contact", admins_contacts_path %>
+        </li>
+        <li class="menu">
+          <%= link_to "Logout", destroy_admin_session_path, method: :delete  %>
+        </li>
+      <!-- 未ログイン時 -->
+      <% else %>
+        <li class="menu">
+          <%= link_to "トップページ", root_path %>
+        </li>
+        <%# トップページにaboutを記載するため不要？ %>
+        <%# <li class="menu"> %>
+          <%# <a href="#about">Dow!とは</a> 押下後、id="about"に飛ぶ %>
+        <%# </li> %>
+        <li class="menu">
+          <%= link_to  "Walker一覧", walkers_path  %>
+        </li>
+        <li class="menu">
+          <%= link_to  "登録", '' , class: "js-modal-open" %>
+          <!-- user or walker を選択させるモーダルを表示 -->
+          <div class="modal js-modal">
+            <div class="modal__bg js-modal-close"></div>
+            <div class="modal__content">
+              <p>どちらで登録するか選択してください。</p>
+              <%= link_to "散歩をお願いしたい方", new_user_registration_path ,class: "js-modal-user-signup" %><br>
+              <%= link_to "Walkerになりたい方" , new_walker_registration_path , class: "js-modal-walker-signup" %><br>
+              <div style="text-align: right"><a class="js-modal-close" heref="" >閉じる</a></div>
+            </div>
+          </div>
+        </li>
+        <li class="menu">
+          <%= link_to  "ログイン", '', class: "js-modal-open2" %>
+            <div class="modal js-modal2">
+            <div class="modal__bg js-modal2-close"></div>
+            <div class="modal__content">
+              <p>どちらでログインするか選択してください。</p>
+              <%= link_to "散歩を依頼したい方", new_user_session_path ,class: "js-modal-user-login"%><br>
+              <%= link_to "Walkerの方" , new_walker_session_path , class: "js-modal-walker-login" %><br>
+              <div style="text-align: right"><a class="js-modal2-close" heref="">閉じる</a></div>
+            </div>
+          </div>
+        </li>
+      <% end %>
+      </ul>
+  </div>
+</header>
 
-    <div class="content">
-      <%= yield %>
-    </div>
+<% if flash.notice.present? %>
+  <div class="alert alert-success alert-danger">
+    <%= flash.notice %>
+  </div>
+<% end %>
 
-    <div class="footer">
-      <div class="container">
-        <p>Copyright © 2020 All Rights Reserved.</p>
-      </div>
-    </div>
+<div class="content">
+  <%= yield %>
+</div>
 
-  <script>
-    //ヘッダーの高さ分だけコンテンツを下げる
-    $(function() {
-        var height=$("#header").height();
-        $("body").css("margin-top", height + 10);//10pxだけ余裕をもたせる
+<div class="footer">
+  <div class="container">
+    <p>Copyright © 2020 All Rights Reserved.</p>
+  </div>
+</div>
+
+<script>
+  //ヘッダーの高さ分だけコンテンツを下げる
+  $(function() {
+      var height=$("#header").height();
+      $("body").css("margin-top", height + 10);//10pxだけ余裕をもたせる
+  });
+</script>
+
+<script>
+  $(function () {
+    $('.js-modal-open').on('click',function(){  //モーダルを表示
+      $('.js-modal').fadeIn();
+      return false;
     });
-  </script>
-
-  <script>
-    $(function () {
-      $('.js-modal-open').on('click',function(){  //モーダルを表示
-        $('.js-modal').fadeIn();
-        return false;
-      });
-      $('.js-modal-user-signup').on('click',function(){  //ユーザ登録画面へ遷移
-        window.location.href = '/users/sign_up';
-        //$('.js-modal').fadeOut();
-        //return false;
-      });
-      $('.js-modal-walker-signpup').on('click',function(){  //Walker登録画面へ遷移
-        window.location.href = '/walkers/sign_up';
-        // $('.js-modal').fadeOut();
-        // return false;
-      });
-      $('.js-modal-close').on('click',function(){  //閉じる
-        $('.js-modal').fadeOut();
-        return false;
-      });
+    $('.js-modal-user-signup').on('click',function(){  //ユーザ登録画面へ遷移
+      window.location.href = '/users/sign_up';
+      //$('.js-modal').fadeOut();
+      //return false;
     });
-  </script>
-
-    <script>
-    $(function () {
-      $('.js-modal-open2').on('click',function(){  //モーダルを表示
-        $('.js-modal2').fadeIn();
-        return false;
-      });
-      $('.js-modal-user-login').on('click',function(){  //ユーザログイン画面へ遷移
-        window.location.href = '/users/sign_in';
-        //$('.js-modal').fadeOut();
-        //return false;
-      });
-      $('.js-modal-walker-login').on('click',function(){  //Walkerログイン画面へ遷移
-        window.location.href = '/walkers/sign_in';
-        // $('.js-modal').fadeOut();
-        // return false;
-      });
-      $('.js-modal2-close').on('click',function(){  //閉じる
-        $('.js-modal2').fadeOut();
-        return false;
-      });
+    $('.js-modal-walker-signpup').on('click',function(){  //Walker登録画面へ遷移
+      window.location.href = '/walkers/sign_up';
+      // $('.js-modal').fadeOut();
+      // return false;
     });
-  </script>
+    $('.js-modal-close').on('click',function(){  //閉じる
+      $('.js-modal').fadeOut();
+      return false;
+    });
+  });
+</script>
+
+<script>
+  $(function () {
+    $('.js-modal-open2').on('click',function(){  //モーダルを表示
+      $('.js-modal2').fadeIn();
+      return false;
+    });
+    $('.js-modal-user-login').on('click',function(){  //ユーザログイン画面へ遷移
+      window.location.href = '/users/sign_in';
+      //$('.js-modal').fadeOut();
+      //return false;
+    });
+    $('.js-modal-walker-login').on('click',function(){  //Walkerログイン画面へ遷移
+      window.location.href = '/walkers/sign_in';
+      // $('.js-modal').fadeOut();
+      // return false;
+    });
+    $('.js-modal2-close').on('click',function(){  //閉じる
+      $('.js-modal2').fadeOut();
+      return false;
+    });
+  });
+</script>
 
 <script>
 //アカウントのダウンメニューを表示
-$(function(){
+  $(function(){
     $('.header-menu li').hover(function(){
         $("ul:not(:animated)", this).slideDown();
     }, function(){
         $("ul.dropdwn_menu",this).slideUp();
     });
-});
+  });
 </script>
-</html>

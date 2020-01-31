@@ -41,15 +41,15 @@
                 <% else %>
                   <div id="star-average-<%= w.id %>"><%= satisfaction_average.round(2) %></div>
                   <script>
-                  $('#star-average-<%= w.id %>').raty({
-                    size: 200,
-                    starOff:  '<%= ('star-off.png') %>',
-                    starOn : '<%= ('star-on.png') %>',
-                    starHalf: '<%= ('star-half.png') %>',
-                    half: true,
-                    readOnly: true,
-                    score: '<%= satisfaction_average %>',
-                  });
+                      $('#star-average-<%= w.id %>').raty({
+                        size: 200,
+                        starOff:  '<%= ('star-off.png') %>',
+                        starOn : '<%= ('star-on.png') %>',
+                        starHalf: '<%= ('star-half.png') %>',
+                        half: true,
+                        readOnly: true,
+                        score: '<%= satisfaction_average %>',
+                      });
                   </script>
                   レビュー件数：<%= satisfaction.length %>件
                 <% end %>

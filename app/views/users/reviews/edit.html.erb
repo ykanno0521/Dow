@@ -2,23 +2,26 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="page-title">Review edit</div>
+
+      <%# walkerのアバターを表示 %>
       <div class="walker-info" style="text-align: center;" >
         <div class="image clearfix" style="width: 150px; margin: 0 auto;">
-          <%= attachment_image_tag @walker, :image, :fill, 150, 150, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg", size:'150x150' %>
+          <%= image_tag @walker.avatar.to_s, class: "img-circle pull-left profile-thumb", fallback: "no_avatar.png", size:'150x150' %>
         </div>
         <h5><%= @walker.nickname %></h5>
       </div>
+
       <div class="review-input" style="margin-top: 50px;">
-        <!-- 口コミ入力フォーム -->
+        <%# 口コミ入力フォーム %>
         <%= form_for(@review, url: users_recruit_review_path) do |f| %>
 
-          <!--エラーメッセージ-->
+          <%# エラーメッセージ %>
           <%# <%= render 'layouts/error_messages', model: f.object %>
 
-          <!--募集Noの送信-->
+          <%# 募集コードの送信 %>
           <%# <%= f.hidden_field :recruit_id, { value: @recruit.id} %>
 
-          <!-- タイトル -->
+          <%# タイトル %>
           <div class="form-group row">
             <%= f.label :title, 'タイトル ', class:'col-md-3 col-form-label' %>
             <div class="col-md-4", style="padding: 0px;">
@@ -26,13 +29,13 @@
             </div>
           </div>
 
-            <!-- 評価 -->
+          <%# 評価 %>
           <div class="form-group row" id="star">
             <%= f.label :satisfaction,'評価 ', class:'col-md-3 col-form-label' %>
             <%= f.hidden_field :satisfaction, id: :review_star %>
           </div>
 
-            <!-- 評価javascript -->
+          <%# 評価javascript %>
           <script>
           $('#star').raty({
             size     : 36,
@@ -44,7 +47,7 @@
           });
           </script>
 
-            <!-- 口コミ -->
+          <%# 口コミ %>
           <div class="form-group row">
             <%= f.label :content, '口コミ内容 ', class:'col-md-3 col-form-label' %>
             <div class="col-md-9" , style="padding: 0px;">
@@ -53,14 +56,14 @@
             </div>
           </div>
 
-          <!-- 確認ボタン -->
+          <%# 確認ボタン %>
           <div class="form-group row justify-content-end", style="float: right;">
             <div class="col-md-9">
-              <%= f.submit '投稿する', class:"btn btn-success" %>
+              <%= f.submit '更新する', class:"btn btn-success" %>
             </div>
           </div>
 
-          <!-- 削除ボタン -->
+          <%# 削除ボタン %>
           <div class="form-group row justify-content-end", style="float: right;">
             <div class="col-md-9">
               <%= link_to '削除する', users_recruit_review_path(@review .id),method: :delete, class:"btn",style:"background-color: red; color: white;", data: {confirm: "削除しますか？"}   %>

@@ -57,12 +57,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:account_update, keys:[:avatar, :avatar_cache, :remove_avatar, :last_name, :first_name, :last_name_kana, :first_name_kana, :postcode, :prefecture, :city, :block, :building, :phone_number, :nickname, :delete_flag])
   end
 
+  #アカウント編集後
+  def after_update_path_for(resource)
+    users_user_path(resource)
+  end
+
   def unsubscribe
     @user = current_user
   end
 
   def complete
   end
+
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
   #   super(resource)

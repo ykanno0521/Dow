@@ -68,6 +68,11 @@ class Walkers::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
+  #アカウント編集後
+  def after_update_path_for(resource)
+    walkers_walker_path(resource)
+  end
+
   def unsubscribe
     @walker = current_walker
   end

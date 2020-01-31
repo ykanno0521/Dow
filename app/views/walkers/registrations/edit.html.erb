@@ -5,16 +5,17 @@
         <h2>Edit <%= resource_name.to_s.humanize %></h2>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
-        
+
           <div class="circle-avatar">
+            <img id="avatar_img_prev" src="#" class='hidden img-circle'>
             <% if current_walker.persisted? && current_walker.avatar? %>
-              <%= image_tag current_walker.avatar.to_s, class:'avatar img-circle' %><br>
+              <%= image_tag current_walker.avatar.to_s, class:'avatar_present_img img-circle' %><br>
               <label><%= f.check_box :remove_avatar %> 画像を削除</label><br>
             <% else %>
               <%= image_tag 'no_avatar.png' %><br>
               <%= f.hidden_field :avatar_cache %>
             <% end %>
-            <%= f.file_field :avatar, style: 'display: inline-block;'%>
+            <%= f.file_field :avatar, id:'post_img', style: 'display: inline-block;'%>
           </div>
 
           <div class="name field">
