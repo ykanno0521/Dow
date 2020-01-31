@@ -73,22 +73,22 @@
       <!-- 管理者ログイン時 -->
       <% elsif admin_signed_in? %>
         <li class="menu">
-          <%= link_to "Home", root_path %>
+          <%= link_to "トップページ", root_path %>
         </li>
         <li class="menu">
-          <%= link_to "Recruit list", admins_recruits_path %>
+          <%= link_to "募集一覧", admins_recruits_path %>
         </li>
         <li class="menu">
-          <%= link_to  "User list", admins_users_path  %>
+          <%= link_to  "顧客一覧", admins_users_path  %>
         </li>
         <li class="menu">
-          <%= link_to  "Walker list", walkers_path  %>
+          <%= link_to  "Walker一覧", walkers_path  %>
         </li>
         <li class="menu">
-          <%= link_to  "Contact", admins_contacts_path %>
+          <%= link_to  "問い合わせ一覧", admins_contacts_path %>
         </li>
         <li class="menu">
-          <%= link_to "Logout", destroy_admin_session_path, method: :delete  %>
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete  %>
         </li>
       <!-- 未ログイン時 -->
       <% else %>
