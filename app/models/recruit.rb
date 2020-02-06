@@ -1,7 +1,7 @@
 class Recruit < ApplicationRecord
-  validates :partner_id, presence: true
+  # validates :partner_id, presence: true
   validate :offer_date_check
-  
+
 
   belongs_to :user
   belongs_to :partner

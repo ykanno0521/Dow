@@ -9,7 +9,7 @@
         <%= image_tag current_walker.avatar.to_s, class:'avatar_present_img img-circle' %><br>
       <% else %>
         <%= image_tag 'no_avatar.png', class:'avatar_present_img' %><br>
-        <%= f.hidden_field :avatar_cache %>
+        <%#= f.hidden_field :avatar_cache %>
       <% end %>
       <%= current_walker.nickname %>
     </div>
